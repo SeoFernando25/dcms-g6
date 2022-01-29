@@ -67,6 +67,7 @@
               "namedChunks": true
             }
           },
+          
           "defaultConfiguration": "production"
         },
         "serve": {
