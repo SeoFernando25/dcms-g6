@@ -10,7 +10,7 @@
   },
   "private": true,
   "engines": { 
-    "node": "x.x.x", 
+    "node": "12.10.0", 
     "npm": "x.x.x" },
   "dependencies": {
     "@angular-devkit/build-angular": "^13.2.0",
