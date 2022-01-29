@@ -1,0 +1,11 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+.main-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+ }
+

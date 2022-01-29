@@ -1,0 +1,96 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<!-- UI Click Sound -->
+<audio #audioClick src="assets/snd/click.mp3" preload="auto"></audio>
+
+
+
+<!-- ToolBar/Sidenav -->
+
+<!-- Menu template -->
+<ng-template #menu_template let-value='text'>
+  <!-- About us menu -->
+
+  <button mat-button [matMenuTriggerFor]="menu"  (click)="audioClick.play()">About us</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/" (click)="audioClick.play()">
+      <mat-icon>mood</mat-icon>
+      <span>Who we are</span>
+    </button>
+    <button mat-menu-item routerLink="/services" (click)="audioClick.play()">
+      <mat-icon>local_hospital</mat-icon>
+      <a>Our Services</a>
+    </button>
+    <button mat-menu-item routerLink="/faq"  (click)="audioClick.play()">
+      <mat-icon>info</mat-icon>
+      <span>FAQ</span>
+    </button>
+  </mat-menu>
+
+
+  <a mat-button routerLink="/contact"  (click)="audioClick.play()">Contact</a>
+
+</ng-template>
+
+
+<div class='main-div'> 
+  <!-- Toolbar -->
+  <mat-toolbar  color="primary">
+    <!-- Hamburger button -->
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle(); audioClick.play();">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <!-- Title -->
+    <a mat-button routerLink="/">
+      <h1 [textContent]="title" (click)="audioClick.play()"></h1>
+    </a>
+
+    <!-- Toolbar menu -->
+    <div fxShow="true" fxHide.lt-md="true">
+        <ng-container *ngTemplateOutlet="menu_template"></ng-container>
+    </div>
+
+    <span class="spacer"></span>
+
+    <!-- If logged show exit button, else, login button -->
+    <ng-container *ngIf="isLogged">
+      <button mat-button routerLink="/logout" (click)="audioClick.play()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!isLogged">
+      <button mat-button routerLink="/login" (click)="audioClick.play()">
+        <mat-icon>login</mat-icon>
+      </button>
+    </ng-container>
+
+  </mat-toolbar>
+
+  <!-- Sidenav -->
+  <mat-sidenav-container fxFlexFill >
+
+    <!-- Sidenav menu -->
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <ng-container *ngTemplateOutlet="menu_template"></ng-container>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <!-- Main Content here -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+

@@ -1,0 +1,12 @@
+<p>Home page works!</p>
+
+
+<!-- Image from assets/img/aware.gif -->
+<div fxLayout="row">
+    <img src="assets/img/aware.gif" alt="">
+    <!-- Time left -->
+    <div fxLayout='column'>
+        <span [textContent]="days_left+ ' days ' + hours_left + ' hours ' + minutes_left + ' minutes and ' + seconds_left + ' seconds'"></span>
+        <span> Until the deadline</span>
+    </div>
+</div>
