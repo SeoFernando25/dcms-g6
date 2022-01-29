@@ -38,7 +38,5 @@
     "@angular/compiler": "~13.1.0",
     
     "@types/node": "^12.20.42"
-  },
-  "heroku-postbuild": "ng build"
-
+  }
 }
