@@ -34,12 +34,14 @@ export class HomeComponent implements OnInit {
 
   calculateTimeUntilDeadLine(){
     let now = new Date();
-    let deadline = new Date(2022, 2, 21);
-    let time = deadline.getTime() - now.getTime();
-    let days = Math.floor(time / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let seconds = Math.floor((time % (1000 * 60)) / 1000);
-    let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+    let deadline = new Date(2022, 1, 21);
+    let time = deadline.valueOf() - now.valueOf();
+    let delta = new Date(time);
+    let days = delta.getDate() ;
+    let hours = delta.getHours();
+    let minutes = delta.getMinutes();
+    let seconds = delta.getSeconds();
+    
     return {
       days: days,
       hours: hours,
