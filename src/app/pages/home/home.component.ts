@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-home',
@@ -6,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isActive = false;
+
   interval_id: any;
   days_left = 0;
   hours_left = 0;
   minutes_left = 0;
   seconds_left = 0;
 
-  constructor() {
+  constructor(){
       this.updateTime();
    }
 

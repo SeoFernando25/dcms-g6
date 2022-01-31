@@ -1,12 +1,53 @@
-<p>Home page works!</p>
 
+<header fxLayout="column" fxLayoutAlign="center center">
+    <mat-toolbar fxFill class='headline' color='primary' fxLayout="column" fxLayoutAlign="center center">
+            <h1>Dental Crib</h1>
+            <h2>Taking care of your yee yee ass teeth</h2>
+            <h3>
+                {{days_left}} days {{hours_left}} hours {{minutes_left}} minutes {{seconds_left}} seconds
+            </h3>
+            <h3>
+                left until the first deliverable 
+            </h3>
+            <img src="https://cdn.betterttv.net/emote/5e2914861df9195f1a4cd411/3x" alt="">
+        </mat-toolbar>
+       
+</header>
 
-<!-- Image from assets/img/aware.gif -->
-<div fxLayout="row">
-    <img src="assets/img/aware.gif" alt="">
-    <!-- Time left -->
-    <div fxLayout='column'>
-        <span [textContent]="days_left+ ' days ' + hours_left + ' hours ' + minutes_left + ' minutes and ' + seconds_left + ' seconds'"></span>
-        <span> Until the deadline</span>
-    </div>
+<div class="content">
+    <mat-card >
+        <mat-card-title-group>
+            <mat-card-title>Our Goal is Preventive Dentistry</mat-card-title>
+            <mat-card-subtitle>For Healthy & Happy Smiles With Minimum
+                Dental Treatment</mat-card-subtitle>
+            <img mat-card-sm-image src="assets/img/tooth-solid.svg">
+        </mat-card-title-group>  
+        <mat-card-content>
+            <p>At Family Dental Care, by focusing our time and effort on 
+                preventing dental problems, we can help our patients protect 
+                the health of their natural teeth into their senior years; 
+                in fact, due to advancements in dental care and treatments, 
+                it is no longer the norm for people to lose their teeth with age.</p>
+            <p>
+                Our emphasis on preventative dental care 
+                includes routine check-ups and patient education.
+            </p>
+            <p>
+                I obviously didn't come up with this text, the original is 
+                <a href='https://www.ottawadentist.ca/dental-services/preventive-dentistry/'>this one</a>
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card >
+        <mat-card-title-group>
+            <mat-card-title>OH GOD OH PLEASE</mat-card-title>
+            <mat-card-subtitle>THE DEADLINE IS COMING UP</mat-card-subtitle>
+            <img mat-card-sm-image src="assets/img/aware.gif">
+        </mat-card-title-group>  
+        <mat-card-content>
+            Guys when are we gonna start doing the backend? 
+            Only {{days_left}} days left, please tell me you have a plan.
+        </mat-card-content>
+    </mat-card>
 </div>

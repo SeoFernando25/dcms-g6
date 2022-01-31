@@ -15,7 +15,6 @@ export class AppComponent {
   isLogged = false;
   
   constructor() {
-    console.log('AppComponent.constructor()');
   }
 
 }

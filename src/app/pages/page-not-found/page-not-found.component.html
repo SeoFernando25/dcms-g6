@@ -1,9 +1,22 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="center center " >
-        <p #text style="margin: 2rem;">OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!</p>
-        <!-- Always take 50% of the screen -->
-        
-        <button (click)="router.navigate(['/'])" routerLink="/" style="width: 10rem; width: auto; display: contents;"><img mat-card-image src="assets/img/pepehacker.jpg"  style="width: 50%; object-fit: scale-down; object-position: center;"></button>
-      
-        <p>BTW its a 404 Error</p>
+<div  fxFlexFill fxLayoutAlign="center center" >
+        <mat-card style="width: 90%; height: 90%; text-align: center;">
+                <mat-card-content fxFlexFill fxLayout="column" style="width: 100%; height: 100%;" >
+                        <mat-card-title fxFlex="15" fxLayoutAlign="center center"  >
+                                OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle fucko boingo!
+                        </mat-card-title>
+                        <div fxFlex="70" >
+                                <img fxFill src="https://cdn.betterttv.net/emote/608d822d39b5010444d09c68/3x" style="object-fit: contain;" >
+                        </div>
+                        <mat-card-title fxFlex="7" fxLayoutAlign="center center" >
+                                The code monkeys at our headquarters are working VEWY HAWD to fix this! 
+                        </mat-card-title>
 
+                        <mat-card-title fxFlex="7" fxLayoutAlign="center center" >
+                                BTW this is a 404 Error
+                        </mat-card-title>
+
+                        
+                </mat-card-content>
+        </mat-card>
 </div>
+

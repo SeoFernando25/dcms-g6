@@ -8,7 +8,10 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <!-- UI Click Sound -->
-<audio #audioClick src="assets/snd/click.mp3" preload="auto"></audio>
+<audio #audioClick preload="auto">
+  <source src="assets/snd/click.mp3" type="audio/mp3">
+
+</audio>
 
 
 
@@ -40,57 +43,62 @@
 </ng-template>
 
 
-<div class='main-div'> 
+<div class='main-div' > 
   <!-- Toolbar -->
-  <mat-toolbar  color="primary">
-    <!-- Hamburger button -->
-    <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button (click)="sidenav.toggle(); audioClick.play();">
-        <mat-icon>menu</mat-icon>
+  <mat-toolbar color="primary" class="mat-elevation-z8" style="z-index: 2;">
+
+      <!-- Hamburger button -->
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle(); audioClick.play();">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      
+      <!-- Title -->
+      <button mat-button (click)="audioClick.play()" routerLink="/">
+        DCMS
       </button>
-    </div>
-
-    <!-- Title -->
-    <a mat-button routerLink="/">
-      <h1 [textContent]="title" (click)="audioClick.play()"></h1>
-    </a>
-
-    <!-- Toolbar menu -->
-    <div fxShow="true" fxHide.lt-md="true">
-        <ng-container *ngTemplateOutlet="menu_template"></ng-container>
-    </div>
-
-    <span class="spacer"></span>
-
-    <!-- If logged show exit button, else, login button -->
-    <ng-container *ngIf="isLogged">
-      <button mat-button routerLink="/logout" (click)="audioClick.play()">
-        <mat-icon>logout</mat-icon>
-      </button>
-    </ng-container>
-    <ng-container *ngIf="!isLogged">
-      <button mat-button routerLink="/login" (click)="audioClick.play()">
-        <mat-icon>login</mat-icon>
-      </button>
-    </ng-container>
-
-  </mat-toolbar>
-
-  <!-- Sidenav -->
-  <mat-sidenav-container fxFlexFill >
-
-    <!-- Sidenav menu -->
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
-      <div fxLayout="column">
+      
+      <!-- Toolbar menu -->
+      <div fxShow="true" fxHide.lt-md="true">
         <ng-container *ngTemplateOutlet="menu_template"></ng-container>
       </div>
-    </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-      <!-- Main Content here -->
+      
+      <span class="spacer"></span>
+      
+      <!-- If logged show exit button, else, login button -->
+      <ng-container *ngIf="isLogged">
+        <button mat-button routerLink="/logout" (click)="audioClick.play()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!isLogged">
+        <button mat-button routerLink="/login" (click)="audioClick.play()">
+          <mat-icon>login</mat-icon>
+        </button>
+      </ng-container>
+    </mat-toolbar>
+    
+    <!-- Sidenav -->
+    <!-- Placed under toolBarFirstRow -->
+    <mat-sidenav-container fxFlexFill style="position: relative;">
+      
+      <!-- Sidenav menu -->
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <ng-container *ngTemplateOutlet="menu_template"></ng-container>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
       <router-outlet></router-outlet>
+      <!-- Main Content here -->
     </mat-sidenav-content>
+    
   </mat-sidenav-container>
+  
 </div>
+
+
 
 
 
