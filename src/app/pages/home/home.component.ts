@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     let hours = delta.getHours();
     let minutes = delta.getMinutes();
     let seconds = delta.getSeconds();
-    
+
     return {
       days: days,
       hours: hours,

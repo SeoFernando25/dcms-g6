@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -606.0000144481684,
-    "scrollLeft": -195.203125,
-    "zoomLevel": 0.5,
+    "scrollTop": -64,
+    "scrollLeft": -18,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -270,36 +270,13 @@
               "widthDefault": 60
             },
             "id": "6a7c405b-497f-423f-8511-4b75d09152ba"
-          },
-          {
-            "name": "personal_info_id",
-            "comment": "",
-            "dataType": "int",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": true,
-              "pfk": false,
-              "widthName": 102.08708190917969,
-              "widthComment": 60,
-              "widthDataType": 60,
-              "widthDefault": 60
-            },
-            "id": "d4d80d16-b7ee-4f26-a6df-8fac031ed3b8"
           }
         ],
         "ui": {
           "active": false,
           "left": 766.4677,
           "top": 67.5993,
-          "zIndex": 12,
+          "zIndex": 42,
           "widthName": 60,
           "widthComment": 60
         },
@@ -311,9 +288,9 @@
         "comment": "",
         "columns": [
           {
-            "name": "personal_info_id",
+            "name": "account_id",
             "comment": "",
-            "dataType": "int",
+            "dataType": "",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -326,12 +303,12 @@
               "pk": true,
               "fk": false,
               "pfk": false,
-              "widthName": 102.08708190917969,
+              "widthName": 67.52006530761719,
               "widthComment": 60,
               "widthDataType": 60,
               "widthDefault": 60
             },
-            "id": "76ad35f9-845f-45b7-b5b2-b1313f147924"
+            "id": "b28e5b23-ae1a-4c4a-ab60-5e7644296533"
           },
           {
             "name": "first_name",
@@ -565,10 +542,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 36,
           "top": 27.9997,
-          "zIndex": 2,
+          "zIndex": 43,
           "widthName": 84.966064453125,
           "widthComment": 60
         },
@@ -2074,7 +2051,7 @@
           "columnIds": [
             "95b6ee48-ab39-4cd5-8abb-3456aeba80d9"
           ],
-          "x": 249.56856536865234,
+          "x": 246.50057220458984,
           "y": 322.4997,
           "direction": "bottom"
         },
@@ -2091,8 +2068,8 @@
           "columnIds": [
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
-          "x": 1193.6048307373048,
-          "y": 110.4743,
+          "x": 1187.8068113281251,
+          "y": 105.3493,
           "direction": "right"
         },
         "end": {
@@ -2118,7 +2095,7 @@
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
           "x": 766.4677,
-          "y": 96.18263333333334,
+          "y": 105.3493,
           "direction": "left"
         },
         "end": {
@@ -2126,8 +2103,8 @@
           "columnIds": [
             "d611b536-beef-4721-8625-b9796b92baae"
           ],
-          "x": 463.1371307373047,
-          "y": 101.6247,
+          "x": 457.0011444091797,
+          "y": 175.2497,
           "direction": "right"
         },
         "constraintName": "fk_accounts_to_personal_info",
@@ -2170,7 +2147,7 @@
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
           "x": 766.4677,
-          "y": 210.51596666666666,
+          "y": 180.8493,
           "direction": "left"
         },
         "end": {
@@ -2195,8 +2172,8 @@
           "columnIds": [
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
-          "x": 1122.415308947754,
-          "y": 239.0993,
+          "x": 1117.583626106771,
+          "y": 218.5993,
           "direction": "bottom"
         },
         "end": {
@@ -2269,32 +2246,6 @@
         "relationshipType": "OneOnly",
         "startRelationshipType": "Dash",
         "start": {
-          "tableId": "26a7c3cf-9915-4934-82ef-72b6394dfe0d",
-          "columnIds": [
-            "76ad35f9-845f-45b7-b5b2-b1313f147924"
-          ],
-          "x": 463.1371307373047,
-          "y": 248.87470000000002,
-          "direction": "right"
-        },
-        "end": {
-          "tableId": "4d0781a7-1537-4604-904e-88ae219e8318",
-          "columnIds": [
-            "d4d80d16-b7ee-4f26-a6df-8fac031ed3b8"
-          ],
-          "x": 766.4677,
-          "y": 153.3493,
-          "direction": "left"
-        },
-        "constraintName": "fk_personal_info_to_accounts",
-        "visible": true,
-        "id": "4080e282-2dfe-44e9-a513-ce54346414ad"
-      },
-      {
-        "identification": false,
-        "relationshipType": "OneOnly",
-        "startRelationshipType": "Dash",
-        "start": {
           "tableId": "5372b197-e493-4c2c-a9f8-783c2916a7b8",
           "columnIds": [
             "4a316955-2eda-4beb-96a5-98ab0d31643b"
@@ -2325,8 +2276,8 @@
           "columnIds": [
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
-          "x": 837.6572217895508,
-          "y": 239.0993,
+          "x": 836.6908852213543,
+          "y": 218.5993,
           "direction": "bottom"
         },
         "end": {
@@ -2351,8 +2302,8 @@
           "columnIds": [
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
-          "x": 980.0362653686524,
-          "y": 239.0993,
+          "x": 977.1372556640626,
+          "y": 218.5993,
           "direction": "bottom"
         },
         "end": {
@@ -2481,8 +2432,8 @@
           "columnIds": [
             "fc9bb1f7-91bd-4e31-9809-5d3b119b7e84"
           ],
-          "x": 1193.6048307373048,
-          "y": 196.2243,
+          "x": 1187.8068113281251,
+          "y": 180.8493,
           "direction": "right"
         },
         "end": {

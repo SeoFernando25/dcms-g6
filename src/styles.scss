@@ -37,5 +37,69 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: auto;
 }
 
+// 2 Split page
+.split-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.big-header {
+  height: 24rem;
+}
+
+
+.big-headline {
+h1 {
+  font-size: 6vw;
+  font-weight: bold;
+  line-height: 56px;
+  margin: 15px 5px;
+}
+
+h2 {
+  font-size: 3wv;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 15px 0 25px 0;
+}
+}
+
+
+.small-header {
+  height: 6rem;
+}
+
+
+.small-headline {
+
+  h1 {
+    font-size: 4vw;
+    font-weight: bold;
+    line-height: 56px;
+    display: inline-block;
+  }
+  
+  h2 {
+    font-size: 3wv;
+    font-weight: 300;
+    line-height: 28px;
+    display: inline-block;
+  }
+
+  }
+
+
+mat-card {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
 
 

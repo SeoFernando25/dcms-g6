@@ -1,0 +1,30 @@
+
+<div mat-dialog-content>
+    <h1 mat-dialog-title>
+        Login/Register
+    </h1>
+
+    <div  fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="1rem">
+        <p>
+            Hello,   
+        </p>
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input  matInput [(ngModel)]="data.username">
+        </mat-form-field>
+    </div>
+
+
+    <div  *ngIf="data.username">
+        <mat-form-field  fxFill appearance="fill">
+            <mat-label>Password</mat-label>
+            <input  matInput [type]="hide_password ? 'password' : 'text'" (input)="username_ok = false" [(ngModel)]="data.password" >
+            <button mat-icon-button matSuffix (click)="hide_password = !hide_password" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_password" >
+            <mat-icon>{{hide_password ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</div>
+<div  mat-dialog-actions *ngIf="data.password && data.username">
+  <button fxFill mat-button (click)="tryLogin()" >Login/Register</button>
+</div>
