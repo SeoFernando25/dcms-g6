@@ -2,9 +2,9 @@ name: Build and deploy website
 
 on:
   push:
-    branches: master
+    branches: main
   pull_request:
-    branches: master
+    branches: main
   workflow_dispatch:
 
 jobs:
@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: '17.x'
           cache: 'npm'
+      - run: npm install
       - name: Build angular app
         run: npm run build
       - name: Archive build
