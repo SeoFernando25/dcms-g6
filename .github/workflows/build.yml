@@ -21,8 +21,20 @@ jobs:
       - run: npm install
       - name: Build angular app
         run: npm run build
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          path: dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build 
+    steps:
+      - name: Checkout build
+        uses: actions/checkout@v2
+        with:
+         ref: gh-pages
       - name: Deploy Website
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
-          folder: dist/dcms-g6 
+          folder: dcms-g6 
