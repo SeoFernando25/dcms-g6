@@ -18,5 +18,5 @@ jobs:
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        base_href: /dcms-g6 
+        base_href: /dcms-g6/
         angular_dist_build_folder: dist/dcms-g6  
