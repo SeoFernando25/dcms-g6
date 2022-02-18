@@ -9,32 +9,13 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout build
-        uses: actions/checkout@v2
-      - name: Install dependencies 
-        uses: actions/setup-node@v2
-        with:
-          node-version: '17.x'
-          cache: 'npm'
-      - run: npm install
-      - name: Build angular app
-        run: npm run build
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          path: dist
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build 
-    steps:
-      - name: Checkout build
-        uses: actions/checkout@v2
-        with:
-         ref: gh-pages
-      - name: Deploy Website
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        with:
-          branch: gh-pages
-          folder: dcms-g6 
+    - uses: actions/checkout@v2
+    - name: All things angular
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@[version] ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+      with:
+        github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
+        angular_dist_build_folder: dist/dcms-g6  
