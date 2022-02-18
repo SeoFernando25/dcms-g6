@@ -31,7 +31,9 @@ jobs:
       needs: build
       steps:
           - name: Checkout
-            uses: actions/checkout@v1
+            uses: actions/checkout@v2
+            with:
+              ref: gh-pages
           - name: Download build
             uses: actions/download-artifact@v1
             with:
@@ -42,4 +44,4 @@ jobs:
             uses: JamesIves/github-pages-deploy-action@v4.2.5
             with:
               BRANCH: gh-pages
-              FOLDER: deploy_dist/dcms-g6
+              FOLDER: deploy_dist/dist/dcms-g6
