@@ -125,7 +125,7 @@
           <span *ngFor="let _ of rev?.value_score / 10 || 0 | times"> ⭐ </span>
         </span>
         <br />
-        {{ rev?.content }}
+        <mat-card-content style="line-height: 1rem;">{{ rev?.content }}</mat-card-content>
         <ng-container *ngIf="!review || !reviewLoaded">
           <!-- mat-spinner centered on button -->
           <mat-spinner
