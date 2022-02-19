@@ -53,7 +53,7 @@
 
     <!-- If logged show exit button, else, login button -->
     
-    <ng-container *ngIf="supabase.isLoggedIn">
+    <ng-container *ngIf="supabase._supabase.auth.user()">
       <!-- Show user icon -->
       <button  mat-fab (click)="audioClick.play();" [matMenuTriggerFor]="menu"
       style="background-size: cover; background-image: url('https://cdn.betterttv.net/emote/5ff827395ef7d10c7912c106/3x');">
@@ -76,7 +76,7 @@
       </mat-menu>
     </ng-container>
 
-    <ng-container *ngIf="!supabase.isLoggedIn">
+    <ng-container *ngIf="!supabase._supabase.auth.user()">
       <button mat-raised-button (click)="audioClick.play(); openLoginDialog();"> <mat-icon>login</mat-icon> Login</button>
     </ng-container>
   </mat-toolbar>
