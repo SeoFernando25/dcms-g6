@@ -25,16 +25,16 @@
     "@angular/platform-browser": "*",
     "@angular/platform-browser-dynamic": "*",
     "@angular/router": "*",
+    "@faker-js/faker": "^6.0.0-alpha.5",
     "@fortawesome/fontawesome-svg-core": "~1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@supabase/supabase-js": "^1.29.4",
+    "@supabase/supabase-js": "^1.30.3",
     "dotenv": "*",
     "os-browserify": "*",
     "path-browserify": "*",
     "rxjs": "*",
     "tslib": "*",
-    "zone.js": "*",
-    "@faker-js/faker": "^6.0.0-alpha.5"
+    "zone.js": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "*",
