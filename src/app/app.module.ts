@@ -22,7 +22,7 @@ import { LoginDialogComponent } from './dialog/login-dialog/login-dialog.compone
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { TimesPipe } from './times.pipe';
+import { TimesPipe } from 'src/app/pipes/times.pipe';
 
 const modules = [
   BrowserAnimationsModule,
@@ -48,7 +48,7 @@ export class ExternalModules {};
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

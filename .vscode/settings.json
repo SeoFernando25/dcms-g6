@@ -1,0 +1,8 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-action.json": [
+            "file:///home/fer/Documents/dcms-g6/.github/build.yml",
+            "file:///home/fer/Documents/dcms-g6/.github/workflows/build.yml"
+        ]
+    }
+}

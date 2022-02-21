@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SupabaseService } from 'src/app/supabase.service';
+import { SupabaseService } from 'src/app/services/supabase.service';
 
 export interface LoginDialogData {
   username: string;

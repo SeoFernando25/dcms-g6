@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupabaseService } from './supabase.service';
+import { SupabaseService } from 'src/app/services/supabase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './dialog/login-dialog/login-dialog.component';
 import { ActivatedRoute } from '@angular/router';
@@ -16,8 +16,6 @@ export interface LoginDialogData {
 })
 export class AppComponent implements OnInit {
   title = 'DCMS';
-  username: string = "";
-  password: string = "";
   
   constructor(public readonly supabase: SupabaseService, public dialog: MatDialog, private route: ActivatedRoute) {
   }
@@ -27,13 +25,10 @@ export class AppComponent implements OnInit {
   }
 
   openLoginDialog() {
+    var username = "";
+    var password = "";
     const dialogRef = this.dialog.open(LoginDialogComponent, {
-      data: {name: this.username, animal: this.password},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.username = result;
-      this.password = "";
+      data: {name: username, animal: password},
     });
   }
 

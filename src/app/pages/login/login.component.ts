@@ -1,8 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SupabaseService } from 'src/app/supabase.service';
-
+import { SupabaseService } from 'src/app/services/supabase.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

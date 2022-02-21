@@ -4,8 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faker } from '@faker-js/faker';
 import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
-import { SupabaseService } from 'src/app/supabase.service';
-
+import { SupabaseService } from 'src/app/services/supabase.service';
 
 
 class Review {

@@ -1,6 +1,6 @@
 import { Injectable, OnInit, Predicate } from '@angular/core';
 import {ApiError, createClient, PostgrestError, PostgrestResponse, Session, SupabaseClient, User} from '@supabase/supabase-js';
-import {environment} from "../environments/environment";
+import { environment } from 'src/environments/environment';
 
 export interface Profile {
   username: string;
