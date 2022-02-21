@@ -1,0 +1,13 @@
+{
+	"name": "Development Container",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { 
+			"VARIANT": "16"
+		}
+	},
+
+	"forwardPorts": [4200],
+	"postCreateCommand": "pnpm install",
+	"remoteUser": "node"
+}
