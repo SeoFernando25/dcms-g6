@@ -11,3 +11,5 @@ A demo Dental Clinic Management System application.
 - Run `ng test` to execute the unit test (Not implemented)
 - Run `ng generate component component-name` to generate a new component
 - Run `ng e2e` to execute the end-to-end tests (Not implemented)
+
+Testing push :) -Zayd
