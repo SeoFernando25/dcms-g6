@@ -1,8 +1,8 @@
-# DCMS-g6
+# DCMS (Group 6)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5f18beb1-2c8d-40ff-b0f0-8012d393f099/deploy-status)](https://app.netlify.com/sites/dcms/deploys)
+![Issues](https://img.shields.io/github/issues/SeoFernando25/dcms-g6?style=for-the-badge) ![CI](https://img.shields.io/github/workflow/status/SeoFernando25/dcms-g6/Build%20and%20deploy%20website?style=for-the-badge) ![GPL License](https://img.shields.io/github/license/SeoFernando25/dcms-g6?style=for-the-badge)
 
-A demo Dental Clinic Management System application
+A demo Dental Clinic Management System application.
 
 ## Common commands (Angular CLI)
 
