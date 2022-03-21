@@ -14,11 +14,10 @@ const routes: Routes = [
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: '**', component: PageNotFoundComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -8,17 +8,9 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
-  requestAppointmentForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    phone: new FormControl(''),
-    email: new FormControl(''),
-  });
-
-
   constructor(
     private snackBar: MatSnackBar,
     private supabase: SupabaseService,

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -34,7 +34,10 @@ const modules = [
   MaterialModule,
 ];
 
-@NgModule({imports: [...modules], exports: [...modules], declarations: [
+@NgModule({
+  imports: [...modules],
+  exports: [...modules],
+  declarations: [
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
@@ -43,30 +46,25 @@ const modules = [
     ContactComponent,
     TimesPipe,
     OurServicesComponent,
-  ]})
-export class ExternalModules {};
-
-
+  ],
+})
+export class ExternalModules {}
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ExternalModules,
-    
-
   ],
- 
+
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'fill' },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { 
-  
-}
-
+export class AppModule {}

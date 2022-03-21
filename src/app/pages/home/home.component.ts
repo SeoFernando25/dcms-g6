@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   isActive = false;
@@ -14,30 +14,28 @@ export class HomeComponent implements OnInit {
   minutes_left = 0;
   seconds_left = 0;
 
-  constructor(){
-      this.updateTime();
-   }
+  constructor() {
+    this.updateTime();
+  }
 
   ngOnInit() {
     this.interval_id = setInterval(() => {
       this.updateTime();
     }, 200);
   }
-  
+
   ngOnDestroy() {
     if (this.interval_id) {
       clearInterval(this.interval_id);
     }
   }
 
-  
-
-  calculateTimeUntilDeadLine(){
+  calculateTimeUntilDeadLine() {
     let now = new Date();
     let deadline = new Date(2022, 1, 21);
     let time = deadline.valueOf() - now.valueOf();
     let delta = new Date(time);
-    let days = delta.getDate() ;
+    let days = delta.getDate();
     let hours = delta.getHours();
     let minutes = delta.getMinutes();
     let seconds = delta.getSeconds();
@@ -46,16 +44,15 @@ export class HomeComponent implements OnInit {
       days: days,
       hours: hours,
       minutes: minutes,
-      seconds: seconds
-    }
+      seconds: seconds,
+    };
   }
 
-  updateTime(){
-    let  t = this.calculateTimeUntilDeadLine(); 
-      this.days_left = t.days;
-      this.hours_left = t.hours;
-      this.minutes_left = t.minutes;
-      this.seconds_left = t.seconds;
-   }
-
+  updateTime() {
+    let t = this.calculateTimeUntilDeadLine();
+    this.days_left = t.days;
+    this.hours_left = t.hours;
+    this.minutes_left = t.minutes;
+    this.seconds_left = t.seconds;
+  }
 }
