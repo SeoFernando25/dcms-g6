@@ -1,1 +1,43 @@
-<p>contact works!</p>
+<header class="small-header" fxLayout="column">
+  <mat-toolbar
+    fxFill
+    class="small-headline"
+    color="primary"
+    fxLayoutAlign="begin center"
+  >
+    <h1>
+      Contact Us
+      <h2>We don't bite!</h2>
+    </h1>
+    <span class="spacer"></span>
+  </mat-toolbar>
+</header>
+
+<div class="split-page">
+  <mat-card
+    fxFlex="50"
+    class="mat-card-button"
+    (click)="onRequestAppointment()"
+  >
+    <mat-card-title>Click here to request an appointment!</mat-card-title>
+    <mat-card-subtitle
+      >Our team will be happy to assist you.
+    </mat-card-subtitle>
+
+    <!-- A -->
+  </mat-card>
+  <mat-card fxFlex="50">
+    <mat-card-title>General Information</mat-card-title>
+
+    <mat-card-content>
+      For further information on any of our services, or to reach a patient,
+      please contact our main phone line at:
+      <a href="tel:613-123-1234">613-123-1234</a>
+      <br />
+      <br />
+      If you have questions, feedback or complaints about the care you or your
+      family member is receiving, please send us an email at:
+      <a href="mailto:dontcare@dcms.com">feedback@dcms.ca</a>
+    </mat-card-content>
+  </mat-card>
+</div>
