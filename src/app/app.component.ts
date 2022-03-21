@@ -12,24 +12,24 @@ export interface LoginDialogData {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'DCMS';
-  
-  constructor(public readonly supabase: SupabaseService, public dialog: MatDialog, private route: ActivatedRoute) {
-  }
 
-  ngOnInit() {
-    
-  }
+  constructor(
+    public readonly supabase: SupabaseService,
+    public dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {}
 
   openLoginDialog() {
-    var username = "";
-    var password = "";
+    var username = '';
+    var password = '';
     const dialogRef = this.dialog.open(LoginDialogComponent, {
-      data: {name: username, animal: password},
+      data: { name: username, animal: password },
     });
   }
-
 }

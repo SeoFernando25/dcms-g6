@@ -8,17 +8,16 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent,  },
-  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
-  { path: 'testimonials', component: TestimonialsComponent},
+  { path: '', component: HomeComponent },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
+  { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: '**', component: PageNotFoundComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
