@@ -1,0 +1,46 @@
+.mat-icon {
+    font-size:30px !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+
+.mat-raised-button{
+    height:50px !important;
+
+    font-size:20px !important;
+}
+
+table {
+    margin-left: 110px;
+    width: 90%;
+  }
+  .col{
+    display:flex;
+  }
+
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+}
+
+#background1{
+  filter: blur(3px)
+}
+
+.padding{
+  padding-bottom: 2rem;
+}
+
+.welcome{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.welcome hr{
+  border-top: 2px solid #b4b4b4;
+  width: 95%;
+  margin-bottom: 1rem;
+}
+

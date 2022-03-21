@@ -10,7 +10,7 @@
       <mat-icon>mood</mat-icon>
       <span>Who we are</span>
     </button>
-    <button mat-menu-item routerLink="/services">
+    <button mat-menu-item routerLink="/our-services">
       <mat-icon>local_hospital</mat-icon>
       <a>Our Services</a>
     </button>
@@ -19,6 +19,24 @@
       <span>FAQ</span>
     </button>
   </mat-menu>
+<!--
+  <button mat-button [matMenuTriggerFor]="service">Our Services</button>
+  <mat-menu #service="matMenu">
+    <button mat-menu-item routerLink="/our-services">
+      <mat-icon>mood</mat-icon>
+      <span>General Dentistry</span>
+    </button>
+    <button mat-menu-item routerLink="/our-services">
+      <mat-icon>mood</mat-icon>
+      <span>Cosmetic Dentistry</span>
+    </button>
+    <button mat-menu-item routerLink="/our-services">
+      <mat-icon>mood</mat-icon>
+      <span>Restorative Dentistry</span>
+    </button>
+  </mat-menu>
+-->
+  <a mat-button routerLink="/our-services">Our Services</a>
 
   <a mat-button routerLink="/contact">Contact</a>
   <a mat-button routerLink="/testimonials">Testimonials</a>
@@ -33,6 +51,7 @@
         <mat-icon>menu</mat-icon>
       </button>
     </div>
+    
 
     <!-- Title -->
     <button mat-button routerLink="/">DCMS</button>
