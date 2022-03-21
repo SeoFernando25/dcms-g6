@@ -23,6 +23,7 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { ContactComponent } from './pages/contact/contact.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
+import { OurServicesComponent } from './pages/our-services/our-services.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -41,6 +42,7 @@ const modules = [
     TestimonialsComponent,
     ContactComponent,
     TimesPipe,
+    OurServicesComponent,
   ]})
 export class ExternalModules {};
 
