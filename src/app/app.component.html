@@ -10,16 +10,12 @@
       <mat-icon>mood</mat-icon>
       <span>Who we are</span>
     </button>
-    <button mat-menu-item routerLink="/our-services">
-      <mat-icon>local_hospital</mat-icon>
-      <a>Our Services</a>
-    </button>
     <button mat-menu-item routerLink="/faq">
       <mat-icon>info</mat-icon>
       <span>FAQ</span>
     </button>
   </mat-menu>
-<!--
+  <!--
   <button mat-button [matMenuTriggerFor]="service">Our Services</button>
   <mat-menu #service="matMenu">
     <button mat-menu-item routerLink="/our-services">
@@ -37,8 +33,7 @@
   </mat-menu>
 -->
   <a mat-button routerLink="/our-services">Our Services</a>
-
-  <a mat-button routerLink="/contact">Contact</a>
+  <a mat-button routerLink="/contact">Contact Us</a>
   <a mat-button routerLink="/testimonials">Testimonials</a>
 </ng-template>
 
@@ -51,7 +46,6 @@
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-    
 
     <!-- Title -->
     <button mat-button routerLink="/">DCMS</button>
@@ -94,7 +88,7 @@
     </ng-container>
 
     <ng-container *ngIf="!supabase._supabase.auth.user()">
-      <button mat-raised-button (click)="openLoginDialog()">
+      <button mat-raised-button (click)="auth.openLoginDialog()">
         <mat-icon>login</mat-icon> Login
       </button>
     </ng-container>
