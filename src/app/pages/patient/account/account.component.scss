@@ -1,0 +1,13 @@
+.form {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+form > * {
+  padding: 0.5rem;
+}
+
+::ng-deep .green-snackbar {
+  background: forestgreen !important;
+}
