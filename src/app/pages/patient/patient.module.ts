@@ -10,8 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
-
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,6 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatNativeDateModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    MatDatepickerModule,
-  ],
+  providers: [MatDatepickerModule],
 })
-export class PatientModule { }
+export class PatientModule {}

@@ -6,20 +6,20 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-    {
-        path: "my",
-        canActivate: [AuthGuard],
-        children: [
-            { path: "account", component: AccountComponent },
-            { path: "appointments", component: AppointmentsComponent },
-            { path: "dashboard", component: DashboardComponent },
-            { path: "**", redirectTo: "account" },
-        ]
-    }
+  {
+    path: 'my',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'account', component: AccountComponent },
+      { path: 'appointments', component: AppointmentsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '**', redirectTo: 'account' },
+    ],
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PatientRoutingModule { }
+export class PatientRoutingModule {}

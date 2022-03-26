@@ -26,7 +26,6 @@ import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { PatientModule } from './pages/patient/patient.module';
 
-
 const modules = [
   BrowserAnimationsModule,
   FormsModule,
@@ -51,7 +50,7 @@ const modules = [
     OurServicesComponent,
   ],
 })
-export class ExternalModules { }
+export class ExternalModules {}
 
 @NgModule({
   declarations: [AppComponent],
@@ -70,4 +69,4 @@ export class ExternalModules { }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

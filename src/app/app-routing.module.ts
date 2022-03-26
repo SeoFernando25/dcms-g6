@@ -7,7 +7,7 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, },
+  { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

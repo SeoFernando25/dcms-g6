@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -44,18 +44,18 @@ export class AuthGuard implements CanActivate {
     this._snackBar.open('You need to be logged in to do that!', 'Dismiss');
     var username = '';
     var password = '';
-    this.openLoginDialog()
+    this.openLoginDialog();
 
     return false;
   }
 
   openLoginDialog() {
-    var username = "";
-    var password = "";
+    var username = '';
+    var password = '';
     var dialog = this.dialog.open(LoginDialogComponent, {
       data: { name: username, password: password },
-    })
-    dialog.afterClosed().subscribe(result => {
+    });
+    dialog.afterClosed().subscribe((result) => {
       // If user is logged in, redirect to redirectURL
       // redirectURL is a url parameter that is generated when the user is not logged in
       if (result) {
@@ -66,8 +66,7 @@ export class AuthGuard implements CanActivate {
           this.router.navigate(['my']);
         }
       }
-    }
-    );
+    });
     return dialog;
   }
 }

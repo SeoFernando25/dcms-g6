@@ -16,9 +16,7 @@ export class ContactComponent {
     private supabase: SupabaseService,
     private dialog: MatDialog,
     private router: Router
-  ) {
-
-  }
+  ) {}
 
   onRequestAppointment() {
     // TODO: Create appointments page with AuthGuard

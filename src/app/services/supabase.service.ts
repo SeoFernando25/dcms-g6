@@ -53,7 +53,7 @@ export class SupabaseService implements OnInit {
       .select('*')
       .eq('auth_id', this._supabase.auth.user()?.id)
       .limit(1)
-      .single()
+      .single();
   }
 
   signOut() {

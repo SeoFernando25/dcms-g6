@@ -7,7 +7,7 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
   timeoutId: any;
@@ -32,7 +32,6 @@ export class AccountComponent implements OnInit {
     ssn: new FormControl(''),
   });
 
-
   // Only allow days before today
   prevDayFilter = (d: Date | null): boolean => {
     if (!d) {
@@ -41,19 +40,18 @@ export class AccountComponent implements OnInit {
     var todayMinusOne = new Date();
     todayMinusOne.setDate(todayMinusOne.getDate() - 1);
     return d < todayMinusOne;
-  }
-
+  };
 
   constructor(
     private supabase: SupabaseService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    // Fetch user data 
-    this.creds = this.supabase._supabase.auth.user()
+    // Fetch user data
+    this.creds = this.supabase._supabase.auth.user();
     // Print first name on value change
-    this.personForm.valueChanges.subscribe(value => {
+    this.personForm.valueChanges.subscribe((value) => {
       // Start a countdown to save changes in 1 seconds
       this.snackBar.open('Saving changes...', '', { duration: 1000 });
       clearTimeout(this.timeoutId);
@@ -62,10 +60,10 @@ export class AccountComponent implements OnInit {
 
     // Check if user has previously entered data on database
     var personData = this.supabase.getPersonData();
-    personData.then(data => {
+    personData.then((data) => {
       if (data.error == null) {
         var personInfo = data.body;
-        console.log(personInfo) // TODO: Remove me in production (contains sensitive data)
+        console.log(personInfo); // TODO: Remove me in production (contains sensitive data)
         this.personForm.setValue(personInfo);
       } else {
         console.log('User not in database creating new person');
@@ -74,7 +72,6 @@ export class AccountComponent implements OnInit {
     });
   }
 
-
   // Update user data
   saveChanges() {
     console.log('Saving changes...');
@@ -82,29 +79,32 @@ export class AccountComponent implements OnInit {
     var personData = this.supabase.getPersonData();
     var eighteenYearsAgo = new Date();
     eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
-    personData.then(data => {
+    personData.then((data) => {
       if (!data.error) {
         // Transform personForm to personData
         var personData = this.personForm.value;
-        this.supabase._supabase.from('person').upsert(personData) // Check errors
-          .then(d => {
-            this.snackBar.open('Changes saved', '', { duration: 1000, panelClass: ['green-snackbar'] });
-          })
+        this.supabase._supabase
+          .from('person')
+          .upsert(personData) // Check errors
+          .then((d) => {
+            this.snackBar.open('Changes saved', '', {
+              duration: 1000,
+              panelClass: ['green-snackbar'],
+            });
+          });
       } else {
         console.log('No data on database');
         // Create new user data on database
         var twentyYearsAgo = new Date();
         twentyYearsAgo.setFullYear(twentyYearsAgo.getFullYear() - 20);
-        this.supabase._supabase.from('person').insert(this.personForm) // Check errors
-          .then(d => {
-            console.log("Adding person")
-            console.log(d)
-          })
-
-
+        this.supabase._supabase
+          .from('person')
+          .insert(this.personForm) // Check errors
+          .then((d) => {
+            console.log('Adding person');
+            console.log(d);
+          });
       }
     });
   }
-
-
 }
