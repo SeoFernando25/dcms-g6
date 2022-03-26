@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-appointments',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    supabase: SupabaseService,
+    private _snackBar: MatSnackBar,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    console.log('AppointmentsComponent');
   }
 
 }
