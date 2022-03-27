@@ -25,6 +25,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
+import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -48,6 +49,7 @@ const modules = [
     TimesPipe,
     OurServicesComponent,
     MyReviewComponent,
+    UpdateMyReviewComponent,
   ],
 })
 export class ExternalModules {}
