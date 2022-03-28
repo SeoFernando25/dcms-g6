@@ -6,7 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {UpdateMyReviewComponent} from '../../pages/update-my-review/update-my-review.component';
 
 
-export interface PeriodicElement {
+export interface UserFeedbackList {
   id: number;
   appointment_Date: string;
   professionalism_rating: number;
@@ -17,7 +17,7 @@ export interface PeriodicElement {
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: UserFeedbackList[] = [
   {id: 1, appointment_Date:'2022/03/27', professionalism_rating:4.5, cleanliness_rating:5, communication_rating:3, overall_rating:5, feedback: 'TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,TestLongFeedback,'},
   {id: 2, appointment_Date:'2022/03/27', professionalism_rating:4.5, cleanliness_rating:5, communication_rating:3, overall_rating:5, feedback: 'Good'},
   {id: 3, appointment_Date:'2022/03/27', professionalism_rating:4.5, cleanliness_rating:5, communication_rating:3, overall_rating:5, feedback: 'Good'},
@@ -48,7 +48,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class MyReviewComponent implements OnInit {
   displayedColumns: string[] = ['id', 'appointment_Date', 'professionalism_rating', 'cleanliness_rating', 'communication_rating', 'overall_rating', 'feedback', 'actions'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<UserFeedbackList>(ELEMENT_DATA);
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
