@@ -1,0 +1,221 @@
+.mat-icon {
+    font-size:30px !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+
+.mat-raised-button{
+    height:50px !important;
+
+    font-size:20px !important;
+}
+
+table {
+    margin-left: 110px;
+    width: 90%;
+  }
+  .col{
+    display:flex;
+  }
+  .mat-column-feedback {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 28% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+mat-paginator {
+    margin-left: 110px;
+    width: 90%;
+  }
+
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+}
+
+#background1{
+  filter: blur(3px)
+}
+
+.padding{
+  padding-bottom: 2rem;
+}
+
+.welcome{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.welcome hr{
+  border-top: 2px solid #b4b4b4;
+  //width: 95%;
+  margin-bottom: 1rem;
+  margin-left: auto;
+}
+
+.Feedback {
+    width: 86%;
+    min-height: 150px;
+  }
+/***Star Rating***/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+/***Professionalism Rating***/
+.professionalism{ 
+    border: none;
+    float: left;
+  }
+  
+  .professionalism > input { display: none; } 
+  .professionalism> label:before { 
+    margin: 5px;
+    font-size: 2.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+  
+  .professionalism > .half:before { 
+    content: "\f089";
+    position: absolute;
+  }
+  
+  .professionalism > label { 
+    color: #ddd; 
+   float: right; 
+  }
+
+
+  
+  /***** Highlight Stars on Hover *****/
+  
+  .professionalism > input:checked ~ label, /* show gold star when clicked */
+  .professionalism:not(:checked) > label:hover, /* hover current star */
+  .professionalism:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .professionalism > input:checked + label:hover, /* hover current star when changing rating */
+  .professionalism > input:checked ~ label:hover,
+  .professionalism > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .professionalism > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+/***Clean Rating***/
+.cleanliness{ 
+  border: none;
+  float: left;
+}
+
+.cleanliness > input { display: none; } 
+.cleanliness> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.cleanliness > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.cleanliness > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .cleanliness > input:checked ~ label, /* show gold star when clicked */
+  .cleanliness:not(:checked) > label:hover, /* hover current star */
+  .cleanliness:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .cleanliness > input:checked + label:hover, /* hover current star when changing rating */
+  .cleanliness > input:checked ~ label:hover,
+  .cleanliness > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .cleanliness > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+  /***Communication Rating***/
+.communication{ 
+  border: none;
+  float: left;
+}
+
+.communication > input { display: none; } 
+.communication> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.communication > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.communication > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .communication > input:checked ~ label, /* show gold star when clicked */
+  .communication:not(:checked) > label:hover, /* hover current star */
+  .communication:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .communication > input:checked + label:hover, /* hover current star when changing rating */
+  .communication > input:checked ~ label:hover,
+  .communication > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .communication > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+  /***Overall Rating***/
+.overall{ 
+  border: none;
+  float: left;
+}
+
+.overall > input { display: none; } 
+.overall> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.overall > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.overall > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .overall > input:checked ~ label, /* show gold star when clicked */
+  .overall:not(:checked) > label:hover, /* hover current star */
+  .overall:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .overall > input:checked + label:hover, /* hover current star when changing rating */
+  .overall > input:checked ~ label:hover,
+  .overall > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .overall > input:checked ~ label:hover ~ label { color: #FFED85;  } 
