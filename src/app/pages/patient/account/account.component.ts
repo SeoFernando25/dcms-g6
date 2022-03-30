@@ -13,15 +13,9 @@ export class AccountComponent implements OnInit {
   timeoutId: any;
   creds: User | null = null;
   personForm = new FormGroup({
-    // Unused fields
-    // TODO: See what to do with them
-    account_id: new FormControl(''),
-    guardian_id: new FormControl(''),
-    address_city: new FormControl(''),
-    address_postal_code: new FormControl(''),
-    address_region: new FormControl(''),
-    address_street: new FormControl(''),
     auth_id: new FormControl(''),
+    // Sort of unused for now
+    guardian_id: new FormControl(''),
     // Person data
     first_name: new FormControl(''),
     middle_name: new FormControl(''),
@@ -30,6 +24,11 @@ export class AccountComponent implements OnInit {
     date_of_birth: new FormControl(''),
     phone_number: new FormControl(''),
     ssn: new FormControl(''),
+    // Address
+    address_city: new FormControl(''),
+    address_postal_code: new FormControl(''),
+    address_region: new FormControl(''),
+    address_street: new FormControl(''),
   });
 
   // Only allow days before today
@@ -45,7 +44,7 @@ export class AccountComponent implements OnInit {
   constructor(
     private supabase: SupabaseService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Fetch user data
@@ -65,10 +64,8 @@ export class AccountComponent implements OnInit {
         var personInfo = data.body;
         console.log(personInfo); // TODO: Remove me in production (contains sensitive data)
         this.personForm.setValue(personInfo);
-      } else {
-        console.log('User not in database creating new person');
-        console.log(data);
       }
+      // If error, the user information has not been added to the database yet 
     });
   }
 
@@ -87,19 +84,30 @@ export class AccountComponent implements OnInit {
           .from('person')
           .upsert(personData) // Check errors
           .then((d) => {
-            this.snackBar.open('Changes saved', '', {
-              duration: 1000,
-              panelClass: ['green-snackbar'],
-            });
+            if (d.error) {
+              console.log(d);
+              this.snackBar.open('Error saving changes', '', { duration: 3000 });
+            } else {
+              this.snackBar.open('Changes saved', '', {
+                duration: 1000,
+                panelClass: ['green-snackbar'],
+              });
+            }
           });
       } else {
         console.log('No data on database');
         // Create new user data on database
+        var uuid = this.supabase._supabase.auth.user()?.id ?? "err";
         var twentyYearsAgo = new Date();
         twentyYearsAgo.setFullYear(twentyYearsAgo.getFullYear() - 20);
+        console.log(uuid)
         this.supabase._supabase
           .from('person')
-          .insert(this.personForm) // Check errors
+          .insert({
+            ...this.personForm.value,
+            auth_id: uuid,
+            guardian_id: uuid,
+          }) // Check errors
           .then((d) => {
             console.log('Adding person');
             console.log(d);
