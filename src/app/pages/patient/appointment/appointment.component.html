@@ -1,0 +1,15 @@
+<header class="small-header">
+  <mat-toolbar
+    fxFill
+    class="small-headline"
+    color="primary"
+    fxLayoutAlign="begin center"
+  >
+    <h1>
+      Your appointment
+      <h2>Review your appointment</h2>
+    </h1>
+  </mat-toolbar>
+</header>
+
+<mat-spinner *ngIf="!appointment_data" class="fill-spinner"></mat-spinner>
