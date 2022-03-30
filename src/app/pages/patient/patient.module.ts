@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
     DashboardComponent,
     AppointmentRowComponent,
     AccountComponent,
+    AppointmentComponent,
   ],
   imports: [
     NgxMaskModule.forRoot(),
