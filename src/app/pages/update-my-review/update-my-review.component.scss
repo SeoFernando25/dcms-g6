@@ -1,0 +1,191 @@
+.mat-icon {
+    font-size:30px !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+
+.mat-raised-button{
+    height:50px !important;
+
+    font-size:20px !important;
+}
+
+table {
+    margin-left: 110px;
+    width: 90%;
+  }
+  .col{
+    display:flex;
+  }
+  .mat-column-symbol {
+    flex: 0 0 100px;
+  }
+
+
+
+.welcome{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.welcome hr{
+  border-top: 2px solid #b4b4b4;
+  //width: 95%;
+  margin-bottom: 1rem;
+  margin-left: auto;
+}
+
+.Feedback {
+    width: 86%;
+    min-height: 150px;
+  }
+/***Star Rating***/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+/***Professionalism Rating***/
+.professionalism_update{ 
+    border: none;
+    float: left;
+  }
+  
+  .professionalism_update > input { display: none; } 
+  .professionalism_update> label:before { 
+    margin: 5px;
+    font-size: 2.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+  
+  .professionalism_update > .half:before { 
+    content: "\f089";
+    position: absolute;
+  }
+  
+  .professionalism_update > label { 
+    color: #ddd; 
+   float: right; 
+  }
+
+
+  
+  /***** Highlight Stars on Hover *****/
+  
+  .professionalism_update > input:checked ~ label, /* show gold star when clicked */
+  .professionalism_update:not(:checked) > label:hover, /* hover current star */
+  .professionalism_update:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .professionalism_update > input:checked + label:hover, /* hover current star when changing rating */
+  .professionalism_update > input:checked ~ label:hover,
+  .professionalism_update > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .professionalism_update > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+/***Clean Rating***/
+.cleanliness_update{ 
+  border: none;
+  float: left;
+}
+
+.cleanliness_update > input { display: none; } 
+.cleanliness_update> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.cleanliness_update > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.cleanliness_update > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .cleanliness_update > input:checked ~ label, /* show gold star when clicked */
+  .cleanliness_update:not(:checked) > label:hover, /* hover current star */
+  .cleanliness_update:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .cleanliness_update > input:checked + label:hover, /* hover current star when changing rating */
+  .cleanliness_update > input:checked ~ label:hover,
+  .cleanliness_update > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .cleanliness_update > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+  /***Communication Rating***/
+.communication_update{ 
+  border: none;
+  float: left;
+}
+
+.communication_update > input { display: none; } 
+.communication_update> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.communication_update > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.communication_update > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .communication_update > input:checked ~ label, /* show gold star when clicked */
+  .communication_update:not(:checked) > label:hover, /* hover current star */
+  .communication_update:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .communication_update > input:checked + label:hover, /* hover current star when changing rating */
+  .communication_update > input:checked ~ label:hover,
+  .communication_update > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .communication_update > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+  /***Overall Rating***/
+.overall_update{ 
+  border: none;
+  float: left;
+}
+
+.overall_update > input { display: none; } 
+.overall_update> label:before { 
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.overall_update > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.overall_update > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+  /***** Highlight Stars on Hover *****/
+  
+  .overall_update > input:checked ~ label, /* show gold star when clicked */
+  .overall_update:not(:checked) > label:hover, /* hover current star */
+  .overall_update:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  
+  .overall_update > input:checked + label:hover, /* hover current star when changing rating */
+  .overall_update > input:checked ~ label:hover,
+  .overall_update > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .overall_update > input:checked ~ label:hover ~ label { color: #FFED85;  } 
