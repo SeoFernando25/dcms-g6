@@ -1,15 +1,55 @@
-<header class="small-header">
-  <mat-toolbar
-    fxFill
-    class="small-headline"
-    color="primary"
-    fxLayoutAlign="begin center"
-  >
-    <h1>
-      Your appointment
-      <h2>Review your appointment</h2>
-    </h1>
-  </mat-toolbar>
-</header>
+<!-- Vertical div -->
+<div fxLayout="column">
+  <header class="small-header">
+    <mat-toolbar
+      fxFill
+      class="small-headline"
+      color="primary"
+      fxLayoutAlign="begin center"
+    >
+      <h1>
+        Your appointment
+        <h2>Review your appointment</h2>
+      </h1>
+    </mat-toolbar>
+  </header>
 
-<mat-spinner *ngIf="!appointment_data" class="fill-spinner"></mat-spinner>
+  <mat-spinner *ngIf="!appointment_data" class="fill-spinner"></mat-spinner>
+
+  <!-- Show appointment information from appointment_data -->
+  <!-- Fields:
+  appointment_date: "2022-03-29"
+  appointment_id: 2
+  appointment_status: "Pending"
+  appointment_type: null
+  clinic_id: 3
+  dentist_id: "8c61b013-dd19-4172-bcfb-6db37dbf3d77"
+  end_time: "19:59:53-04"
+  patient_id: "0d60bbc6-ba1b-4dc3-b2f7-b0586d7dd77d"
+  room_assigned: null
+  start_time: "19:01:50-04"
+  treatment_id: null 
+-->
+  <mat-card fxFlex *ngIf="appointment_data">
+    <mat-card-content>
+      <div class="appointment-info-container">
+        <h2>Appointment ID: {{ appointment_data.appointment_id }}</h2>
+        <h2>Appointment Date {{ appointment_data.appointment_date }}</h2>
+        <h2>Appointment Status: {{ appointment_data.appointment_status }}</h2>
+        <h2>
+          Appointment Type: {{ appointment_data.appointment_type || "Generic" }}
+        </h2>
+        <h2>Clinic ID: {{ appointment_data.clinic_id }}</h2>
+        <h2>Dentist ID: {{ appointment_data.dentist_id }}</h2>
+        <h2>End Time: {{ appointment_data.end_time }}</h2>
+        <h2>Patient ID: {{ appointment_data.patient_id }}</h2>
+        <h2>Room Assigned: {{ appointment_data.room_assigned || "TBD" }}</h2>
+        <h2>Start Time: {{ appointment_data.start_time }}</h2>
+        <h2>
+          Treatment ID:
+          {{ appointment_data.treatment_id || "No treatment required" }}
+        </h2>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
