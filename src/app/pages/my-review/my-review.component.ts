@@ -98,6 +98,13 @@ export class MyReviewComponent implements OnInit, OnDestroy {
   //Update the table (Insert new row)
   submitNewForm(){
     let sb = this.supabase._supabase;
+    // console.log("LoginUser:", sb.auth.user()?.id);
+    // sb.from('patient').insert({
+    //   patient_id: sb.auth.user()?.id,
+    // }).then((data) => {
+    //   console.log(data);
+    // });
+
     sb.from('review').insert({
       review_date: this.NewReviewForm.value.review_date,
       professionalism_score: this.NewReviewForm.value.professionalism_score,
@@ -105,7 +112,8 @@ export class MyReviewComponent implements OnInit, OnDestroy {
       communication_score: this.NewReviewForm.value.communication_score,
       value_score: this.NewReviewForm.value.value_score,
       feedback: this.NewReviewForm.value.feedback,
-      written_by:'0d60bbc6-ba1b-4dc3-b2f7-b0586d7dd77d',
+      written_by: '0d60bbc6-ba1b-4dc3-b2f7-b0586d7dd77d',
+      //written_by:sb.auth.user()?.id,
       //review_id: this.dataSource.data.length + 1,
       reviewed_task:2,                         
     }).then((data) => {
