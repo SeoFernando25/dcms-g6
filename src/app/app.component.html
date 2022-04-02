@@ -76,9 +76,13 @@
           <mat-icon>account_balance</mat-icon>
           <span>Billing</span>
         </button>
-        <button mat-menu-item routerLink="/my">
+        <button mat-menu-item routerLink="/my/account">
           <mat-icon>account_circle</mat-icon>
           <span>My Account</span>
+        </button>
+        <button mat-menu-item routerLink="/my/appointments">
+          <mat-icon>event</mat-icon>
+          <span>My Appointments</span>
         </button>
         <button mat-menu-item routerLink="/" (click)="supabase.signOut()">
           <mat-icon>logout</mat-icon>
