@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
-  { path: 'my-review', component: MyReviewComponent },
   { path: 'faq', component: FAQComponent},
   {path: 'my-account', component: MyAccountComponent },
+  { path: 'review', component: MyReviewComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
