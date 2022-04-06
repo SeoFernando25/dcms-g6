@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Forms module
@@ -25,6 +25,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { PatientModule } from './pages/patient/patient.module';
+import { MyReviewComponent } from './pages/my-review/my-review.component';
+import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -34,6 +36,8 @@ const modules = [
   ScrollingModule,
   MaterialModule,
   PatientModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
@@ -48,6 +52,8 @@ const modules = [
     ContactComponent,
     TimesPipe,
     OurServicesComponent,
+    MyReviewComponent,
+    UpdateMyReviewComponent,
   ],
 })
 export class ExternalModules {}

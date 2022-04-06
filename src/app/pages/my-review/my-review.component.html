@@ -1,0 +1,198 @@
+<!--Set dentist1.jpg as header background image-->
+<header fxLayout="column" fxLayoutAlign="center center" class='big-header' style="background-image: url('assets/img/dentist1.jpg');">
+    <!--Center Text "Our Services"-->
+        <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center" style="background-color:transparent ;">
+            <h1 style="color:white">My Review</h1>
+        </mat-toolbar>
+</header>
+            
+<div class="My Reivew-box">
+    <div class="container-fluid padding">
+        <div class="row welcome text-center" style=" margin-left: 260px;">
+            <div class="col-12">
+                <h1 id="Review"class="display-4" fxLayoutAlign="" style="margin-top: 50px; font-size: 50px;">Review</h1>
+                <h3 fxLayoutAlign="">Give us your Feedback</h3>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+<!--Create a form Reivew-->
+<form [formGroup]="NewReviewForm" style=" margin-left: 260px;" (ngSubmit)="submitNewForm()">
+    <h3 style="font-size: large;">Appointment Date</h3>
+    <mat-form-field appearance="fill">
+        <mat-label for="review_date">Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="review_date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="col">
+        <div class="col1">
+            <div>
+                <h3 style="font-size: large;">Professionalism</h3>
+                <fieldset class="professionalism" for="professionalism_score">
+                    <input type="radio" id="Professionalism_star5" name="professionalism_score" value="5" formControlName="professionalism_score" required/><label class = "full" for="Professionalism_star5" title="5 stars"></label>
+                    <input type="radio" id="Professionalism_star4half" name="professionalism_score" value="4.5" formControlName="professionalism_score"/><label class="half" for="Professionalism_star4half" title="4.5 stars"></label>
+                    <input type="radio" id="Professionalism_star4" name="professionalism_score" value="4" formControlName="professionalism_score"/><label class = "full" for="Professionalism_star4" title="4 stars"></label>
+                    <input type="radio" id="Professionalism_star3half" name="professionalism_score" value="3.5" formControlName="professionalism_score"/><label class="half" for="Professionalism_star3half" title="3.5 stars"></label>
+                    <input type="radio" id="Professionalism_star3" name="professionalism_score" value="3" formControlName="professionalism_score"/><label class = "full" for="Professionalism_star3" title="3 stars"></label>
+                    <input type="radio" id="Professionalism_star2half" name="professionalism_score" value="2.5" formControlName="professionalism_score"/><label class="half" for="Professionalism_star2half" title="2.5 stars"></label>
+                    <input type="radio" id="Professionalism_star2" name="professionalism_score" value="2" formControlName="professionalism_score"/><label class = "full" for="Professionalism_star2" title="2 stars"></label>
+                    <input type="radio" id="Professionalism_star1half" name="professionalism_score" value="1.5" formControlName="professionalism_score"/><label class="half" for="Professionalism_star1half" title="1.5 stars"></label>
+                    <input type="radio" id="Professionalism_star1" name="professionalism_score" value="1" formControlName="professionalism_score"/><label class = "full" for="Professionalism_star1" title="1 star"></label>
+                    <input type="radio" id="Professionalism_starhalf" name="professionalism_score" value="0.5" formControlName="professionalism_score"/><label class="half" for="Professionalism_starhalf" title="0.5 stars"></label>
+                </fieldset>
+            </div>
+            <br>
+            <div>
+                <br>
+                <br>
+                <h3 style="font-size: large;">Cleanliness </h3>
+                <fieldset class="cleanliness" for="cleanliness_score">
+                    <input type="radio" id="Cleanliness_star5" name="cleanliness_score" value="5" formControlName="cleanliness_score" required/><label class = "full" for="Cleanliness_star5" title="5 stars"></label>
+                    <input type="radio" id="Cleanliness_star4half" name="cleanliness_score" value="4.5" formControlName="cleanliness_score"/><label class="half" for="Cleanliness_star4half" title="4.5 stars"></label>
+                    <input type="radio" id="Cleanliness_star4" name="cleanliness_score" value="4" formControlName="cleanliness_score"/><label class = "full" for="Cleanliness_star4" title="4 stars"></label>
+                    <input type="radio" id="Cleanliness_star3half" name="cleanliness_score" value="3.5" formControlName="cleanliness_score"/><label class="half" for="Cleanliness_star3half" title="3.5 stars"></label>
+                    <input type="radio" id="Cleanliness_star3" name="cleanliness_score" value="3" formControlName="cleanliness_score"/><label class = "full" for="Cleanliness_star3" title="3 stars"></label>
+                    <input type="radio" id="Cleanliness_star2half" name="cleanliness_score" value="2.5" formControlName="cleanliness_score"/><label class="half" for="Cleanliness_star2half" title="2.5 stars"></label>
+                    <input type="radio" id="Cleanliness_star2" name="cleanliness_score" value="2" formControlName="cleanliness_score"/><label class = "full" for="Cleanliness_star2" title="2 stars"></label>
+                    <input type="radio" id="Cleanliness_star1half" name="cleanliness_score" value="1.5" formControlName="cleanliness_score"/><label class="half" for="Cleanliness_star1half" title="1.5 stars"></label>
+                    <input type="radio" id="Cleanliness_star1" name="cleanliness_score" value="1" formControlName="cleanliness_score"/><label class = "full" for="Cleanliness_star1" title="1 star"></label>
+                    <input type="radio" id="Cleanliness_starhalf" name="cleanliness_score" value="0.5" formControlName="cleanliness_score"/><label class="half" for="Cleanliness_starhalf" title="0.5 stars"></label>
+                </fieldset>
+            </div>
+
+        
+        </div>
+        <div class="col2" style="margin-left: 260px;">
+            <h3 style="font-size: large; ">Communication</h3>
+            <fieldset class="communication" for="communication_score">
+                <input type="radio" id="Communication_star5" name="communication_score" value="5" formControlName="communication_score" required/><label class = "full" for="Communication_star5" title="5 stars"></label>
+                <input type="radio" id="Communication_star4half" name="communication_score" value="4.5" formControlName="communication_score"/><label class="half" for="Communication_star4half" title="4.5 stars"></label>
+                <input type="radio" id="Communication_star4" name="communication_score" value="4" formControlName="communication_score"/><label class = "full" for="Communication_star4" title="4 stars"></label>
+                <input type="radio" id="Communication_star3half" name="communication_score" value="3.5" formControlName="communication_score"/><label class="half" for="Communication_star3half" title="3.5 stars"></label>
+                <input type="radio" id="Communication_star3" name="communication_score" value="3" formControlName="communication_score"/><label class = "full" for="Communication_star3" title="3 stars"></label>
+                <input type="radio" id="Communication_star2half" name="communication_score" value="2.5" formControlName="communication_score"/><label class="half" for="Communication_star2half" title="2.5 stars"></label>
+                <input type="radio" id="Communication_star2" name="communication_score" value="2" formControlName="communication_score"/><label class = "full" for="Communication_star2" title="2 stars"></label>
+                <input type="radio" id="Communication_star1half" name="communication_score" value="1.5" formControlName="communication_score"/><label class="half" for="Communication_star1half" title="1.5 stars"></label>
+                <input type="radio" id="Communication_star1" name="communication_score" value="1" formControlName="communication_score"/><label class = "full" for="Communication_star1" title="1 star"></label>
+                <input type="radio" id="Communication_starhalf" name="communication_score" value="0.5" formControlName="communication_score"/><label class="half" for="Communication_starhalf" title="0.5 stars"></label>
+            </fieldset>
+            <br>
+            <div>
+                <br>
+                <br>
+                <h3 style="font-size: large;">Overall value</h3>
+                <fieldset class="overall " for ="value_score">
+                    <input type="radio" id="overall_star5" name="value_score" value="5" formControlName="value_score" required/><label class = "full" for="overall_star5" title="5 stars"></label>
+                    <input type="radio" id="overall_star4half" name="value_score" value="4.5" formControlName="value_score"/><label class="half" for="overall_star4half" title="4.5 stars"></label>
+                    <input type="radio" id="overall_star4" name="value_score" value="4" formControlName="value_score"/><label class = "full" for="overall_star4" title="4 stars"></label>
+                    <input type="radio" id="overall_star3half" name="value_score" value="3.5" formControlName="value_score"/><label class="half" for="overall_star3half" title="3.5 stars"></label>
+                    <input type="radio" id="overall_star3" name="value_score" value="3" formControlName="value_score"/><label class = "full" for="overall_star3" title="3 stars"></label>
+                    <input type="radio" id="overall_star2half" name="value_score" value="2.5" formControlName="value_score"/><label class="half" for="overall_star2half" title="2.5 stars"></label>
+                    <input type="radio" id="overall_star2" name="value_score" value="2" formControlName="value_score"/><label class = "full" for="overall_star2" title="2 stars"></label>
+                    <input type="radio" id="overall_star1half" name="value_score" value="1.5" formControlName="value_score"/><label class="half" for="overall_star1half" title="1.5 stars"></label>
+                    <input type="radio" id="overall_star1" name="value_score" value="1" formControlName="value_score"/><label class = "full" for="overall_star1" title="1 star"></label>
+                    <input type="radio" id="overall_starhalf" name="value_score" value="0.5" formControlName="value_score"/><label class="half" for="overall_starhalf" title="0.5 stars"></label>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3 style="font-size: large;">Feedback</h3>
+    <mat-form-field class="Feedback" appearance="fill">
+        <mat-label for="feedback">Leave a comment</mat-label>
+        <textarea matInput placeholder="Leave a comment" rows="10" formControlName="feedback"></textarea>
+    </mat-form-field>
+
+    <div class="Submit">
+        <button mat-raised-button color="primary" type="submit">Submit Feedback</button> 
+    </div>
+</form>
+
+<div class="PreviousReivew-box">
+    <div class="container-fluid padding">
+        <div class="row welcome text-center" style=" margin-left: 260px;">
+            <div class="col-12">
+                <h1 id="Review"class="display-4" fxLayoutAlign="" style="margin-top: 50px; font-size: 50px;">Previous Review</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div >
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="review_id">
+          <th mat-header-cell *matHeaderCellDef> ID. </th>
+          <td mat-cell *matCellDef="let element"> {{element.review_id}} </td>
+        </ng-container>
+    
+        <!-- Appointment Date Column -->
+        <ng-container matColumnDef="review_date">
+          <th mat-header-cell *matHeaderCellDef> Appointment Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.review_date | date}} </td>
+        </ng-container>
+    
+        <!-- Professionalism Column -->
+        <ng-container matColumnDef="professionalism_score">
+          <th mat-header-cell *matHeaderCellDef> Professionalism </th>
+          <td mat-cell *matCellDef="let element"> {{element.professionalism_score}} </td>
+        </ng-container>
+    
+        <!-- Cleanliness Column -->
+        <ng-container matColumnDef="cleanliness_score">
+          <th mat-header-cell *matHeaderCellDef> Cleanliness </th>
+          <td mat-cell *matCellDef="let element"> {{element.cleanliness_score}} </td>
+        </ng-container>
+
+        <!-- Communication Column -->
+        <ng-container matColumnDef="communication_score">
+            <th mat-header-cell *matHeaderCellDef> Communication </th>
+            <td mat-cell *matCellDef="let element"> {{element.communication_score}} </td>
+        </ng-container>
+
+        <!-- Overall Column -->
+        <ng-container matColumnDef="value_score">
+            <th mat-header-cell *matHeaderCellDef> Overall </th>
+            <td mat-cell *matCellDef="let element"> {{element.value_score}} </td>
+        </ng-container>
+
+        <!-- Feedback Column -->
+        <ng-container matColumnDef="feedback">
+            <th mat-header-cell *matHeaderCellDef> Feedback </th>
+            <td mat-cell *matCellDef="let element"> {{element.feedback}} </td>
+        </ng-container>
+
+         <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+        
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="editReview(row)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteReview(row)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+  <div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+
+        </div>
+    </div>
