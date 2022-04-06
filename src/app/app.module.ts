@@ -24,6 +24,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
+import { PatientModule } from './pages/patient/patient.module';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 import { FAQComponent } from './pages/faq/faq.component';
@@ -36,6 +37,7 @@ const modules = [
   FlexLayoutModule,
   ScrollingModule,
   MaterialModule,
+  PatientModule,
   MatDatepickerModule,
   MatNativeDateModule,
 ];
@@ -64,9 +66,9 @@ export class ExternalModules {}
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     ExternalModules,
+    AppRoutingModule, // Make sure to import AppRoutingModule last as it contains the fallback route
   ],
 
   providers: [

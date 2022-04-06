@@ -47,6 +47,15 @@ export class SupabaseService implements OnInit {
     return this._supabase.auth.signIn({ email: username, password });
   }
 
+  getPersonData() {
+    return this._supabase
+      .from('person')
+      .select('*')
+      .eq('auth_id', this._supabase.auth.user()?.id)
+      .limit(1)
+      .single();
+  }
+
   signOut() {
     return this._supabase.auth.signOut();
   }

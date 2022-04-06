@@ -10,9 +10,8 @@ import { FAQComponent } from './pages/faq/faq.component';
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, },
+  { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  // { path: 'some-guarded-page', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
