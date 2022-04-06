@@ -60,7 +60,7 @@ export class MyReviewComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) {}
+  ) { }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'DISMISS', { duration: 5000 });
@@ -102,7 +102,7 @@ export class MyReviewComponent implements OnInit, OnDestroy {
   //Update the table (Insert new row)
   submitNewForm() {
     let sb = this.supabase._supabase;
-    // console.log("LoginUser:", sb.auth.user()?.id);
+    console.log("LoginUser:", sb.auth.user()?.id);  //b475c2fe-ca0a-4a05-8d4f-edf2ae7ed493
     // sb.from('patient').insert({
     //   patient_id: sb.auth.user()?.id,
     // }).then((data) => {
@@ -117,8 +117,7 @@ export class MyReviewComponent implements OnInit, OnDestroy {
         communication_score: this.NewReviewForm.value.communication_score,
         value_score: this.NewReviewForm.value.value_score,
         feedback: this.NewReviewForm.value.feedback,
-        written_by: '0d60bbc6-ba1b-4dc3-b2f7-b0586d7dd77d',
-        //written_by:sb.auth.user()?.id,
+        written_by: this.supabase._supabase.auth.user()?.id || 'error',
         //review_id: this.dataSource.data.length + 1,
         reviewed_task: 2,
       })
@@ -137,16 +136,14 @@ export class MyReviewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.everyThreeSeconds.subscribe(() => {
       let sb = this.supabase._supabase;
-      sb.from('review')
-        .select('*')
-        .then((data) => {
-          if (data.error) {
-            console.log('data.error: ', data.error);
-          } else {
-            console.log('data: ', data);
-            this.dataSource.data = data.body;
-          }
-        });
+      sb.from('review').select('*').eq('written_by', sb.auth.user()?.id).then((data) => {
+        if (data.error) {
+          console.log("data.error: ", data.error);
+        } else {
+          console.log("data: ", data);
+          this.dataSource.data = data.body;
+        }
+      });
     });
   }
 
