@@ -52,8 +52,8 @@ export class AuthGuard implements CanActivate {
   }
 
   openLoginDialog() {
-    var username = "";
-    var password = "";
+    var username = '';
+    var password = '';
     return this.dialog.open(LoginDialogComponent, {
       data: { name: username, animal: password },
     });

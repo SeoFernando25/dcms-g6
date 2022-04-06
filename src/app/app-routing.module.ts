@@ -8,7 +8,7 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, },
+  { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   // { path: 'some-guarded-page', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'testimonials', component: TestimonialsComponent },
