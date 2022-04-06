@@ -1,0 +1,17 @@
+.appointments-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.mat-row:hover .mat-cell {
+  background: #fafafa;
+}
