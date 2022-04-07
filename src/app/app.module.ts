@@ -26,6 +26,7 @@ import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -52,6 +53,7 @@ const modules = [
     OurServicesComponent,
     MyReviewComponent,
     UpdateMyReviewComponent,
+    SearchComponent,
   ],
 })
 export class ExternalModules {}

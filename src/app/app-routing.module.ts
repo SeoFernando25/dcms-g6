@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: 'review', component: MyReviewComponent },
+  { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
