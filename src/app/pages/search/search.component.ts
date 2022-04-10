@@ -6,6 +6,9 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostgrestResponse } from '@supabase/supabase-js';
 
+import {MatDialog} from '@angular/material/dialog';
+import {SerachDetailComponent} from '../../pages/serach-detail/serach-detail.component';
+
 export interface Person {
   first_name: string;
   middle_name: string;
@@ -31,6 +34,7 @@ export class SearchComponent implements OnInit {
     'ssn',
     'date_of_birth',
     'phone_number',
+    'actions',
   ];
   dataSource = new MatTableDataSource<Person>([]);
 
@@ -47,7 +51,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private supabase: SupabaseService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog:MatDialog
   ) { }
 
   ngAfterViewInit() {
@@ -93,6 +98,10 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  viewDetail(row:any){
+    //console.log(row);
+    this.dialog.open(SerachDetailComponent, {data: row});
+  }
   //Unsubscribe from the timer
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();

@@ -27,6 +27,7 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 import { SearchComponent } from './pages/search/search.component';
+import { SerachDetailComponent } from './pages/serach-detail/serach-detail.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -54,6 +55,7 @@ const modules = [
     MyReviewComponent,
     UpdateMyReviewComponent,
     SearchComponent,
+    SerachDetailComponent,
   ],
 })
 export class ExternalModules {}
