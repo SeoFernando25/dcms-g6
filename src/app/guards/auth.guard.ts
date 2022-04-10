@@ -44,18 +44,29 @@ export class AuthGuard implements CanActivate {
     this._snackBar.open('You need to be logged in to do that!', 'Dismiss');
     var username = '';
     var password = '';
-    const dialogRef = this.dialog.open(LoginDialogComponent, {
-      data: { name: username, animal: password },
-    });
+    this.openLoginDialog();
 
     return false;
   }
 
   openLoginDialog() {
-    var username = "";
-    var password = "";
-    return this.dialog.open(LoginDialogComponent, {
-      data: { name: username, animal: password },
+    var username = '';
+    var password = '';
+    var dialog = this.dialog.open(LoginDialogComponent, {
+      data: { name: username, password: password },
     });
+    dialog.afterClosed().subscribe((result) => {
+      // If user is logged in, redirect to redirectURL
+      // redirectURL is a url parameter that is generated when the user is not logged in
+      if (result) {
+        var redirectURL = this.route.snapshot.queryParamMap.get('redirectURL');
+        if (redirectURL) {
+          this.router.navigate([redirectURL]);
+        } else {
+          this.router.navigate(['my']);
+        }
+      }
+    });
+    return dialog;
   }
 }

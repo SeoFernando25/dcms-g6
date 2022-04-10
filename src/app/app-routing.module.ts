@@ -7,14 +7,17 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { SearchComponent } from './pages/search/search.component';
+import { FAQComponent } from './pages/faq/faq.component';
+import { MyAccountComponent } from './pages/my-account/my-account.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, },
+  { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  // { path: 'some-guarded-page', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
+  { path: 'faq', component: FAQComponent},
+  {path: 'my-account', component: MyAccountComponent },
   { path: 'review', component: MyReviewComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },

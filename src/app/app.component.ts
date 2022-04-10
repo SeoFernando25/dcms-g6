@@ -20,6 +20,5 @@ export class AppComponent {
     public readonly supabase: SupabaseService,
     public dialog: MatDialog,
     public auth: AuthGuard
-  ) {
-  }
+  ) {}
 }
