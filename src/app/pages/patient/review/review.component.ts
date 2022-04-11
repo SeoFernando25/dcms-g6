@@ -6,8 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { timer, Subscription, Observable } from 'rxjs';
 
-import { UpdateMyReviewComponent } from '../../update-my-review/update-my-review.component';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { UpdateMyReviewComponent } from '../update-my-review/update-my-review.component';
 
 export interface UserFeedbackList {
   review_id: number;
@@ -60,7 +60,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) {}
+  ) { }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'DISMISS', { duration: 5000 });

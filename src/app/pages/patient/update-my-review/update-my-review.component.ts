@@ -9,7 +9,7 @@ import { SupabaseService } from 'src/app/services/supabase.service';
   templateUrl: './update-my-review.component.html',
   styleUrls: [
     './update-my-review.component.scss',
-    './../my-review/my-review.component.scss',
+    './../review/review.component.scss',
   ],
 })
 export class UpdateMyReviewComponent implements OnInit {
@@ -27,7 +27,7 @@ export class UpdateMyReviewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     var d = new Date(this.editData.review_date);
