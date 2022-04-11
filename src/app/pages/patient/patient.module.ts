@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ReviewComponent } from './review/review.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReviewComponent } from './review/review.component';
     AccountComponent,
     AppointmentComponent,
     ReviewComponent,
+    BillingComponent,
   ],
   imports: [
     NgxMaskModule.forRoot(),
