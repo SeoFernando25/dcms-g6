@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit {
     private supabase: SupabaseService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

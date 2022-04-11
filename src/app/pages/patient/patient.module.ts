@@ -35,4 +35,4 @@ import { ReviewComponent } from './review/review.component';
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule { }
+export class PatientModule {}
