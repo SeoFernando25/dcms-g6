@@ -1,30 +1,15 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
-  HostListener,
-  ElementRef,
-  Injectable,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faker } from '@faker-js/faker';
-import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
-class Review {
-  static nextId = 1;
-  headline: string = 'My Headline ' + Review.nextId;
-  content: string = 'My Content';
-  value_score: number = 100;
 
-  constructor() {
-    Review.nextId++;
-    this.content = faker.lorem.paragraphs(1);
-    this.headline = faker.lorem.sentence();
-  }
-}
 
 @Component({
   selector: 'app-testimonials',
@@ -32,7 +17,7 @@ class Review {
   styleUrls: ['./testimonials.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class TestimonialsComponent implements OnInit {
+export class TestimonialsComponent {
   // Material form with the following fields: -->
   // Review headline, review content, 4 score sliders -->
   // Submit and reset button -->
@@ -45,71 +30,24 @@ export class TestimonialsComponent implements OnInit {
     score4: new FormControl(''),
   });
 
-  reviews: Review[] = [];
-  review: Review | null = new Review();
+  review: any[] = [];
   reviewLoaded: boolean = true;
 
   reviewDataSource: ReviewDataSource;
 
   constructor(
-    private snackBar: MatSnackBar,
     public readonly supabase: SupabaseService
   ) {
     this.reviewDataSource = new ReviewDataSource(this.supabase);
   }
-
-  ngOnInit(): void {}
-
-  onSubmit(): void {
-    this.supabase._supabase
-      .from('review')
-      .insert([
-        {
-          headline: this.reviewForm.value.reviewHeadline,
-          content: this.reviewForm.value.reviewContent,
-          value_score: this.reviewForm.value.reviewScore
-            ? this.reviewForm.value.reviewScore
-            : 0,
-        },
-      ])
-      .then((response) => {
-        window.location.reload();
-        this.reviewForm.reset();
-      });
-
-    this.snackBar
-      .open('Your review has been submitted!', 'Dismiss')
-      .afterDismissed()
-      .subscribe(() => {
-        window.location.reload();
-      });
-  }
-
-  onReviewClick(reviewId: number): void {
-    // Delete the review
-    console.log('Deleting review with id: ' + reviewId);
-    this.supabase._supabase
-      .from('review')
-      .delete()
-      .eq('id', reviewId)
-      .then((response) => {
-        console.log(response);
-      });
-    this.snackBar
-      .open('Your review has been deleted!', 'Dismiss')
-      .afterDismissed()
-      .subscribe(() => {
-        window.location.reload();
-      });
-  }
 }
 
-export class ReviewDataSource extends DataSource<Review | undefined> {
+export class ReviewDataSource extends DataSource<any | undefined> {
   private _length: number | any = null;
   private _pageSize = 10;
-  private _cachedData = Array.from<Review>({ length: 10 });
+  private _cachedData = Array.from<any>({ length: 10 });
   private _fetchedPages = new Set<number>();
-  private readonly _dataStream = new BehaviorSubject<(Review | undefined)[]>(
+  private readonly _dataStream = new BehaviorSubject<(any | undefined)[]>(
     this._cachedData
   );
   private readonly _subscription = new Subscription();
@@ -120,7 +58,7 @@ export class ReviewDataSource extends DataSource<Review | undefined> {
     this.supabase._supabase.rpc('review_count').then((response) => {
       if (response.data != null) {
         this._length = response.data;
-        this._cachedData = Array.from<Review>({ length: this._length });
+        this._cachedData = Array.from<any>({ length: this._length });
         this._fetchedPages = new Set<number>();
       }
     });
@@ -128,7 +66,7 @@ export class ReviewDataSource extends DataSource<Review | undefined> {
 
   connect(
     collectionViewer: CollectionViewer
-  ): Observable<(Review | undefined)[]> {
+  ): Observable<(any | undefined)[]> {
     this._fetchPage(0);
     this._subscription.add(
       collectionViewer.viewChange.subscribe((range) => {
@@ -143,7 +81,7 @@ export class ReviewDataSource extends DataSource<Review | undefined> {
     return this._dataStream;
   }
 
-  disconnect(): void {}
+  disconnect(): void { }
 
   private getPageRange(page: number) {
     const limit = this._pageSize + 10;
@@ -162,11 +100,19 @@ export class ReviewDataSource extends DataSource<Review | undefined> {
     var { from, to } = this.getPageRange(page);
     this.supabase._supabase
       .from('review')
-      .select('*', { count: 'exact' })
-      .order('id', { ascending: true })
+      .select(`
+      *,
+      written_by (
+        person!patient_patient_id_fkey (
+          first_name, last_name
+        )
+    )
+      `, { count: 'exact' })
+      .order('value_score', { ascending: true })
       .range(from, to)
       .then((response) => {
         if (response.error) {
+          console.log(response.error);
           this._fetchedPages.delete(page);
         } else {
           this._cachedData.splice(from, to - from, ...response.data);
