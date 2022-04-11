@@ -21,93 +21,13 @@
     </mat-toolbar>
   </header>
 
-    <cdk-virtual-scroll-viewport
-      appendOnly
-      itemSize="250"
-      fxFlex
-      style="height: 100%; align-items: center; justify-content: center;">
-      <div class="content">
-
-    
-      <mat-card
-        style="
-          width: 100%;
-          word-wrap: break-word;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: pre-wrap;
-        "
-      >
-        <mat-card-title-group>
-          <mat-card-title>Reviewer-tron 2k</mat-card-title>
-          <mat-card-subtitle
-            >Write your own fake reviews here! (please don't rate limit the
-            api...)</mat-card-subtitle
-          >
-        </mat-card-title-group>
-        <mat-card-content>
-          <!-- Material form with the following fields: -->
-          <!-- Review headline, review content, 4 score sliders -->
-          <!-- Submit and reset button -->
-          <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-            <mat-form-field fxFill>
-              <mat-label>Your Headline</mat-label>
-              <input
-                matInput
-                type="text"
-                class="form-control"
-                id="reviewHeadline"
-                formControlName="reviewHeadline"
-                placeholder="Great service but too expensive"
-              />
-            </mat-form-field>
-            <br />
-            <mat-form-field fxFill appearance="fill">
-              <mat-label>Your Review</mat-label>
-              <textarea
-                matInput
-                cdkTextareaAutosize
-                formControlName="reviewContent"
-                placeholder="* Your 200 words essay *"
-              ></textarea>
-            </mat-form-field>
-
-            <div fxFlexFill fxLayoutAlign="begin center">
-              <label fxFlex="20" for="reviewScore">Review Score</label>
-              <mat-slider
-                fxFlex="80"
-                formControlName="reviewScore"
-                value="100"
-                min="0"
-                max="100"
-                step="1"
-                thumbLabel
-                tickInterval="10"
-                aria-labelledby="discrete-slider-always unit(s)"
-              ></mat-slider>
-            </div>
-            <div fxFlexFill fxLayoutAlign="begin center">
-              <button
-                fxFlex
-                mat-raised-button
-                type="submit"
-                class="btn btn-primary"
-              >
-                Submit
-              </button>
-              <button
-                fxFlex
-                mat-raised-button
-                type="reset"
-                class="btn btn-danger"
-              >
-                Reset
-              </button>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-
+  <cdk-virtual-scroll-viewport
+    appendOnly
+    itemSize="250"
+    fxFlex
+    style="height: 100%; align-items: center; justify-content: center"
+  >
+    <div class="content">
       <mat-card
         *cdkVirtualFor="let rev of reviewDataSource"
         style="
@@ -118,14 +38,58 @@
           overflow: hidden;
           white-space: pre-wrap;
         "
-        (click)="onReviewClick(rev?.id)"
       >
-        <mat-card-title>{{ rev?.headline }}</mat-card-title>
-        <span>
-          <span *ngFor="let _ of rev?.value_score / 10 || 0 | times"> ⭐ </span>
-        </span>
+        <mat-card-title>
+          {{ rev?.written_by?.person?.first_name }}
+          {{ rev?.written_by?.person?.last_name }}
+        </mat-card-title>
+
+        <!-- 2 column table -->
+        <mat-card-content>
+          <table>
+            <thead>
+              <tr>
+                <th>Overall Value</th>
+                <th>Professionalism</th>
+                <th>Cleanliness</th>
+                <th>Communication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span *ngFor="let _ of rev?.value_score || 0 | times">
+                    ⭐
+                  </span>
+                </td>
+
+                <td>
+                  <span
+                    *ngFor="let _ of rev?.professionalism_score || 0 | times"
+                  >
+                    ⭐
+                  </span>
+                </td>
+
+                <td>
+                  <span *ngFor="let _ of rev?.cleanliness_score || 0 | times">
+                    ⭐
+                  </span>
+                </td>
+
+                <td>
+                  <span *ngFor="let _ of rev?.communication_score || 0 | times">
+                    ⭐
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
         <br />
-        <mat-card-content style="line-height: 1rem;">{{ rev?.content }}</mat-card-content>
+        <mat-card-content style="line-height: 1rem">{{
+          rev?.feedback
+        }}</mat-card-content>
         <ng-container *ngIf="!review || !reviewLoaded">
           <!-- mat-spinner centered on button -->
           <mat-spinner
@@ -139,5 +103,5 @@
         </ng-container>
       </mat-card>
     </div>
-    </cdk-virtual-scroll-viewport>
-  </div>
+  </cdk-virtual-scroll-viewport>
+</div>
