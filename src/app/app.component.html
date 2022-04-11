@@ -18,10 +18,8 @@
 
   <a mat-button routerLink="/our-services">Our Services</a>
   <a mat-button routerLink="/faq">FAQ</a>
-  <a mat-button routerLink="/review">My Review</a>
   <a mat-button routerLink="/contact">Contact Us</a>
   <a mat-button routerLink="/testimonials">Testimonials</a>
-  <a mat-button routerLink="/my-account">My Account (temp)</a>
 </ng-template>
 
 <div class="main-div">
@@ -70,6 +68,10 @@
         <button mat-menu-item routerLink="/my/appointments">
           <mat-icon>event</mat-icon>
           <span>My Appointments</span>
+        </button>
+        <button mat-menu-item routerLink="/my/reviews">
+          <mat-icon>reviews</mat-icon>
+          <span>My Reviews</span>
         </button>
         <button mat-menu-item routerLink="/" (click)="supabase.signOut()">
           <mat-icon>logout</mat-icon>

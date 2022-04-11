@@ -56,7 +56,7 @@ const modules = [
     FAQComponent,
   ],
 })
-export class ExternalModules { }
+export class ExternalModules {}
 
 @NgModule({
   declarations: [AppComponent],
@@ -75,4 +75,4 @@ export class ExternalModules { }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
