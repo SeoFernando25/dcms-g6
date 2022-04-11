@@ -44,7 +44,7 @@ export class AccountComponent implements OnInit {
   constructor(
     private supabase: SupabaseService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Fetch user data
@@ -65,7 +65,7 @@ export class AccountComponent implements OnInit {
         console.log(personInfo); // TODO: Remove me in production (contains sensitive data)
         this.personForm.setValue(personInfo);
       }
-      // If error, the user information has not been added to the database yet 
+      // If error, the user information has not been added to the database yet
     });
   }
 
@@ -86,7 +86,9 @@ export class AccountComponent implements OnInit {
           .then((d) => {
             if (d.error) {
               console.log(d);
-              this.snackBar.open('Error saving changes', '', { duration: 3000 });
+              this.snackBar.open('Error saving changes', '', {
+                duration: 3000,
+              });
             } else {
               this.snackBar.open('Changes saved', '', {
                 duration: 1000,
@@ -97,10 +99,10 @@ export class AccountComponent implements OnInit {
       } else {
         console.log('No data on database');
         // Create new user data on database
-        var uuid = this.supabase._supabase.auth.user()?.id ?? "err";
+        var uuid = this.supabase._supabase.auth.user()?.id ?? 'err';
         var twentyYearsAgo = new Date();
         twentyYearsAgo.setFullYear(twentyYearsAgo.getFullYear() - 20);
-        console.log(uuid)
+        console.log(uuid);
         this.supabase._supabase
           .from('person')
           .insert({
