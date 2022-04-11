@@ -1,3 +1,16 @@
 ::ng-deep .cdk-virtual-scroll-content-wrapper {
 
   }
+
+table {
+  width: 100%;
+}
+
+// Table border but only vertical bars
+table, th, td {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  // Center the table
+  text-align: center;
+  padding: 8px;
+}
