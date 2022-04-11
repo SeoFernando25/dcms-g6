@@ -1,15 +1,10 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import {
-  Component,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faker } from '@faker-js/faker';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { SupabaseService } from 'src/app/services/supabase.service';
-
-
 
 @Component({
   selector: 'app-testimonials',
@@ -35,9 +30,7 @@ export class TestimonialsComponent {
 
   reviewDataSource: ReviewDataSource;
 
-  constructor(
-    public readonly supabase: SupabaseService
-  ) {
+  constructor(public readonly supabase: SupabaseService) {
     this.reviewDataSource = new ReviewDataSource(this.supabase);
   }
 }
@@ -64,9 +57,7 @@ export class ReviewDataSource extends DataSource<any | undefined> {
     });
   }
 
-  connect(
-    collectionViewer: CollectionViewer
-  ): Observable<(any | undefined)[]> {
+  connect(collectionViewer: CollectionViewer): Observable<(any | undefined)[]> {
     this._fetchPage(0);
     this._subscription.add(
       collectionViewer.viewChange.subscribe((range) => {
@@ -81,7 +72,7 @@ export class ReviewDataSource extends DataSource<any | undefined> {
     return this._dataStream;
   }
 
-  disconnect(): void { }
+  disconnect(): void {}
 
   private getPageRange(page: number) {
     const limit = this._pageSize + 10;
@@ -100,14 +91,17 @@ export class ReviewDataSource extends DataSource<any | undefined> {
     var { from, to } = this.getPageRange(page);
     this.supabase._supabase
       .from('review')
-      .select(`
+      .select(
+        `
       *,
       written_by (
         person!patient_patient_id_fkey (
           first_name, last_name
         )
     )
-      `, { count: 'exact' })
+      `,
+        { count: 'exact' }
+      )
       .order('value_score', { ascending: true })
       .range(from, to)
       .then((response) => {
