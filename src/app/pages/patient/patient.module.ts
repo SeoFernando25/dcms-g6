@@ -33,4 +33,4 @@ import { AppointmentComponent } from './appointment/appointment.component';
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule {}
+export class PatientModule { }
