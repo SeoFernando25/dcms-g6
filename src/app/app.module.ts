@@ -25,11 +25,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { PatientModule } from './pages/patient/patient.module';
-import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
-import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
 
 const modules = [
@@ -56,12 +54,10 @@ const modules = [
     ContactComponent,
     TimesPipe,
     OurServicesComponent,
-    MyReviewComponent,
     UpdateMyReviewComponent,
     SearchComponent,
     SearchDetailComponent,
     FAQComponent,
-    MyAccountComponent,
   ],
 })
 export class ExternalModules { }

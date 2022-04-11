@@ -5,6 +5,7 @@ import { AccountComponent } from './account/account.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: 'account', component: AccountComponent },
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'appointments/:id', component: AppointmentComponent },
-      { path: 'dashboard', component: DashboardComponent }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'reviews', component: ReviewComponent },
     ],
   },
 ];
@@ -23,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PatientRoutingModule { }
+export class PatientRoutingModule {}

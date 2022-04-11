@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
     AppointmentRowComponent,
     AccountComponent,
     AppointmentComponent,
+    ReviewComponent,
   ],
   imports: [
     NgxMaskModule.forRoot(),
