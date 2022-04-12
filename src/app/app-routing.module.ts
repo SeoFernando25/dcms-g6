@@ -7,7 +7,7 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { MyReviewComponent } from './pages/my-review/my-review.component';
 import { FAQComponent } from './pages/faq/faq.component';
-import { MyAccountComponent } from './pages/my-account/my-account.component';
+import { MyAccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: 'faq', component: FAQComponent},
-  {path: 'my-account', component: MyAccountComponent },
+  {path: 'account', component: MyAccountComponent },
   { path: 'review', component: MyReviewComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
