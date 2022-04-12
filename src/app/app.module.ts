@@ -27,6 +27,7 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { PatientModule } from './pages/patient/patient.module';
 import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
 import { FAQComponent } from './pages/faq/faq.component';
+import { MyAccountComponent } from './pages/account/account.component';
 
 const modules = [
   BrowserAnimationsModule,
