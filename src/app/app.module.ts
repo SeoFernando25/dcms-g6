@@ -55,6 +55,7 @@ const modules = [
     OurServicesComponent,
     UpdateMyReviewComponent,
     FAQComponent,
+    MyAccountComponent,
   ],
 })
 export class ExternalModules {}
