@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { timer, Subscription, Observable } from 'rxjs';
 
-import { UpdateMyReviewComponent } from '../../pages/update-my-review/update-my-review.component';
+import { UpdateMyReviewComponent } from '../../update-my-review/update-my-review.component';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
 export interface UserFeedbackList {
@@ -22,11 +22,11 @@ export interface UserFeedbackList {
 const ELEMENT_DATA: UserFeedbackList[] = [];
 
 @Component({
-  selector: 'app-my-review',
-  templateUrl: './my-review.component.html',
-  styleUrls: ['./my-review.component.scss'],
+  selector: 'app-review',
+  templateUrl: './review.component.html',
+  styleUrls: ['./review.component.scss'],
 })
-export class MyReviewComponent implements OnInit, OnDestroy {
+export class ReviewComponent implements OnInit, OnDestroy {
   NewReviewForm = new FormGroup({
     review_date: new FormControl(''),
     professionalism_score: new FormControl(''),
@@ -60,7 +60,7 @@ export class MyReviewComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) { }
+  ) {}
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'DISMISS', { duration: 5000 });
@@ -102,7 +102,7 @@ export class MyReviewComponent implements OnInit, OnDestroy {
   //Update the table (Insert new row)
   submitNewForm() {
     let sb = this.supabase._supabase;
-    console.log("LoginUser:", sb.auth.user()?.id);  //b475c2fe-ca0a-4a05-8d4f-edf2ae7ed493
+    console.log('LoginUser:', sb.auth.user()?.id); //b475c2fe-ca0a-4a05-8d4f-edf2ae7ed493
     // sb.from('patient').insert({
     //   patient_id: sb.auth.user()?.id,
     // }).then((data) => {
@@ -136,14 +136,17 @@ export class MyReviewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.everyThreeSeconds.subscribe(() => {
       let sb = this.supabase._supabase;
-      sb.from('review').select('*').eq('written_by', sb.auth.user()?.id).then((data) => {
-        if (data.error) {
-          console.log("data.error: ", data.error);
-        } else {
-          console.log("data: ", data);
-          this.dataSource.data = data.body;
-        }
-      });
+      sb.from('review')
+        .select('*')
+        .eq('written_by', sb.auth.user()?.id)
+        .then((data) => {
+          if (data.error) {
+            console.log('data.error: ', data.error);
+          } else {
+            console.log('data: ', data);
+            this.dataSource.data = data.body;
+          }
+        });
     });
   }
 
