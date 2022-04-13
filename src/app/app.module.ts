@@ -27,12 +27,8 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { PatientModule } from './pages/patient/patient.module';
 import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
-<<<<<<< HEAD
 import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
 import { UpdateMyReviewComponent } from './pages/patient/update-my-review/update-my-review.component';
-=======
-import { MyAccountComponent } from './pages/account/account.component';
->>>>>>> 0efe89a62336860ab4340ffd9e823013bfb1afe9
 
 const modules = [
   BrowserAnimationsModule,
@@ -61,11 +57,10 @@ const modules = [
     UpdateMyReviewComponent,
     SearchComponent,
     SearchDetailComponent,
-    FAQComponent,
-    MyAccountComponent,
+    FAQComponent
   ],
 })
-export class ExternalModules {}
+export class ExternalModules { }
 
 @NgModule({
   declarations: [AppComponent],
@@ -84,4 +79,4 @@ export class ExternalModules {}
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
