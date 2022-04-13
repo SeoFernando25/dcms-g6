@@ -7,6 +7,8 @@ import { TestimonialsComponent } from './pages/testimonials/testimonials.compone
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
+import { MyAccountComponent } from './pages/account/account.component';
+import {ReviewComponent} from './pages/patient/review/review.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +16,12 @@ const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
+<<<<<<< HEAD
   { path: 'search', component: SearchComponent },
+=======
+  { path: 'account', component: MyAccountComponent },
+  { path: 'review', component: ReviewComponent },
+>>>>>>> 0efe89a62336860ab4340ffd9e823013bfb1afe9
   { path: 'faq', component: FAQComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
