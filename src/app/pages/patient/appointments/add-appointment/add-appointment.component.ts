@@ -68,6 +68,9 @@ export class AddAppointmentComponent {
 
   onClinicChange(branch_id: any) {
     console.log(branch_id);
+
+    // Clear the selected dentist
+    this.addAppointmentForm.controls['dentist_id'].setValue('dentist_id_err');
     this.supabase._supabase
       .from('employee')
       .select(`
