@@ -13,9 +13,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ReviewComponent } from './review/review.component';
+import { AddAppointmentComponent } from './appointments/add-appointment/add-appointment.component';
 
 @NgModule({
   declarations: [
+    AddAppointmentComponent,
     AppointmentsComponent,
     DashboardComponent,
     AppointmentRowComponent,
@@ -35,4 +37,4 @@ import { ReviewComponent } from './review/review.component';
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule {}
+export class PatientModule { }
