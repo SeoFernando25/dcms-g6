@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Schedule Appointment</h1>
+<hr />
+
+<!-- Schedule appointment form -->
+<!-- Fields: -->
+<!-- appointment_date
+    start_time
+    end_time
+    clinic_id
+    dentist_id -->
+<form [formGroup]="addAppointmentForm" (ngSubmit)="onSubmit()">
+  <h3>Appointment Date</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="appointment_date"
+      for="appointment_date"
+      formControlName="appointment_date"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="appointment_date"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #appointment_date></mat-datepicker>
+  </mat-form-field>
+  <h3>Start Time</h3>
+  <mat-form-field>
+    <input
+      matInput
+      type="time"
+      placeholder="start date"
+      formControlName="start_time"
+    />
+  </mat-form-field>
+  <h3>End time</h3>
+  <mat-form-field>
+    <input
+      matInput
+      type="time"
+      placeholder="end date"
+      formControlName="end_time"
+    />
+  </mat-form-field>
+  <h3>Clinic</h3>
+  <mat-form-field appearance="fill">
+    <mat-label for="clinic_id">Choose a clinic</mat-label>
+    <mat-select
+      (valueChange)="onClinicChange($event)"
+      formControlName="clinic_id"
+    >
+      <mat-option *ngFor="let clinic of clinics" [value]="clinic.clinic_id">
+        {{ clinic.address_street }},&nbsp;{{ clinic.address_city }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h3>Dentist</h3>
+  <mat-form-field appearance="fill">
+    <mat-label for="dentist_id" formControlName="dentist_id"
+      >Choose a dentist</mat-label
+    >
+    <mat-select formControlName="dentist_id">
+      <mat-option
+        *ngFor="let dentist of dentists"
+        [value]="dentist.employee_id"
+        formControlName="dentist_id"
+      >
+        {{ dentist.person.first_name }}&nbsp;{{ dentist.person.last_name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <button mat-raised-button color="primary" type="submit">
+    Schedule Appointment
+  </button>
+</form>
