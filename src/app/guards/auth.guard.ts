@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -63,7 +63,7 @@ export class AuthGuard implements CanActivate {
         if (redirectURL) {
           this.router.navigate([redirectURL]);
         } else {
-          this.router.navigate(['my']);
+          this.router.navigate(['my', 'account']);
         }
       }
     });
