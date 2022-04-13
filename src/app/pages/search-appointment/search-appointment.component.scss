@@ -1,0 +1,58 @@
+.mat-icon {
+    font-size:30px !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+
+.mat-raised-button{
+    height:50px !important;
+
+    font-size:20px !important;
+}
+
+table {
+    margin-left: 110px;
+    width: 90%;
+  }
+  .col{
+    display: inline-flex;
+  }
+  .mat-column-feedback {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 28% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+mat-paginator {
+    margin-left: 110px;
+    width: 90%;
+  }
+
+  
+.mat-form-field {
+  font-size: 14px;
+  width: 90%;
+}
+
+
+.welcome{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.welcome hr{
+  border-top: 2px solid #b4b4b4;
+  //width: 95%;
+  margin-bottom: 1rem;
+  margin-left: auto;
+}
