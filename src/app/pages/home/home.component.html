@@ -1,66 +1,61 @@
-<header fxLayout="column" fxLayoutAlign="center center" class="big-header">
-  <mat-toolbar
-    fxFill
-    class="big-headline"
-    color="primary"
-    fxLayout="column"
-    fxLayoutAlign="center center"
-  >
-    <h1>Dental Crib</h1>
-    <h2>Taking care of your yee yee ass teeth</h2>
-    <h3>
-      {{ days_left }} days {{ hours_left }} hours {{ minutes_left }} minutes
-      {{ seconds_left }} seconds
-    </h3>
-    <h3>left until the first deliverable</h3>
-    <img
-      src="https://cdn.betterttv.net/emote/5e2914861df9195f1a4cd411/3x"
-      alt=""
-    />
+<header fxLayout="column" fxLayoutAlign="center center" class='big-header' style="background-image: url('assets/img/dentist2.jpg');">
+  <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center" style="background-color:transparent ;">
+      <h1 style="color: white">Ontario Dental Care</h1>
   </mat-toolbar>
 </header>
 
 <div class="content">
   <mat-card>
     <mat-card-title-group>
-      <mat-card-title>Our Goal is Preventive Dentistry</mat-card-title>
-      <mat-card-subtitle
-        >For Healthy & Happy Smiles With Minimum Dental
-        Treatment</mat-card-subtitle
-      >
-      <img mat-card-sm-image src="assets/img/tooth-solid.svg" />
+      <mat-card-title>Welcome To Our Clinic!</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
+      <br>
+      <mat-grid-list cols="3" rowHeight="3:2">
+        <mat-grid-tile>
+          <img width="100%" src="assets/img/dentist3.jpg"/>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <img width="100%" src="assets/img/dentist4.jpg"/>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <img width="100%" src="assets/img/dentist5.jpg"/>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <br>
       <p>
-        At Family Dental Care, by focusing our time and effort on preventing
-        dental problems, we can help our patients protect the health of their
-        natural teeth into their senior years; in fact, due to advancements in
-        dental care and treatments, it is no longer the norm for people to lose
-        their teeth with age.
+        At Ontario Dental Care, we focus on preventative dental care. 
+        Our mission is to provide you with the highest quality care that is able to 
+        anticipate future problems and protect your dental health into your senior years. 
       </p>
       <p>
-        Our emphasis on preventative dental care includes routine check-ups and
-        patient education.
-      </p>
-      <p>
-        I obviously didn't come up with this text, the original is
-        <a
-          href="https://www.ottawadentist.ca/dental-services/preventive-dentistry/"
-          >this one</a
-        >
+        We are also able to provide a wide range of services that include general, cosmetic and restorative dentistry. 
+        This includes everything from routine check-ups to surgeries. 
+        We hope to welcome you in as one of our patients in the future!
       </p>
     </mat-card-content>
   </mat-card>
 
   <mat-card>
     <mat-card-title-group>
-      <mat-card-title>OH GOD OH PLEASE</mat-card-title>
-      <mat-card-subtitle>THE DEADLINE IS COMING UP</mat-card-subtitle>
-      <img mat-card-sm-image src="assets/img/aware.gif" />
+      <mat-card-title>About Us</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-      Guys when are we gonna start doing the backend? Only {{ days_left }} days
-      left, please tell me you have a plan.
+      <br>
+      <p>
+        Founded in 2004, Ontario Dental Care has been providing dental care to our community for almost 2 decades. 
+        Dental care is a big passion of ours, and we are happy to be able to help those in our community. 
+        If you are looking for a new dentist, we hope that you would join us and become one of our patients!
+      </p>
+      <p>
+        You can find our location below:
+      </p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22402.750990234956!2d-75.68977620790972!3d45.422569025862515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0505111a6987%3A0x7659a9e1a3f5b9e1!2sSandy%20Hill%20Dental%20Centre!5e0!3m2!1sen!2sca!4v1649861757012!5m2!1sen!2sca" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </mat-card-content>
   </mat-card>
+
+  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../our-services/'">Our Services</button>
+  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../faq/'">FAQ</button>
+  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../testimonials/'">Testimonials</button>
+  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../contact/'">Contact Us</button>
 </div>

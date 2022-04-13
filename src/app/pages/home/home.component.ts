@@ -6,53 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  isActive = false;
+  constructor() {}
 
-  interval_id: any;
-  days_left = 0;
-  hours_left = 0;
-  minutes_left = 0;
-  seconds_left = 0;
-
-  constructor() {
-    this.updateTime();
-  }
-
-  ngOnInit() {
-    this.interval_id = setInterval(() => {
-      this.updateTime();
-    }, 200);
-  }
-
-  ngOnDestroy() {
-    if (this.interval_id) {
-      clearInterval(this.interval_id);
-    }
-  }
-
-  calculateTimeUntilDeadLine() {
-    let now = new Date();
-    let deadline = new Date(2022, 1, 21);
-    let time = deadline.valueOf() - now.valueOf();
-    let delta = new Date(time);
-    let days = delta.getDate();
-    let hours = delta.getHours();
-    let minutes = delta.getMinutes();
-    let seconds = delta.getSeconds();
-
-    return {
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
-    };
-  }
-
-  updateTime() {
-    let t = this.calculateTimeUntilDeadLine();
-    this.days_left = t.days;
-    this.hours_left = t.hours;
-    this.minutes_left = t.minutes;
-    this.seconds_left = t.seconds;
-  }
+  ngOnInit(): void {}
 }
