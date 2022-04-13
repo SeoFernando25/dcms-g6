@@ -29,6 +29,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
 import { UpdateMyReviewComponent } from './pages/patient/update-my-review/update-my-review.component';
+import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
 import { SearchAppointmentComponent } from './pages/search-appointment/search-appointment.component';
 import { SearchAppointmentDetailComponent } from './pages/search-appointment-detail/search-appointment-detail.component';
 
@@ -60,6 +61,7 @@ const modules = [
     SearchComponent,
     SearchDetailComponent,
     FAQComponent,
+    ReceptionistComponent,
     SearchAppointmentComponent,
     SearchAppointmentDetailComponent
   ],
