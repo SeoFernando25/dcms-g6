@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface GenerialService {
   name: string;
@@ -32,7 +33,9 @@ export class OurServicesComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'price'];
   dataSource = ELEMENT_DATA;
 
-  constructor() {}
+  constructor(
+    public router: Router,
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
