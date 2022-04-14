@@ -8,6 +8,7 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
+import { RegisterComponent } from './pages/register/register.component';
 import {SearchAppointmentComponent} from './pages/search-appointment/search-appointment.component';
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'receptionist', component: ReceptionistComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
 export interface LoginDialogData {
@@ -22,7 +23,8 @@ export class LoginDialogComponent {
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LoginDialogData,
     public readonly supabase: SupabaseService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public router: Router
   ) {
     var user = this.supabase._supabase.auth.user();
     if (user == null) {
@@ -68,7 +70,7 @@ export class LoginDialogComponent {
           }
         });
     } else {
-      // Username does not exist, try to sign up
+      /*// Username does not exist, try to sign up
       this.supabase
         .signUp(this.data.username, this.data.password)
         .then((postgrestRes) => {
@@ -81,7 +83,13 @@ export class LoginDialogComponent {
           } else {
             this.snackBar.open('Login failed', 'Dismiss');
           }
-        });
+        });*/
     }
+  }
+
+  registerUser(){
+
+    this.router.navigate(['./register']);
+    this.dialogRef.close();
   }
 }

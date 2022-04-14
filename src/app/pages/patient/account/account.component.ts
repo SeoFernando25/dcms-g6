@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
@@ -32,18 +32,18 @@ export class AccountComponent implements OnInit {
     // Sort of unused for now
     guardian_id: new FormControl(''),
     // Person data
-    first_name: new FormControl(''),
+    first_name: new FormControl('', [Validators.required]),
     middle_name: new FormControl(''),
-    last_name: new FormControl(''),
-    gender: new FormControl(''),
-    date_of_birth: new FormControl(''),
-    phone_number: new FormControl(''),
-    ssn: new FormControl(''),
+    last_name: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    date_of_birth: new FormControl('', [Validators.required]),
+    phone_number: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    ssn: new FormControl('', [Validators.required, Validators.minLength(9)]),
     // Address
-    address_city: new FormControl(''),
-    address_postal_code: new FormControl(''),
-    address_region: new FormControl(''),
-    address_street: new FormControl(''),
+    address_city: new FormControl('', [Validators.required]),
+    address_postal_code: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    address_region: new FormControl('', [Validators.required]),
+    address_street: new FormControl('', [Validators.required]),
   });
 
   // Only allow days before today
@@ -154,6 +154,16 @@ export class AccountComponent implements OnInit {
           });
       }
     });
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.personForm.controls[controlName].hasError(errorName);
+  }
+  public AboveAge() {
+
+    var timeDiff = Math.abs(Date.now() - this.personForm.get('date_of_birth')?.value)
+    var age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    return 15 <= age;
   }
 
 }
