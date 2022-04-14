@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-faq',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faq.component.scss'],
 })
 export class FAQComponent implements OnInit {
-  constructor() {}
+  constructor(
+    public router: Router
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
