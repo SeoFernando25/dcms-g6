@@ -1,158 +1,269 @@
 <!--Set dentist1.jpg as header background image-->
-<header fxLayout="column" fxLayoutAlign="center center" class='big-header' style="background-image: url('assets/img/dentist1.jpg');">
-<!--Center Text "Our Services"-->
-    <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center" style="background-color:transparent ;">
-        <h1 style="color:white">Dental Services</h1>
-        <h3 style="color:white; margin-top: 30px; font-size: 23px;" >Our dental services are suited to all ages, including infants and seniors, and range from cosmetic to surgical.</h3>
-        <h2 style="color:white">Book Your Appointment Today.</h2>
-        <section>
-            <div class="appointment-button-row">
-              <button mat-raised-button>
-                  <mat-icon>calendar_today</mat-icon>Request an Appointment
-                </button>
-            </div>
-          </section>
-    </mat-toolbar>
+<header
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="big-header"
+  style="background-image: url('assets/img/dentist1.jpg')"
+>
+  <!--Center Text "Our Services"-->
+  <mat-toolbar
+    fxFill
+    class="big-headline"
+    angular-textcolor="White"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: transparent"
+  >
+    <h1 style="color: white">Dental Services</h1>
+    <h3 style="color: white; margin-top: 30px; font-size: 23px">
+      Our dental services are suited to all ages, including infants and seniors,
+      and range from cosmetic to surgical.
+    </h3>
+    <h2 style="color: white">Book Your Appointment Today.</h2>
+    <button mat-raised-button (click)="router.navigate(['/my/appointments'])">
+      <mat-icon>calendar_today</mat-icon>Request an Appointment
+    </button>
+  </mat-toolbar>
 </header>
 
 <mat-tab-group dynamicHeight mat-align-tabs="center">
-    <mat-tab label="General Dentistry">
-      <div class="General-box">
-        <div class="container-fluid padding">
-            <div class="row welcome text-center">
-                <div class="col-12">
-                    <h1 id="General Dentistry"class="display-4" fxLayoutAlign="center center" style="margin-top: 50px; font-size: 50px;">General Dentistry</h1>
-                    <h3 fxLayoutAlign="center center">Our Clinics provide children's dentistry, family dentistry, dental cleanings, and dental screenings.</h3>
-                </div>
-                <hr>
-            </div>
-        </div>
-        
-        <div class="col">
-            <div class="col1">
-                <h3 style=" margin-left: 280px;">Prevention is key when it comes to optimal oral health. Flossing, brushing and rinsing with mouthwash two to three times a day are the best ways to prevent plaque from building up on your teeth and slow tartar from forming, but it’s normal for tartar to accumulate over time.</h3>
-                <h3 style=" margin-left: 280px;"></h3>
-                <h3 style=" margin-left: 280px;">Our compassionate and professional team of dentists and hygienists combine tried-and-true techniques, along with advanced training and equipment to treat and manage all of your oral health needs. So whether you require a simple cleaning, gum care, braces, fillings, crowns, veneers, dentures, or just preventative education, we can help.</h3>
-                <h3 style=" margin-left: 280px; font-weight: bold;">Our Services</h3>
-                <ul>
-                    <li style=" margin-left: 280px; font-size: larger;">Childrens Dentistry</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Dental Cleaning</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Family Dentistry</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Oral Cancer Screening</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Tooth Extraction</li>
-                </ul>  
-            </div>
-            <div class="col2">
-                <img src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon4.png" class="img-fluid" width="150px" height="150px" style=" margin-left: 140px; margin-right: 300px;">
-            </div>
+  <mat-tab label="General Dentistry">
+    <div class="General-box">
+      <div class="container-fluid padding">
+        <div class="row welcome text-center">
+          <div class="col-12">
+            <h1
+              id="General Dentistry"
+              class="display-4"
+              fxLayoutAlign="center center"
+              style="margin-top: 50px; font-size: 50px"
+            >
+              General Dentistry
+            </h1>
+            <h3 fxLayoutAlign="center center">
+              Our Clinics provide children's dentistry, family dentistry, dental
+              cleanings, and dental screenings.
+            </h3>
           </div>
-        
-      </div>
-    </mat-tab>
-    <mat-tab label="Cosmetic Dentistry">
-      <div class="Cosmetic-Dentistry-box">
-        <div class="container-fluid padding">
-            <div class="row welcome text-center">
-                <div class="col-12">
-                    <h1 id="Cosmetic Dentistry"class="display-4" fxLayoutAlign="center center" style="margin-top: 50px; font-size: 50px;">Cosmetic Dentistry</h1>
-                    <h3 fxLayoutAlign="center center">From Invisalign, teeth whitening, dental veneers, dentures, to all-on-for.</h3>
-                </div>
-                <hr>
-            </div>
+          <hr />
         </div>
-        
-        <div class="col">
-            <div class="col1">
-                <h3 style=" margin-left: 280px;">Capital Dentistry understands that your smile says a lot about you and is an essential part of how people perceive you. These are two of the reasons why cosmetic dentistry continues to grow in popularity. Aimed at correcting imperfections like crooked teeth, stained teeth and yellow/grey teeth, cosmetic dentistry also helps maintain the health of your teeth and gums.</h3>
-                <h3 style=" margin-left: 280px;"></h3>
-                <h3 style=" margin-left: 280px;">Having a crooked smile or discoloured teeth can affect your confidence, but thanks to innovations in cosmetic dentistry, your new smile is just around the corner at Capital Dentistry. Common cosmetic procedures to enhance your smile include Invisalign, braces, teeth whitening, dental bondings and veneers, dentures and lip enhancements.</h3>
-                <h3 style=" margin-left: 280px; font-weight: bold;">Our Services</h3>
-                <ul>
-                    <li style=" margin-left: 280px; font-size: larger;">Dental Veneers</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Dentures</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Invisalign</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Teeth Whitening</li>
-                </ul>  
-            </div>
-            <div class="col2">
-                <img src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon12.png" class="img-fluid" width="150px" height="150px" style=" margin-left: 140px; margin-right: 300px;">
-            </div>
+      </div>
+
+      <div class="col">
+        <div class="col1">
+          <h3 style="margin-left: 280px">
+            Prevention is key when it comes to optimal oral health. Flossing,
+            brushing and rinsing with mouthwash two to three times a day are the
+            best ways to prevent plaque from building up on your teeth and slow
+            tartar from forming, but it’s normal for tartar to accumulate over
+            time.
+          </h3>
+          <h3 style="margin-left: 280px"></h3>
+          <h3 style="margin-left: 280px">
+            Our compassionate and professional team of dentists and hygienists
+            combine tried-and-true techniques, along with advanced training and
+            equipment to treat and manage all of your oral health needs. So
+            whether you require a simple cleaning, gum care, braces, fillings,
+            crowns, veneers, dentures, or just preventative education, we can
+            help.
+          </h3>
+          <h3 style="margin-left: 280px; font-weight: bold">Our Services</h3>
+          <ul>
+            <li style="margin-left: 280px; font-size: larger">
+              Childrens Dentistry
+            </li>
+            <li style="margin-left: 280px; font-size: larger">
+              Dental Cleaning
+            </li>
+            <li style="margin-left: 280px; font-size: larger">
+              Family Dentistry
+            </li>
+            <li style="margin-left: 280px; font-size: larger">
+              Oral Cancer Screening
+            </li>
+            <li style="margin-left: 280px; font-size: larger">
+              Tooth Extraction
+            </li>
+          </ul>
+        </div>
+        <div class="col2">
+          <img
+            src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon4.png"
+            class="img-fluid"
+            width="150px"
+            height="150px"
+            style="margin-left: 140px; margin-right: 300px"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Cosmetic Dentistry">
+    <div class="Cosmetic-Dentistry-box">
+      <div class="container-fluid padding">
+        <div class="row welcome text-center">
+          <div class="col-12">
+            <h1
+              id="Cosmetic Dentistry"
+              class="display-4"
+              fxLayoutAlign="center center"
+              style="margin-top: 50px; font-size: 50px"
+            >
+              Cosmetic Dentistry
+            </h1>
+            <h3 fxLayoutAlign="center center">
+              From Invisalign, teeth whitening, dental veneers, dentures, to
+              all-on-for.
+            </h3>
           </div>
-        
-      </div>
-    </mat-tab>
-    <mat-tab label="Restorative Dentistry">
-        <div class="Restorative-Dentistry-box">
-            <div class="container-fluid padding">
-                <div class="row welcome text-center">
-                    <div class="col-12">
-                        <h1 id="Restorative Dentistry"class="display-4" fxLayoutAlign="center center" style="margin-top: 50px; font-size: 50px;">Restorative Dentistry</h1>
-                        <h3 fxLayoutAlign="center center">From dental implants, root canals, dental bridges, dental crowns to wisdom teeth removal.</h3>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-            
-            <div class="col">
-                <div class="col1">
-                    <h3 style=" margin-left: 280px;">Restorative dentistry is the term used to describe the repair process to fix or replace teeth that have decay, chipped, broken or lost. Restorative treatments include sealants, fillings, inlays, onlays, crowns, bridges, dental implants & dentures.</h3>
-                    <h3 style=" margin-left: 280px; font-weight: bold;">Our Services</h3>
-                <ul>
-                    <li style=" margin-left: 280px; font-size: larger;">Dental Bridgtes</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Dental Crowns</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Dental Implants</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Root Canals</li>
-                    <li style=" margin-left: 280px; font-size: larger;">Wisdom Teeth Removal</li>
-                </ul>  
-                </div>
-                <div class="col2">
-                    <img src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon6.png" class="img-fluid" width="150px" height="150px" style=" margin-left: 140px; margin-right: 300px;">
-                </div>
-              </div>
+          <hr />
         </div>
-      </mat-tab>
-  </mat-tab-group>
+      </div>
 
+      <div class="col">
+        <div class="col1">
+          <h3 style="margin-left: 280px">
+            Capital Dentistry understands that your smile says a lot about you
+            and is an essential part of how people perceive you. These are two
+            of the reasons why cosmetic dentistry continues to grow in
+            popularity. Aimed at correcting imperfections like crooked teeth,
+            stained teeth and yellow/grey teeth, cosmetic dentistry also helps
+            maintain the health of your teeth and gums.
+          </h3>
+          <h3 style="margin-left: 280px"></h3>
+          <h3 style="margin-left: 280px">
+            Having a crooked smile or discoloured teeth can affect your
+            confidence, but thanks to innovations in cosmetic dentistry, your
+            new smile is just around the corner at Capital Dentistry. Common
+            cosmetic procedures to enhance your smile include Invisalign,
+            braces, teeth whitening, dental bondings and veneers, dentures and
+            lip enhancements.
+          </h3>
+          <h3 style="margin-left: 280px; font-weight: bold">Our Services</h3>
+          <ul>
+            <li style="margin-left: 280px; font-size: larger">
+              Dental Veneers
+            </li>
+            <li style="margin-left: 280px; font-size: larger">Dentures</li>
+            <li style="margin-left: 280px; font-size: larger">Invisalign</li>
+            <li style="margin-left: 280px; font-size: larger">
+              Teeth Whitening
+            </li>
+          </ul>
+        </div>
+        <div class="col2">
+          <img
+            src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon12.png"
+            class="img-fluid"
+            width="150px"
+            height="150px"
+            style="margin-left: 140px; margin-right: 300px"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Restorative Dentistry">
+    <div class="Restorative-Dentistry-box">
+      <div class="container-fluid padding">
+        <div class="row welcome text-center">
+          <div class="col-12">
+            <h1
+              id="Restorative Dentistry"
+              class="display-4"
+              fxLayoutAlign="center center"
+              style="margin-top: 50px; font-size: 50px"
+            >
+              Restorative Dentistry
+            </h1>
+            <h3 fxLayoutAlign="center center">
+              From dental implants, root canals, dental bridges, dental crowns
+              to wisdom teeth removal.
+            </h3>
+          </div>
+          <hr />
+        </div>
+      </div>
 
-  
-
+      <div class="col">
+        <div class="col1">
+          <h3 style="margin-left: 280px">
+            Restorative dentistry is the term used to describe the repair
+            process to fix or replace teeth that have decay, chipped, broken or
+            lost. Restorative treatments include sealants, fillings, inlays,
+            onlays, crowns, bridges, dental implants & dentures.
+          </h3>
+          <h3 style="margin-left: 280px; font-weight: bold">Our Services</h3>
+          <ul>
+            <li style="margin-left: 280px; font-size: larger">
+              Dental Bridgtes
+            </li>
+            <li style="margin-left: 280px; font-size: larger">Dental Crowns</li>
+            <li style="margin-left: 280px; font-size: larger">
+              Dental Implants
+            </li>
+            <li style="margin-left: 280px; font-size: larger">Root Canals</li>
+            <li style="margin-left: 280px; font-size: larger">
+              Wisdom Teeth Removal
+            </li>
+          </ul>
+        </div>
+        <div class="col2">
+          <img
+            src="https://www.capitaldentistry.ca/wp-content/uploads/2020/01/icon6.png"
+            class="img-fluid"
+            width="150px"
+            height="150px"
+            style="margin-left: 140px; margin-right: 300px"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
 
 <div class="container-fluid padding">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h1 id="about"class="display-4" fxLayoutAlign="center center" style="margin-top: 50px; font-size: 50px;">Service Prices</h1>
-		</div>
-		<hr>
-	</div>
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h1
+        id="about"
+        class="display-4"
+        fxLayoutAlign="center center"
+        style="margin-top: 50px; font-size: 50px"
+      >
+        Service Prices
+      </h1>
+    </div>
+    <hr />
+  </div>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
-    <!-- Service ID Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Service ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Service Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Price Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Service Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <div class="container-fluid padding">
-    <div class="row welcome text-center">
-        <div class="col-12">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Service Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
 
-        </div>
-    </div>
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Service Description</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Service Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price |currency }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div class="container-fluid padding">
+  <div class="row welcome text-center">
+    <div class="col-12"></div>
+  </div>
 </div>

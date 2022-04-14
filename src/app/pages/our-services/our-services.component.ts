@@ -1,27 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SupabaseService } from 'src/app/services/supabase.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PostgrestResponse } from '@supabase/supabase-js';
 
 export interface GenerialService {
   name: string;
-  position: number;
-  price: string;
+  description: string;
+  price: number;
 }
 
-const ELEMENT_DATA: GenerialService[] = [
-  { position: 1, name: 'Childrens Dentistry', price: '$100' },
-  { position: 2, name: 'Dental Cleaning', price: '$200' },
-  { position: 3, name: 'Family Dentistry', price: '$300' },
-  { position: 4, name: 'Oral Cancer Screening', price: '$400' },
-  { position: 5, name: 'Tooth Extraction', price: '$500' },
-  { position: 6, name: 'Dental Veneers', price: '$100' },
-  { position: 7, name: 'Dentures', price: '$200' },
-  { position: 8, name: 'Invisalign', price: '$300' },
-  { position: 9, name: 'Teeth Whitening', price: '$400' },
-  { position: 10, name: 'Dental Bridgtes', price: '$400' },
-  { position: 11, name: 'Dental Crowns', price: '$400' },
-  { position: 12, name: 'Dental Implants', price: '$400' },
-  { position: 13, name: 'Root Canals', price: '$400' },
-  { position: 14, name: 'Wisdom Teeth Removal', price: '$400' },
-];
+const ELEMENT_DATA: GenerialService[] = [];
 
 @Component({
   selector: 'app-our-services',
@@ -29,10 +19,35 @@ const ELEMENT_DATA: GenerialService[] = [
   styleUrls: ['./our-services.component.scss'],
 })
 export class OurServicesComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'price'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = [
+    'name',
+    'description',
+    'price'
+  ];
+  dataSource = new MatTableDataSource<GenerialService>([]);
 
-  constructor() {}
+  constructor(
+    public router: Router,
+    private snackBar: MatSnackBar,
+    private supabase: SupabaseService,
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let sb = this.supabase._supabase;
+    sb.from('procedure_type')
+    .select('*')
+    .then((data) => {
+      console.log(data.body);
+      this.updateData(data);
+   });
+  }
+
+  updateData(data: PostgrestResponse<any>) {
+    if (data.error) {
+      console.log('data.error: ', data.error);
+      this.snackBar.open('Error: ' + data.error.details, 'Close');
+    } else {
+      this.dataSource.data = data.body;
+    }
+  }
 }

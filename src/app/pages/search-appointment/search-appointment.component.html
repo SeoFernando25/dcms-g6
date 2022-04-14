@@ -1,0 +1,160 @@
+<header
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="big-header"
+  style="background-image: url('assets/img/dentist1.jpg')"
+>
+  <!--Center Text "Our Services"-->
+  <mat-toolbar
+    fxFill
+    class="big-headline"
+    angular-textcolor="White"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: transparent"
+  >
+    <h1 style="color: white">Search Appointment</h1>
+  </mat-toolbar>
+</header>
+
+<div class="My Reivew-box">
+  <div class="container-fluid padding">
+    <div class="row welcome text-center" style="margin-left: 260px">
+      <div class="col-12">
+        <h1
+          id="Review"
+          class="display-4"
+          fxLayoutAlign=""
+          style="margin-top: 50px; font-size: 50px"
+        >
+          Search
+        </h1>
+        <h3 fxLayoutAlign="">Search Appointment</h3>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
+
+<div class="splitscreen" style="margin-left: 120px">
+    <div class="left" style="float: left; width: 800px">
+      <mat-form-field appearance="standard">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. Name"
+          #input
+        />
+      </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; width: auto; margin-top: 30px">
+      <h3>Upcoming</h3>
+    </div>
+    <div
+      class="right"
+      style="float: left; width: auto; margin-left: 10px; margin-top: 30px"
+    >
+      <mat-slide-toggle [(ngModel)]="isChecked" (change)="updateFilter()">
+        <h3 style="float: left; width: auto; margin-top: 20px">Previous</h3>
+      </mat-slide-toggle>
+    </div>
+  </div>
+  
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="appointment_id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.appointment_id }}
+        </td>
+      </ng-container>
+  
+      <!-- Appointment Date Column -->
+      <ng-container matColumnDef="clinic_id">
+        <th mat-header-cell *matHeaderCellDef>Clinic</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.branch.address_city}}
+        </td>
+      </ng-container>
+
+
+
+    <!-- Appointment Date Column -->
+      <ng-container matColumnDef="appointment_status">
+        <th mat-header-cell *matHeaderCellDef>Appointment Status</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.appointment_status }}
+        </td>
+      </ng-container>
+
+    <!-- Overall Column -->
+    <ng-container matColumnDef="appointment_date">
+        <th mat-header-cell *matHeaderCellDef>Appointment Date</th>
+        <td mat-cell *matCellDef="let element">
+            {{ element.appointment_date | date }}
+        </td>
+    </ng-container>
+  
+      <!-- Professionalism Column -->
+      <ng-container matColumnDef="start_time">
+        <th mat-header-cell *matHeaderCellDef>Start Time</th>
+        <td mat-cell *matCellDef="let element">{{ element.start_time }}</td>
+      </ng-container>
+  
+      <!-- Cleanliness Column -->
+      <ng-container matColumnDef="end_time">
+        <th mat-header-cell *matHeaderCellDef>End Time</th>
+        <td mat-cell *matCellDef="let element">{{ element.end_time}}</td>
+      </ng-container>
+  
+      <!-- Communication Column -->
+      <ng-container matColumnDef="appointment_type">
+        <th mat-header-cell *matHeaderCellDef>Appointment Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.appointment_type }}</td>
+      </ng-container>
+  
+      <!-- Feedback Column -->
+      <ng-container matColumnDef="room_assigned">
+        <th mat-header-cell *matHeaderCellDef>Room Assigned</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.room_assigned }}
+        </td>
+      </ng-container>
+  
+      <!-- Action Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button matTooltip="Click to View Detail" class="iconbutton" color="primary" (click)="viewDetail(row)">
+                <mat-icon aria-label="info">info</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of Patient or Employee"
+    >
+    </mat-paginator>
+  </div>
+  
+  <div class="container-fluid padding">
+    <div class="row welcome text-center">
+      <div class="col-12"></div>
+    </div>
+  </div>
+  

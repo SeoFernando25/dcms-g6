@@ -6,8 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { timer, Subscription, Observable } from 'rxjs';
 
-import { UpdateMyReviewComponent } from '../../update-my-review/update-my-review.component';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { UpdateMyReviewComponent } from '../update-my-review/update-my-review.component';
 
 export interface UserFeedbackList {
   review_id: number;

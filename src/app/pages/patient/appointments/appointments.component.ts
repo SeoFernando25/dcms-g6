@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+
 
 @Component({
   selector: 'app-appointments',
@@ -24,8 +27,9 @@ export class AppointmentsComponent implements OnInit {
     private supabase: SupabaseService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     // Load all user appointments from database
@@ -44,7 +48,11 @@ export class AppointmentsComponent implements OnInit {
       });
   }
 
-  addAppointment() {}
+  addAppointment() {
+    const dialogRef = this.dialog.open(AddAppointmentComponent);
+  }
+
+
 
   clickedRow(row: any) {
     console.log(row);

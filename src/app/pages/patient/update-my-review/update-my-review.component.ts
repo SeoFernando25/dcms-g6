@@ -9,7 +9,7 @@ import { SupabaseService } from 'src/app/services/supabase.service';
   templateUrl: './update-my-review.component.html',
   styleUrls: [
     './update-my-review.component.scss',
-    './../patient/review/review.component.scss',
+    './../review/review.component.scss',
   ],
 })
 export class UpdateMyReviewComponent implements OnInit {

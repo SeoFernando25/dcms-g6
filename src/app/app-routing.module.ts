@@ -5,15 +5,23 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
+import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
+import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
+import {SearchAppointmentComponent} from './pages/search-appointment/search-appointment.component';
+import { RoleGuard } from './guards/role/role.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent},
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
+  { path: 'receptionist', component: ReceptionistComponent}, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] } 
+  { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -21,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

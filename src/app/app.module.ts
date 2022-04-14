@@ -25,8 +25,13 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TimesPipe } from 'src/app/pipes/times.pipe';
 import { OurServicesComponent } from './pages/our-services/our-services.component';
 import { PatientModule } from './pages/patient/patient.module';
-import { UpdateMyReviewComponent } from './pages/update-my-review/update-my-review.component';
+import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
+import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
+import { UpdateMyReviewComponent } from './pages/patient/update-my-review/update-my-review.component';
+import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
+import { SearchAppointmentComponent } from './pages/search-appointment/search-appointment.component';
+import { SearchAppointmentDetailComponent } from './pages/search-appointment-detail/search-appointment-detail.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -53,10 +58,15 @@ const modules = [
     TimesPipe,
     OurServicesComponent,
     UpdateMyReviewComponent,
+    SearchComponent,
+    SearchDetailComponent,
     FAQComponent,
+    ReceptionistComponent,
+    SearchAppointmentComponent,
+    SearchAppointmentDetailComponent
   ],
 })
-export class ExternalModules {}
+export class ExternalModules { }
 
 @NgModule({
   declarations: [AppComponent],
@@ -75,4 +85,4 @@ export class ExternalModules {}
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
