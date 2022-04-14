@@ -21,16 +21,16 @@
 
 <div class="container">
     <div fxLayout="column" fxLayoutAlign="space-evenly center">
-        <div><button class="mbutton" mat-raised-button color="primary">
+        <div><button class="mbutton" mat-raised-button color="primary" (click)="registerUser()">
             Register new Patient
         </button></div>
-        <div><button class="mbutton" mat-raised-button color="primary">
+        <div><button class="mbutton" mat-raised-button color="primary" (click)="editUser()">
             Edit existing patient information
         </button></div>
-        <div><button class="mbutton" mat-raised-button color="primary">
+        <div><button class="mbutton" mat-raised-button color="primary" (click)="createAppointment()">
             Create new appointment
         </button></div>
-        <div><button class="mbutton" mat-raised-button color="primary">
+        <div><button class="mbutton" mat-raised-button color="primary" (click)="editAppointment()">
             Edit existing appointment
         </button></div>
     </div>

@@ -56,6 +56,57 @@ export class SupabaseService implements OnInit {
       .single();
   }
 
+  getPersonDataWithID(id:string){
+    return this._supabase
+      .from('person')
+      .select('*')
+      .eq('auth_id', id)
+      .limit(1)
+      .single();
+  }
+
+  getPatientData(){
+    return this._supabase
+    .from('patient')
+    .select('*')
+    .eq('patient_id', this._supabase.auth.user()?.id)
+    .limit(1)
+    .single();
+  }
+
+  getPatientDataWithID(id:string){
+    return this._supabase
+    .from('patient')
+    .select('*')
+    .eq('patient_id', id)
+    .limit(1)
+    .single();
+  }
+
+  getEmployeeData(){
+    return this._supabase
+    .from('employee')
+    .select('*')
+    .eq('employee_id', this._supabase.auth.user()?.id)
+    .limit(1)
+    .single();
+  }
+
+  getEmployeeDataWithID(id:string){
+    return this._supabase
+    .from('employee')
+    .select('*')
+    .eq('employee_id', id)
+    .limit(1)
+    .single();
+  }
+
+  getBranchData(){
+    return this._supabase
+    .from('branch')
+    .select('clinic_id,address_street')
+  }
+
   signOut() {
     return this._supabase.auth.signOut();
   }

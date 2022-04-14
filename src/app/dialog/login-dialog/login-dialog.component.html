@@ -4,12 +4,9 @@
         Login/Register
     </h1>
 
-    <div  fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="1rem">
-        <p>
-            Hello,   
-        </p>
+    <div fxLayout="column" fxLayoutAlign="stretch">
         <mat-form-field appearance="fill">
-            <mat-label>Username</mat-label>
+            <mat-label>Email</mat-label>
             <input  matInput [(ngModel)]="data.username" (focusout)="onLeaveUsernameField()">
         </mat-form-field>
     </div>
@@ -25,10 +22,13 @@
         </mat-form-field>
     </div>
 </div>
-<div  mat-dialog-actions *ngIf="data.password && data.username">
-  <button fxFill mat-button (click)="tryLogin()" >
+<div  mat-dialog-actions>
+  <button fxFill mat-button *ngIf="data.password && data.username" (click)="tryLogin()" >
      <!-- If username exists show login, else register  -->
-     <span *ngIf="username_exists">Login</span>
-    <span *ngIf="!username_exists">Register</span>
+     Login
    </button>
+   <br/>
+   <button fxFill mat-button style="margin-left: 0px;" (click)="registerUser()" >
+   Register
+  </button>
 </div>

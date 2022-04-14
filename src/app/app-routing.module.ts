@@ -8,8 +8,10 @@ import { OurServicesComponent } from './pages/our-services/our-services.componen
 import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { SearchAppointmentComponent } from './pages/search-appointment/search-appointment.component';
 import { RoleGuard } from './guards/role/role.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'our-services', component: OurServicesComponent },
   { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
+  { path: 'register', component: RegisterComponent},
   { path: 'receptionist', component: ReceptionistComponent }, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] }
   { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
