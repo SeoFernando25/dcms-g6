@@ -2,19 +2,6 @@
 
 <!-- Menu template -->
 <ng-template #menu_template let-value="text">
-  <!-- About us menu -->
-
-  <button mat-button [matMenuTriggerFor]="menu">About us</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/">
-      <mat-icon>mood</mat-icon>
-      <span>Who we are</span>
-    </button>
-    <button mat-menu-item routerLink="/faq">
-      <mat-icon>info</mat-icon>
-      <span>FAQ</span>
-    </button>
-  </mat-menu>
   <a mat-button routerLink="/our-services">Our Services</a>
   <a mat-button routerLink="/faq">FAQ</a>
   <a mat-button routerLink="/search">Search</a>
