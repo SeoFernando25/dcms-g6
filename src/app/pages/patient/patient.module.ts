@@ -39,4 +39,4 @@ import { AddAppointmentComponent } from './appointments/add-appointment/add-appo
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule { }
+export class PatientModule {}
