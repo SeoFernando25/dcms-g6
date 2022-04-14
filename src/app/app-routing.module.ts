@@ -9,17 +9,18 @@ import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
 import {SearchAppointmentComponent} from './pages/search-appointment/search-appointment.component';
+import { RoleGuard } from './guards/role/role.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent},
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'login', component: PageNotFoundComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
-  { path: 'receptionist', component: ReceptionistComponent},
+  { path: 'receptionist', component: ReceptionistComponent}, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] } 
   { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
