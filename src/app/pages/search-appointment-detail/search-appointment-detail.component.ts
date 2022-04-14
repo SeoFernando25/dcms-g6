@@ -19,7 +19,7 @@ export interface procedure {
 @Component({
   selector: 'app-search-appointment-detail',
   templateUrl: './search-appointment-detail.component.html',
-  styleUrls: ['./search-appointment-detail.component.scss']
+  styleUrls: ['./search-appointment-detail.component.scss'],
 })
 export class SearchAppointmentDetailComponent implements OnInit {
   displayedColumns: string[] = [
@@ -42,48 +42,47 @@ export class SearchAppointmentDetailComponent implements OnInit {
     dentist_phone_number: new FormControl(''),
   });
 
-
   constructor(
     private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    console.log("EDIT DATA", this.editData.appointment_id);
+    console.log('EDIT DATA', this.editData.appointment_id);
     let sb = this.supabase._supabase;
     sb.from('person')
-    .select('*')
-    .eq('auth_id', this.editData.patient_id)
-    .then((data) => {
-      //console.log('Data', data.body);
-      this.AppointmentDetailForm.patchValue({
-        patient_first_name: data.body?.at(0).first_name,
-        patient_middle_name: data.body?.at(0).middle_name,
-        patient_last_name: data.body?.at(0).last_name,
-        patient_phone_number: data.body?.at(0).phone_number,
+      .select('*')
+      .eq('auth_id', this.editData.patient_id)
+      .then((data) => {
+        //console.log('Data', data.body);
+        this.AppointmentDetailForm.patchValue({
+          patient_first_name: data.body?.at(0).first_name,
+          patient_middle_name: data.body?.at(0).middle_name,
+          patient_last_name: data.body?.at(0).last_name,
+          patient_phone_number: data.body?.at(0).phone_number,
+        });
       });
-    });
     sb.from('person')
-    .select('*')
-    .eq('auth_id', this.editData.dentist_id)
-    .then((data) => {
-      //console.log('Data', data.body);
-      this.AppointmentDetailForm.patchValue({
-        dentist_first_name: data.body?.at(0).first_name,
-        dentist_middle_name: data.body?.at(0).middle_name,
-        dentist_last_name: data.body?.at(0).last_name,
-        dentist_phone_number: data.body?.at(0).phone_number,
+      .select('*')
+      .eq('auth_id', this.editData.dentist_id)
+      .then((data) => {
+        //console.log('Data', data.body);
+        this.AppointmentDetailForm.patchValue({
+          dentist_first_name: data.body?.at(0).first_name,
+          dentist_middle_name: data.body?.at(0).middle_name,
+          dentist_last_name: data.body?.at(0).last_name,
+          dentist_phone_number: data.body?.at(0).phone_number,
+        });
       });
-    });
     sb.from('appointment_procedure')
-    .select('*')
-    .eq('appointment_id', this.editData.appointment_id)
-    .then((data) => {
-      //console.log('Data', data.body);
-      this.updateData(data);
-    });
+      .select('*')
+      .eq('appointment_id', this.editData.appointment_id)
+      .then((data) => {
+        //console.log('Data', data.body);
+        this.updateData(data);
+      });
   }
 
   updateData(data: PostgrestResponse<any>) {
@@ -94,7 +93,7 @@ export class SearchAppointmentDetailComponent implements OnInit {
       this.dataSource.data = data.body;
     }
   }
-  
+
   closeDialog() {
     this.dialog.closeAll();
   }

@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

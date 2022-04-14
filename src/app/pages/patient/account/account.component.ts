@@ -12,10 +12,9 @@ export interface Appointment {
 }
 
 const ELEMENT_DATA: Appointment[] = [
-
-  {id: 1, date: "2022-04-16", location:"Ottawa", dentist:"John Bob" },
-  {id: 2, date: "2022-04-17", location:"Ottawa", dentist:"John Bob" },
-  {id: 3, date: "2022-06-04", location:"Toronto", dentist:"Bob John" },
+  { id: 1, date: '2022-04-16', location: 'Ottawa', dentist: 'John Bob' },
+  { id: 2, date: '2022-04-17', location: 'Ottawa', dentist: 'John Bob' },
+  { id: 3, date: '2022-06-04', location: 'Toronto', dentist: 'Bob John' },
 ];
 
 @Component({
@@ -24,7 +23,6 @@ const ELEMENT_DATA: Appointment[] = [
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-
   timeoutId: any;
   creds: User | null = null;
   personForm = new FormGroup({
@@ -62,10 +60,11 @@ export class AccountComponent implements OnInit {
   displayedColumns: string[] = ['id', 'date', 'location', 'dentist'];
   dataSource = ELEMENT_DATA;
 
-
-  constructor(private supabase: SupabaseService,
-    private snackBar: MatSnackBar,fb: FormBuilder) {
-
+  constructor(
+    private supabase: SupabaseService,
+    private snackBar: MatSnackBar,
+    fb: FormBuilder
+  ) {
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
@@ -95,7 +94,7 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  cancelChanges(){
+  cancelChanges() {
     var personData = this.supabase.getPersonData();
     personData.then((data) => {
       if (data.error == null) {
@@ -107,8 +106,8 @@ export class AccountComponent implements OnInit {
     });
   }
 
-   // Update user data
-   saveChanges() {
+  // Update user data
+  saveChanges() {
     console.log('Saving changes...');
 
     var personData = this.supabase.getPersonData();
@@ -155,7 +154,6 @@ export class AccountComponent implements OnInit {
       }
     });
   }
-
   public hasError = (controlName: string, errorName: string) => {
     return this.personForm.controls[controlName].hasError(errorName);
   }
@@ -165,5 +163,4 @@ export class AccountComponent implements OnInit {
     var age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     return 15 <= age;
   }
-
 }

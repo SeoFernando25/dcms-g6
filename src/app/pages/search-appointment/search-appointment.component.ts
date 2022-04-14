@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostgrestResponse } from '@supabase/supabase-js';
 
 import { MatDialog } from '@angular/material/dialog';
-import {SearchAppointmentDetailComponent} from '../search-appointment-detail/search-appointment-detail.component';
+import { SearchAppointmentDetailComponent } from '../search-appointment-detail/search-appointment-detail.component';
 
 export interface appointment {
   clinic_id: number;
@@ -23,7 +23,7 @@ export interface appointment {
 @Component({
   selector: 'app-search-appointment',
   templateUrl: './search-appointment.component.html',
-  styleUrls: ['./search-appointment.component.scss']
+  styleUrls: ['./search-appointment.component.scss'],
 })
 export class SearchAppointmentComponent implements OnInit {
   isChecked = false;
@@ -111,8 +111,8 @@ export class SearchAppointmentComponent implements OnInit {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    
-    return  yyyy + '-' + mm + '-' + dd;
+
+    return yyyy + '-' + mm + '-' + dd;
   }
 
   viewDetail(row: any) {

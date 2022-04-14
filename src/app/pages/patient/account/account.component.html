@@ -1,23 +1,38 @@
 <!--Set dentist1.jpg as header background image-->
-<header fxLayout="column" fxLayoutAlign="center center" class='big-header'
-    style="background-image: url('assets/img/dentist1.jpg');">
-    <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center"
-        style="background-color:transparent ;">
-        <h1 style="color:white">My Account</h1>
-    </mat-toolbar>
+<header
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="big-header"
+  style="background-image: url('assets/img/dentist1.jpg')"
+>
+  <mat-toolbar
+    fxFill
+    class="big-headline"
+    angular-textcolor="White"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: transparent"
+  >
+    <h1 style="color: white">My Account</h1>
+  </mat-toolbar>
 </header>
 
 <div class="General-box">
-    <div class="container-fluid padding">
-        <div class="row welcome text-center" style="margin-left: 250px; margin-right: 250px;">
-            <div class="col-12">
-                <br>
-                <h1 style="margin-top: 50px; font-size: 50px;">Personal Information</h1>
-                <h3 style="padding-left: 2px">View and edit all your personal information.</h3>
-            </div>
-            <hr>
-        </div>
+  <div class="container-fluid padding">
+    <div
+      class="row welcome text-center"
+      style="margin-left: 250px; margin-right: 250px"
+    >
+      <div class="col-12">
+        <br />
+        <h1 style="margin-top: 50px; font-size: 50px">Personal Information</h1>
+        <h3 style="padding-left: 2px">
+          View and edit all your personal information.
+        </h3>
+      </div>
+      <hr />
     </div>
+  </div>
 </div>
 <form class="form" [formGroup]="personForm">
     <div class="container">

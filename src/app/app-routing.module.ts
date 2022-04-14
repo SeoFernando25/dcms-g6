@@ -9,7 +9,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ReceptionistComponent } from './pages/receptionist/receptionist.component';
 import { RegisterComponent } from './pages/register/register.component';
-import {SearchAppointmentComponent} from './pages/search-appointment/search-appointment.component';
+import { SearchAppointmentComponent } from './pages/search-appointment/search-appointment.component';
+import { RoleGuard } from './guards/role/role.guard';
 
 
 const routes: Routes = [
@@ -20,8 +21,8 @@ const routes: Routes = [
   { path: 'our-services', component: OurServicesComponent },
   { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
-  { path: 'receptionist', component: ReceptionistComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'receptionist', component: ReceptionistComponent }, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] }
   { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
@@ -30,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
