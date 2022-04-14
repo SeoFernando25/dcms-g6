@@ -19,27 +19,23 @@ const ELEMENT_DATA: GenerialService[] = [];
   styleUrls: ['./our-services.component.scss'],
 })
 export class OurServicesComponent implements OnInit {
-  displayedColumns: string[] = [
-    'name',
-    'description',
-    'price'
-  ];
+  displayedColumns: string[] = ['name', 'description', 'price'];
   dataSource = new MatTableDataSource<GenerialService>([]);
 
   constructor(
     public router: Router,
     private snackBar: MatSnackBar,
-    private supabase: SupabaseService,
-  ) { }
+    private supabase: SupabaseService
+  ) {}
 
   ngOnInit(): void {
     let sb = this.supabase._supabase;
     sb.from('procedure_type')
-    .select('*')
-    .then((data) => {
-      console.log(data.body);
-      this.updateData(data);
-   });
+      .select('*')
+      .then((data) => {
+        console.log(data.body);
+        this.updateData(data);
+      });
   }
 
   updateData(data: PostgrestResponse<any>) {

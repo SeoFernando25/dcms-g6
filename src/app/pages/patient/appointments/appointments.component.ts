@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from 'src/app/services/supabase.service';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 
-
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -29,7 +28,7 @@ export class AppointmentsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Load all user appointments from database
@@ -51,8 +50,6 @@ export class AppointmentsComponent implements OnInit {
   addAppointment() {
     const dialogRef = this.dialog.open(AddAppointmentComponent);
   }
-
-
 
   clickedRow(row: any) {
     console.log(row);

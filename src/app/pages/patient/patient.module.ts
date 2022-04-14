@@ -10,9 +10,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule } from 'ngx-mask';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ReviewComponent } from './review/review.component';
+import { BillingComponent } from './billing/billing.component';
 import { AddAppointmentComponent } from './appointments/add-appointment/add-appointment.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AddAppointmentComponent } from './appointments/add-appointment/add-appo
     AccountComponent,
     AppointmentComponent,
     ReviewComponent,
+    BillingComponent,
   ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -37,4 +39,4 @@ import { AddAppointmentComponent } from './appointments/add-appointment/add-appo
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule { }
+export class PatientModule {}

@@ -1,6 +1,18 @@
-<header fxLayout="column" fxLayoutAlign="center center" class='big-header' style="background-image: url('assets/img/dentist2.jpg');">
-  <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center" style="background-color:transparent ;">
-      <h1 style="color: white">Ontario Dental Care</h1>
+<header
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="big-header"
+  style="background-image: url('assets/img/dentist2.jpg')"
+>
+  <mat-toolbar
+    fxFill
+    class="big-headline"
+    angular-textcolor="White"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: transparent"
+  >
+    <h1 style="color: white">Ontario Dental Care</h1>
   </mat-toolbar>
 </header>
 
@@ -10,28 +22,30 @@
       <mat-card-title>Welcome To Our Clinic!</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-      <br>
+      <br />
       <mat-grid-list cols="3" rowHeight="3:2">
         <mat-grid-tile>
-          <img width="100%" src="assets/img/dentist3.jpg"/>
+          <img width="100%" src="assets/img/dentist3.jpg" />
         </mat-grid-tile>
         <mat-grid-tile>
-          <img width="100%" src="assets/img/dentist4.jpg"/>
+          <img width="100%" src="assets/img/dentist4.jpg" />
         </mat-grid-tile>
         <mat-grid-tile>
-          <img width="100%" src="assets/img/dentist5.jpg"/>
+          <img width="100%" src="assets/img/dentist5.jpg" />
         </mat-grid-tile>
       </mat-grid-list>
-      <br>
+      <br />
       <p>
-        At Ontario Dental Care, we focus on preventative dental care. 
-        Our mission is to provide you with the highest quality care that is able to 
-        anticipate future problems and protect your dental health into your senior years. 
+        At Ontario Dental Care, we focus on preventative dental care. Our
+        mission is to provide you with the highest quality care that is able to
+        anticipate future problems and protect your dental health into your
+        senior years.
       </p>
       <p>
-        We are also able to provide a wide range of services that include general, cosmetic and restorative dentistry. 
-        This includes everything from routine check-ups to surgeries. 
-        We hope to welcome you in as one of our patients in the future!
+        We are also able to provide a wide range of services that include
+        general, cosmetic and restorative dentistry. This includes everything
+        from routine check-ups to surgeries. We hope to welcome you in as one of
+        our patients in the future!
       </p>
     </mat-card-content>
   </mat-card>
@@ -41,21 +55,58 @@
       <mat-card-title>About Us</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-      <br>
+      <br />
       <p>
-        Founded in 2004, Ontario Dental Care has been providing dental care to our community for almost 2 decades. 
-        Dental care is a big passion of ours, and we are happy to be able to help those in our community. 
-        If you are looking for a new dentist, we hope that you would join us and become one of our patients!
+        Founded in 2004, Ontario Dental Care has been providing dental care to
+        our community for almost 2 decades. Dental care is a big passion of
+        ours, and we are happy to be able to help those in our community. If you
+        are looking for a new dentist, we hope that you would join us and become
+        one of our patients!
       </p>
-      <p>
-        You can find our location below:
-      </p>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22402.750990234956!2d-75.68977620790972!3d45.422569025862515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0505111a6987%3A0x7659a9e1a3f5b9e1!2sSandy%20Hill%20Dental%20Centre!5e0!3m2!1sen!2sca!4v1649861757012!5m2!1sen!2sca" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>You can find our location below:</p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22402.750990234956!2d-75.68977620790972!3d45.422569025862515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0505111a6987%3A0x7659a9e1a3f5b9e1!2sSandy%20Hill%20Dental%20Centre!5e0!3m2!1sen!2sca!4v1649861757012!5m2!1sen!2sca"
+        width="100%"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </mat-card-content>
   </mat-card>
 
-  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../our-services/'">Our Services</button>
-  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../faq/'">FAQ</button>
-  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../testimonials/'">Testimonials</button>
-  <button mat-raised-button color="primary" class="large-button" onclick="window.location.href='../contact/'">Contact Us</button>
+  <!-- Buttons for our-services, FAQ, Testimonials and contact us -->
+  <button
+    mat-raised-button
+    color="primary"
+    class="large-button"
+    (click)="router.navigate(['/our-services'])"
+  >
+    Our Services
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="large-button"
+    (click)="router.navigate(['/faq'])"
+  >
+    FAQ
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="large-button"
+    (click)="router.navigate(['/testimonials'])"
+  >
+    Testimonials
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="large-button"
+    (click)="router.navigate(['/contact'])"
+  >
+    Contact Us
+  </button>
 </div>
