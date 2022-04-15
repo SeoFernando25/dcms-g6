@@ -1,0 +1,97 @@
+<h1 mat-dialog-title>Medical Record Information</h1>
+<hr />
+<!--Create a form Reivew-->
+<!--<form [formGroup]="UpdateReviewForm" (ngSubmit)="UpdateReview()">-->
+<form [formGroup]="peopleDetailForm" (ngSubmit)="updateInfo()">
+  <br />
+  <h3 style="font-size: large">Personal Information</h3>
+  <div class="splitscreen" style="display: block;">
+    <div class="left" style="float: left; width: auto">
+      <mat-form-field class="first_name" appearance="fill">
+        <mat-label for="first_name">First Name</mat-label>
+        <textarea
+          matInput
+          placeholder="First Name"
+          rows="1"
+          formControlName="first_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px">
+      <mat-form-field class="middle_name" appearance="fill">
+        <mat-label for="middle_name">Middle Name</mat-label>
+        <textarea
+          matInput
+          placeholder="Middle Name"
+          rows="1"
+          formControlName="middle_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="right" style="float: left; width: auto; margin-left: 10px">
+      <mat-form-field class="last_name" appearance="fill">
+        <mat-label for="last_name">Last Name</mat-label>
+        <textarea
+          matInput
+          placeholder="Last Name"
+          rows="1"
+          formControlName="last_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="splitscreen">
+    <div class="left" style="float: left; width: auto">
+      <mat-form-field class="gender" appearance="fill"> 
+        <mat-label for="gender">Gender</mat-label>
+        <mat-select readonly formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other / Prefer not to disclose</mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px">
+      <mat-form-field class="age" appearance="fill">
+        <mat-label for="age">Age</mat-label>
+        <textarea
+          matInput
+          rows="1"
+          formControlName="age"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="right" style="float: left; width: auto; margin-left: 10px">
+      <mat-form-field class="phone_number" appearance="fill">
+        <mat-label for="phone_number">Phone Number</mat-label>
+        <input matInput readonly mask="(000) 000-0000" formControlName="phone_number">
+      </mat-form-field>
+    </div>
+    <br/>
+  </div>
+</form>
+<form [formGroup]="recordForm">
+  <h3 style="font-size: large">Medical Record Description</h3>
+  <div class="left" style="float: left; width: auto">
+    <mat-form-field class="description" appearance="fill" style="width: 620px">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        cols="500"
+        rows="6"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</form>
+<div class="Close">
+  <button mat-raised-button (click)="updateInfo()" color="warn" type="Close">Update Info</button>
+</div>
+
+
+  
+

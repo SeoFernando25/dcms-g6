@@ -35,6 +35,9 @@ import { SearchAppointmentComponent } from './pages/search-appointment/search-ap
 import { SearchAppointmentDetailComponent } from './pages/search-appointment-detail/search-appointment-detail.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { DentistComponent } from './pages/dentist/dentist.component';
+import { RecordComponent } from './pages/dentist/record/record.component';
+import { TreatmentComponent } from './pages/dentist/treatment/treatment.component';
+import { RecordDetailComponent } from './pages/dentist/record/record-detail/record-detail.component';
 
 const modules = [
   BrowserAnimationsModule,
@@ -68,6 +71,9 @@ const modules = [
     ReceptionistComponent,
     RegisterComponent,
     DentistComponent,
+    RecordComponent,
+    RecordDetailComponent,
+    TreatmentComponent,
     SearchAppointmentComponent,
     SearchAppointmentDetailComponent,
   ],

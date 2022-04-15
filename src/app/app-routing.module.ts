@@ -12,6 +12,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { SearchAppointmentComponent } from './pages/search-appointment/search-appointment.component';
 import { RoleGuard } from './guards/role/role.guard';
 import { DentistComponent } from './pages/dentist/dentist.component';
+import { RecordComponent } from './pages/dentist/record/record.component';
+import { TreatmentComponent } from './pages/dentist/treatment/treatment.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'receptionist', component: ReceptionistComponent }, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] }
   { path: 'dentist', component: DentistComponent },
+  { path: 'record', component: RecordComponent },
+  { path: 'treatment', component: TreatmentComponent },
   { path: 'search-appointment', component: SearchAppointmentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

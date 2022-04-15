@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 export class DentistComponent implements OnInit {
   constructor(
     public router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
+  editPatient() { this.router.navigate(['./record']); }
+
+  editAppointment() { this.router.navigate(['./treatment']); }
 
 }
 
