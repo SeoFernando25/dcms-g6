@@ -7,36 +7,38 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-records',
-  templateUrl: './records.component.html',
-  styleUrls: ['./records.component.scss']
+  templateUrl: './record.component.html',
+  styleUrls: ['./record.component.scss'],
 })
-export class RecordsComponent implements OnInit {
-  messages: any[] = [];
+export class RecordComponent implements OnInit {
+  record: any = {};
 
-  constructor(
-    private supabase: SupabaseService
-  ) { }
+  constructor(private supabase: SupabaseService) {}
 
   ngOnInit(): void {
     // If we wanted to get patient info
     // patient_id!record_patient_id_fkey(patient_id!patient_patient_id_fkey(*)),
 
-    this.supabase._supabase.from('record')
-      .select(`*,
+    this.supabase._supabase
+      .from('record')
+      .select(
+        `*,
         written_by!record_written_by_fkey(
           employee_id!employee_employee_id_fkey(*)
         ))
-      `)
+      `
+      )
       .eq('patient_id', this.supabase._supabase.auth.user()?.id)
+      .limit(1)
+      .single()
       .then((data) => {
         console.log(data);
         if (data.error) {
           console.log('data.error: ', data.error);
         } else {
           console.log(data.body);
-          this.messages = data.body;
+          this.record = data.body;
         }
-      }
-      );
+      });
   }
 }

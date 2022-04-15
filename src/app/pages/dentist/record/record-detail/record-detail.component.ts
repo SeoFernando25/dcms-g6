@@ -3,6 +3,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { SearchAppointmentDetailComponent } from '../../../search-appointment-detail/search-appointment-detail.component';
+import { PostgrestResponse } from '@supabase/supabase-js';
+
+export interface appointment {
+  clinic_id: number;
+  appointment_date: string;
+  appointment_status: string;
+  start_time: string;
+  end_time: string;
+  appointment_type: string;
+  appointment_id: string;
+}
 
 @Component({
   selector: 'app-record-detail',
@@ -21,18 +34,32 @@ export class RecordDetailComponent implements OnInit {
   recordForm = new FormGroup({
     description: new FormControl(''),
   });
+  displayedColumns: string[] = [
+    'appointment_id',
+    'clinic_id',
+    'appointment_date',
+    'appointment_status',
+    'start_time',
+    'end_time',
+    'appointment_type',
+    'actions',
+  ];
+  dataSource = new MatTableDataSource<appointment>([]);
 
   constructor(
     private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private supabase: SupabaseService
-  ) { }
+  ) {}
 
   recordExists: boolean;
   ngOnInit(): void {
-    var age : number;
-    var timeDiff = Math.abs(Date.now() - new Date(this.editData.person.date_of_birth).getTime());
+    var age: number;
+    var timeDiff = Math.abs(
+      Date.now() - new Date(this.editData.person.date_of_birth).getTime()
+    );
     age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     console.log('editData', this.editData);
     this.peopleDetailForm.patchValue({
@@ -54,14 +81,40 @@ export class RecordDetailComponent implements OnInit {
             description: data.body?.at(0).description,
           });
           this.recordExists = true;
-        }
-        else {
+        } else {
           this._snackBar.open('No existing medical record', 'Close', {
             duration: 2000,
           });
           this.recordExists = false;
         }
       });
+    sb.from('appointment')
+      .select('*, branch("*")')
+      .lte('appointment_date', this.getCurrentDate())
+      .eq('patient_id', this.editData.person.auth_id)
+      .then((data) => {
+        //console.log("Edit Data", this.editData);
+        this.updateData(data);
+      });
+  }
+
+  updateData(data: PostgrestResponse<any>) {
+    if (data.error) {
+      console.log('data.error: ', data.error);
+      this.snackBar.open('Error: ' + data.error.details, 'Close');
+    } else {
+      this.dataSource.data = data.body;
+    }
+  }
+
+  getCurrentDate() {
+    //Get current date in YYYY-MM-DD format
+    var today = new Date();
+    var dd = String(today.getDate() + 1).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return yyyy + '-' + mm + '-' + dd;
   }
 
   updateInfo() {
@@ -86,8 +139,7 @@ export class RecordDetailComponent implements OnInit {
             });
           }
         });
-    }
-    else{
+    } else {
       sb.from('record')
         .insert({
           description: this.recordForm.value.description,
@@ -108,5 +160,10 @@ export class RecordDetailComponent implements OnInit {
           }
         });
     }
+  }
+
+  viewDetail(row: any) {
+    //console.log(row);
+    this.dialog.open(SearchAppointmentDetailComponent, { data: row });
   }
 }

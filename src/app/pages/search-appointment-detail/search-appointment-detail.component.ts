@@ -22,6 +22,7 @@ export interface procedure {
   styleUrls: ['./search-appointment-detail.component.scss'],
 })
 export class SearchAppointmentDetailComponent implements OnInit {
+  isDenstist = false;
   displayedColumns: string[] = [
     'procedure_id',
     'procedure_type_id',
@@ -111,25 +112,48 @@ export class SearchAppointmentDetailComponent implements OnInit {
     console.log('update Value', this.AppointmentDetailForm.value);
     let sb = this.supabase._supabase;
     sb.from('appointment')
-    .update({
-      appointment_date: this.AppointmentDetailForm.value.appointment_date,
-      start_time: this.AppointmentDetailForm.value.start_time,
-      end_time: this.AppointmentDetailForm.value.end_time,
-      appointment_status: this.AppointmentDetailForm.value.appointment_status,
-    }).eq('appointment_id', this.editData.appointment_id)
-    .then((data) => {
-      if (data.error) {
-        console.log('Error: ', data.error);
-        this._snackBar.open('Appointment Updated Error', 'Close', {
-          duration: 2000,
-        });
-      } else {
-        this._snackBar.open('Appointment Updated', 'Close', {
-          duration: 2000,
-        });
-        this.dialog.closeAll();
-      }
-    });
+      .update({
+        appointment_date: this.AppointmentDetailForm.value.appointment_date,
+        start_time: this.AppointmentDetailForm.value.start_time,
+        end_time: this.AppointmentDetailForm.value.end_time,
+        appointment_status: this.AppointmentDetailForm.value.appointment_status,
+      })
+      .eq('appointment_id', this.editData.appointment_id)
+      .then((data) => {
+        if (data.error) {
+          console.log('Error: ', data.error);
+          this._snackBar.open('Appointment Updated Error', 'Close', {
+            duration: 2000,
+          });
+        } else {
+          this._snackBar.open('Appointment Updated', 'Close', {
+            duration: 2000,
+          });
+          this.dialog.closeAll();
+        }
+      });
+  }
 
+  checkDentist() {
+    let sb = this.supabase._supabase;
+    return sb
+      .from('employee')
+      .select('*')
+      .eq('employee_id', sb.auth.user()?.id)
+      .then((data) => {
+        if (data.error) {
+          console.log('Error: ', data.error);
+        } else {
+          if (data.body?.at(0).role_type == 'Dentist') {
+            //console.log('Dentist Data:' , data);
+            this.isDenstist = true;
+          }
+        }
+      });
+  }
+
+  getDentist() {
+    this.checkDentist();
+    return this.isDenstist;
   }
 }

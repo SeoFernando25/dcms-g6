@@ -87,8 +87,7 @@ export class LoginDialogComponent {
     }
   }
 
-  registerUser(){
-
+  registerUser() {
     this.router.navigate(['./register']);
     this.dialogRef.close();
   }

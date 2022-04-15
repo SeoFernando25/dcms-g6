@@ -7,16 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./dentist.component.scss'],
 })
 export class DentistComponent implements OnInit {
-  constructor(
-    public router: Router
-  ) { }
+  constructor(public router: Router) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  editPatient() { this.router.navigate(['./record']); }
+  editPatient() {
+    this.router.navigate(['./record']);
+  }
 
-  editAppointment() { this.router.navigate(['./treatment']); }
-
+  editAppointment() {
+    this.router.navigate(['./treatment']);
+  }
 }
-
-

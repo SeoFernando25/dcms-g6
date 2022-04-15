@@ -121,7 +121,11 @@
           <button mat-icon-button matTooltip="Click to View Detail" class="iconbutton" color="primary" (click)="viewDetail(row)">
               <mat-icon aria-label="info">info</mat-icon>
           </button>
+          <button mat-icon-button matTooltip="Click to Add Appointment" class="iconbutton" color="primary" (click)="addAppointment(row)">
+            <mat-icon aria-label="add">add</mat-icon>
+        </button>
       </td>
+
   </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

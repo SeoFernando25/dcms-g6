@@ -1,4 +1,4 @@
-<div fxFill fxLayout="column">
+<div fxLayout="column">
   <header class="small-header" fxLayout="column">
     <mat-toolbar
       fxFill
@@ -21,37 +21,49 @@
     </mat-toolbar>
   </header>
 
-  <div>
-    <!-- Material Card for each fee -->
-    <mat-card *ngFor="let fee of dataSource">
+  <!-- Material Card for each fee -->
+  <div *ngIf="!payingAnimation">
+    <mat-card *ngFor="let fee of dataSource" [class.faded]="fee?.paid">
       <mat-card-title>
-        {{
-          (fee?.appointment_procedure?.procedure_type_id?.name || "Unknown") +
-            " Procedure"
-        }}
+        {{ (fee?.name || "Unknown") + " Procedure" }}
       </mat-card-title>
       <mat-card-subtitle
-        >Total Cost {{ fee?.total_charge || "TBD" }}
+        >Total Cost {{ fee?.price * fee?.quantity | currency }}
       </mat-card-subtitle>
       <mat-card-content>
         <strong>Procedure Code:</strong>
-        {{
-          fee?.appointment_procedure?.procedure_type_id?.procedure_code ||
-            "Unknown"
-        }}
+        {{ fee?.procedure_type_id || "Unknown" }}
         <br />
         <strong>Procedure Details:</strong>
-        {{
-          fee?.appointment_procedure?.procedure_type_id?.description ||
-            "Unknown"
-        }}
+        {{ fee?.description || "Unknown" }}
         <br />
         <strong>Tooth:</strong>
-        {{ fee?.appointment_procedure?.tooth || "Unknown" }}
+        {{ fee?.tooth || "Unknown" }}
         <br />
         <strong>Comments:</strong>
-        {{ fee?.appointment_procedure?.comments || "None" }}
+        {{ fee?.comments || "None" }}
+        <br />
+        <strong>Paid:</strong>
+        {{ fee?.paid || "None" }}
       </mat-card-content>
     </mat-card>
   </div>
 </div>
+
+<!-- Infinite loading -->
+<!-- If payingAnimation -->
+<div class="spinner-container" *ngIf="payingAnimation">
+  <mat-spinner></mat-spinner>
+  <mat-label>Payment in progress</mat-label>
+</div>
+
+<button
+  matBadge="{{ this.nOutstandingCharges }}"
+  mat-fab
+  color="primary"
+  class="fab"
+  (click)="openPayMenu()"
+  matTooltip="Pay outstanding charges"
+>
+  <mat-icon>credit_card</mat-icon>
+</button>

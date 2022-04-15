@@ -24,26 +24,22 @@ export class AppComponent {
     public auth: AuthGuard
   ) {}
 
-  checkRole(){
-
+  checkRole() {
     var sb = this.supabase._supabase;
 
     sb.from('employee')
-    .select('*')
-    .eq('employee_id', sb.auth.user()?.id)
-    .then((data) => {
-      console.log("Role Data", data.body?.at(0));
-      if(data.body?.at(0) != null){
-        let role = data.body?.at(0).role_type;
-        if(role == 'Receptionist'){
-          this.isReceptionist = true;
+      .select('*')
+      .eq('employee_id', sb.auth.user()?.id)
+      .then((data) => {
+        console.log('Role Data', data.body?.at(0));
+        if (data.body?.at(0) != null) {
+          let role = data.body?.at(0).role_type;
+          if (role == 'Receptionist') {
+            this.isReceptionist = true;
+          } else {
+            this.isDentist = true;
+          }
         }
-        else{
-          this.isDentist = true;
-        }
-      }
       });
-
   }
-
 }

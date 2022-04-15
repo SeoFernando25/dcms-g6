@@ -45,6 +45,11 @@ body {
   margin: auto;
 }
 
+.content-top {
+  margin-top: 1rem;
+}
+
+
 // 2 Split page
 .split-page {
   display: flex;
@@ -98,7 +103,6 @@ body {
 }
 
 mat-card {
-  width: 100%;
   padding: 1rem;
   margin: 0.5rem;
 }

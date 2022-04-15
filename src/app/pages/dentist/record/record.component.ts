@@ -104,5 +104,3 @@ export class RecordComponent implements OnInit {
   //   this.subscription.unsubscribe();
   // }
 }
-
-

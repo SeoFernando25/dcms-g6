@@ -80,53 +80,53 @@ export class SearchDetailComponent implements OnInit {
   updateInfo() {
     let sb = this.supabase._supabase;
     sb.from('person')
-    .update({
-      address_street: this.peopleDetailForm.value.address_street,
-      address_city: this.peopleDetailForm.value.address_city,
-      address_region: this.peopleDetailForm.value.address_region,
-      address_postal_code: this.peopleDetailForm.value.address_postal_code,
-      first_name: this.peopleDetailForm.value.first_name,
-      middle_name: this.peopleDetailForm.value.middle_name,
-      last_name: this.peopleDetailForm.value.last_name,
-      ssn: this.peopleDetailForm.value.ssn,
-      date_of_birth: this.peopleDetailForm.value.date_of_birth,
-      phone_number: this.peopleDetailForm.value.phone_number,
-      gender: this.peopleDetailForm.value.gender,
-    })
-    .eq('auth_id', this.editData.person.auth_id)
-    .then((data) => {
-      if (data.error) {
-        console.log('Error: ', data.error);
-        this._snackBar.open('Updated Error', 'Close', {
-          duration: 2000,
-        });
-      } else {
-        this._snackBar.open('Updated Successes', 'Close', {
-          duration: 2000,
-        });
-      }
-    });
+      .update({
+        address_street: this.peopleDetailForm.value.address_street,
+        address_city: this.peopleDetailForm.value.address_city,
+        address_region: this.peopleDetailForm.value.address_region,
+        address_postal_code: this.peopleDetailForm.value.address_postal_code,
+        first_name: this.peopleDetailForm.value.first_name,
+        middle_name: this.peopleDetailForm.value.middle_name,
+        last_name: this.peopleDetailForm.value.last_name,
+        ssn: this.peopleDetailForm.value.ssn,
+        date_of_birth: this.peopleDetailForm.value.date_of_birth,
+        phone_number: this.peopleDetailForm.value.phone_number,
+        gender: this.peopleDetailForm.value.gender,
+      })
+      .eq('auth_id', this.editData.person.auth_id)
+      .then((data) => {
+        if (data.error) {
+          console.log('Error: ', data.error);
+          this._snackBar.open('Updated Error', 'Close', {
+            duration: 2000,
+          });
+        } else {
+          this._snackBar.open('Updated Successes', 'Close', {
+            duration: 2000,
+          });
+        }
+      });
 
     sb.from('person')
-    .update({
-      first_name: this.peopleDetailForm.value.guardian_first_name,
-      middle_name: this.peopleDetailForm.value.guardian_middle_name,
-      last_name: this.peopleDetailForm.value.guardian_last_name,
-      ssn: this.peopleDetailForm.value.guardian_ssn,
-    })
-    .eq('auth_id', this.editData.person.guardian_id)
-    .then((data) => {
-      if (data.error) {
-        console.log('Error: ', data.error);
-        this._snackBar.open('Updated Error', 'Close', {
-          duration: 2000,
-        });
-      } else {
-        this._snackBar.open('Updated Successes', 'Close', {
-          duration: 2000,
-        });
-        this.dialog.closeAll();
-      }
-    });
+      .update({
+        first_name: this.peopleDetailForm.value.guardian_first_name,
+        middle_name: this.peopleDetailForm.value.guardian_middle_name,
+        last_name: this.peopleDetailForm.value.guardian_last_name,
+        ssn: this.peopleDetailForm.value.guardian_ssn,
+      })
+      .eq('auth_id', this.editData.person.guardian_id)
+      .then((data) => {
+        if (data.error) {
+          console.log('Error: ', data.error);
+          this._snackBar.open('Updated Error', 'Close', {
+            duration: 2000,
+          });
+        } else {
+          this._snackBar.open('Updated Successes', 'Close', {
+            duration: 2000,
+          });
+          this.dialog.closeAll();
+        }
+      });
   }
 }

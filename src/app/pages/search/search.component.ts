@@ -8,6 +8,7 @@ import { PostgrestResponse } from '@supabase/supabase-js';
 
 import { MatDialog } from '@angular/material/dialog';
 import { SearchDetailComponent } from '../search-detail/search-detail.component';
+import { AddAppointmentComponent } from '../patient/appointments/add-appointment/add-appointment.component';
 
 export interface Person {
   first_name: string;
@@ -101,6 +102,11 @@ export class SearchComponent implements OnInit {
   viewDetail(row: any) {
     //console.log(row);
     this.dialog.open(SearchDetailComponent, { data: row });
+  }
+
+  addAppointment(row: any) {
+    //console.log(row);
+    this.dialog.open(AddAppointmentComponent, { data: row });
   }
   //Unsubscribe from the timer
   // ngOnDestroy() {

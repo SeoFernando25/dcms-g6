@@ -15,7 +15,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { ReviewComponent } from './review/review.component';
 import { BillingComponent } from './billing/billing.component';
 import { AddAppointmentComponent } from './appointments/add-appointment/add-appointment.component';
-import { RecordsComponent } from './records/records.component';
+import { RecordComponent } from './record/record.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { RecordsComponent } from './records/records.component';
     AppointmentComponent,
     ReviewComponent,
     BillingComponent,
-    RecordsComponent,
+    RecordComponent,
   ],
   imports: [
     NgxMaskModule.forRoot(),
