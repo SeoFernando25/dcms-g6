@@ -114,7 +114,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
   }
 
   createUser() {
@@ -140,27 +140,34 @@ export class RegisterComponent implements OnInit {
   saveChanges() {
     console.log('Saving changes...');
 
-    console.log('Person form:' ,this.personForm);
-      console.log('No data on database');
-      // Create new user data on database
-      var uuid = this.supabase._supabase.auth.user()?.id ?? 'err';
-      console.log(uuid);
-      this.supabase._supabase
-        .from('person')
-        .insert({
-          ...this.personForm.value,
-          auth_id: uuid,
-        }) // Check errors
-        .then((d) => {
-          console.log('Adding person data');
-          console.log(d);
-          if (d.error) {
-            console.log(d.error);
-            this.snackBar.open('Error saving changes', 'Dismiss');
-          } else {
-            this.postRegister();
-          }
-        });
+    console.log('Person form:', this.personForm);
+    console.log('No data on database');
+    // Create new user data on database
+    var user_id = this.supabase._supabase.auth.user()?.id ?? 'err';
+    console.log(user_id);
+    var payload = {
+      auth_id: user_id,
+      ...this.personForm.value,
+    }
+    // If guardian_id is "", set it to null
+    if (payload.guardian_id === '') {
+      payload.guardian_id = null;
+    }
+
+    console.log(payload);
+    this.supabase._supabase
+      .from('person')
+      .insert(payload) // Check errors
+      .then((d) => {
+        console.log('Adding person data');
+        console.log(d);
+        if (d.error) {
+          console.log(d.error);
+          this.snackBar.open('Error saving changes', 'Dismiss');
+        } else {
+          this.postRegister();
+        }
+      });
   }
 
   postRegister() {
