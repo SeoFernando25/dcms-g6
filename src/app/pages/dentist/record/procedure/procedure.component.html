@@ -1,14 +1,16 @@
-<h1 mat-dialog-title>Post-Appointment Information</h1>
+<h1 mat-dialog-title>Appointment Procedure Information</h1>
 <hr />
 <form [formGroup]="procedureForm">
   <h3 style="font-size: large">Patient Information</h3>
   <div class="splitscreen" style="display: block;">
     <div class="left" style="float: left; width: auto">
-      <mat-form-field class="first_name" appearance="fill">
-        <mat-label for="first_name">First Name</mat-label>
-        <select>
-            <option *ngFor="let type of "></option>
-        </select>
+      <mat-form-field class="procedure_type_id" appearance="fill">
+        <mat-label for="procedure_type_id">Procedure Type</mat-label>
+        <mat-select formControlName="procedure_type_id">
+            <mat-option *ngFor="let procedure of procedureTypes" [value]="procedure.procedure_code">
+                {{procedure.name}}
+            </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="middle" style="float: left; margin-left: 10px">
@@ -18,7 +20,6 @@
           matInput
           rows="1"
           formControlName="tooth"
-          readonly
         >
       </mat-form-field>
     </div>
@@ -29,7 +30,6 @@
           matInput
           rows="1"
           formControlName="quantity"
-          readonly
         >
       </mat-form-field>
     </div>

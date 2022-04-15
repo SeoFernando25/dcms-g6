@@ -27,6 +27,7 @@ export class ProcedureComponent implements OnInit {
     quantity: new FormControl(''),
   });
   dataSource = new MatTableDataSource<procedure>([]);
+  procedureTypes: any[] = [];
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -36,14 +37,29 @@ export class ProcedureComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.supabase._supabase
+      .from('procedure_type')
+      .select('*')
+      .then((data) => {
+        console.log(data);
+        if (data.error) {
+
+        } else {
+          console.log(data.body);
+          this.procedureTypes = data.body;
+        }
+      });
+
   }
 
   addProcedure() {
     let sb = this.supabase._supabase;
-    
+    console.log('EDIT DATA', this.editData);
+    console.log('APP_ID', this.editData.appointment_id);
       sb.from('appointment_procedure')
         .insert({
-            procedure_type_id: this.procedureForm.value.medication,
+            procedure_type_id: this.procedureForm.value.procedure_type_id,
             tooth: this.procedureForm.value.tooth,
             comments: this.procedureForm.value.comments,
             quantity: this.procedureForm.value.quantity,

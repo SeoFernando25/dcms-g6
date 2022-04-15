@@ -158,7 +158,6 @@ export class SearchAppointmentDetailComponent implements OnInit {
 
 
   addProcedure(row: any) {
-    //console.log(row);
     this.dialog.open(ProcedureComponent, { data: row });
   }
 }

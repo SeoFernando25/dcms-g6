@@ -216,16 +216,11 @@
       </div>
     </div>
     <div class="middle" style="float: left; margin-left: 10px">
-      <div class="Add" *ngIf="this.isDentist">
-        <td mat-cell *matCellDef="let row">
-        <button mat-raised-button (click)="addProcedure(row)"color="primary" type="add" style="size: small;">
+      <div class="Add">
+        <button mat-raised-button (click)="addProcedure(this.editData)"color="primary" type="button" style="size: small;">
           Add Procedure
         </button>
-      </td>
       </div>
-    </div>
-    <div class="right" style="float: left; width: auto; margin-left: 10px">
-
     </div>
   </div>
 
