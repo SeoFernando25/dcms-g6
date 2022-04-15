@@ -52,13 +52,14 @@ export class RecordDetailComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private supabase: SupabaseService
-
-  ) { }
+  ) {}
 
   recordExists: boolean;
   ngOnInit(): void {
-    var age : number;
-    var timeDiff = Math.abs(Date.now() - new Date(this.editData.person.date_of_birth).getTime());
+    var age: number;
+    var timeDiff = Math.abs(
+      Date.now() - new Date(this.editData.person.date_of_birth).getTime()
+    );
     age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     console.log('editData', this.editData);
     this.peopleDetailForm.patchValue({
@@ -80,8 +81,7 @@ export class RecordDetailComponent implements OnInit {
             description: data.body?.at(0).description,
           });
           this.recordExists = true;
-        }
-        else {
+        } else {
           this._snackBar.open('No existing medical record', 'Close', {
             duration: 2000,
           });
@@ -91,7 +91,7 @@ export class RecordDetailComponent implements OnInit {
     sb.from('appointment')
       .select('*, branch("*")')
       .lte('appointment_date', this.getCurrentDate())
-      .eq("patient_id", this.editData.person.auth_id)
+      .eq('patient_id', this.editData.person.auth_id)
       .then((data) => {
         //console.log("Edit Data", this.editData);
         this.updateData(data);
@@ -110,7 +110,7 @@ export class RecordDetailComponent implements OnInit {
   getCurrentDate() {
     //Get current date in YYYY-MM-DD format
     var today = new Date();
-    var dd = String(today.getDate()+1).padStart(2, '0');
+    var dd = String(today.getDate() + 1).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
@@ -139,8 +139,7 @@ export class RecordDetailComponent implements OnInit {
             });
           }
         });
-    }
-    else{
+    } else {
       sb.from('record')
         .insert({
           description: this.recordForm.value.description,
@@ -167,5 +166,4 @@ export class RecordDetailComponent implements OnInit {
     //console.log(row);
     this.dialog.open(SearchAppointmentDetailComponent, { data: row });
   }
-
 }

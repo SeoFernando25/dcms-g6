@@ -12,19 +12,17 @@ export class BillingComponent implements OnInit {
   nOutstandingCharges = 0;
   payingAnimation = false;
 
-  constructor(public supabase: SupabaseService,
-    public snackbar: MatSnackBar) { }
+  constructor(public supabase: SupabaseService, public snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     let sb = this.supabase._supabase;
     sb.from('appointment_procedure_view')
-      .select(`
+      .select(
+        `
         *
-      `)
-      .eq(
-        'patient_id',
-        sb.auth.user()?.id
+      `
       )
+      .eq('patient_id', sb.auth.user()?.id)
       .then((data) => {
         console.log(data);
         if (data.error) {
@@ -33,7 +31,7 @@ export class BillingComponent implements OnInit {
           console.log(data.body);
           this.dataSource = data.body;
           // Calculate the total outstanding charges
-          this.nOutstandingCharges = 0
+          this.nOutstandingCharges = 0;
           this.dataSource.forEach((row) => {
             this.nOutstandingCharges += row.paid ? 0 : 1;
           });
@@ -58,7 +56,8 @@ export class BillingComponent implements OnInit {
 
     // Set all unpaid charges to paid
     this.dataSource.forEach((row) => {
-      this.supabase._supabase.from('appointment_procedure')
+      this.supabase._supabase
+        .from('appointment_procedure')
         .update({
           paid: true,
         })
@@ -73,6 +72,5 @@ export class BillingComponent implements OnInit {
         });
       row.paid = true;
     });
-
   }
 }

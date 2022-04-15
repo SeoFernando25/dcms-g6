@@ -15,7 +15,6 @@ import { DentistComponent } from './pages/dentist/dentist.component';
 import { RecordComponent } from './pages/dentist/record/record.component';
 import { TreatmentComponent } from './pages/dentist/treatment/treatment.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
@@ -24,7 +23,7 @@ const routes: Routes = [
   { path: 'our-services', component: OurServicesComponent },
   { path: 'search', component: SearchComponent },
   { path: 'faq', component: FAQComponent },
-  { path: 'register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent },
   { path: 'receptionist', component: ReceptionistComponent }, //, canActivate: [RoleGuard], data: { roles: ['Receptionist'] }
   { path: 'dentist', component: DentistComponent },
   { path: 'record', component: RecordComponent },

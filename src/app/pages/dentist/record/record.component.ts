@@ -97,12 +97,10 @@ export class RecordComponent implements OnInit {
 
   viewDetail(row: any) {
     //console.log(row);
-    this.dialog.open(RecordDetailComponent, { data: row});
+    this.dialog.open(RecordDetailComponent, { data: row });
   }
   //Unsubscribe from the timer
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();
   // }
 }
-
-

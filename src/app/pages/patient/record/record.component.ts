@@ -8,25 +8,26 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 @Component({
   selector: 'app-records',
   templateUrl: './record.component.html',
-  styleUrls: ['./record.component.scss']
+  styleUrls: ['./record.component.scss'],
 })
 export class RecordComponent implements OnInit {
   record: any = {};
 
-  constructor(
-    private supabase: SupabaseService
-  ) { }
+  constructor(private supabase: SupabaseService) {}
 
   ngOnInit(): void {
     // If we wanted to get patient info
     // patient_id!record_patient_id_fkey(patient_id!patient_patient_id_fkey(*)),
 
-    this.supabase._supabase.from('record')
-      .select(`*,
+    this.supabase._supabase
+      .from('record')
+      .select(
+        `*,
         written_by!record_written_by_fkey(
           employee_id!employee_employee_id_fkey(*)
         ))
-      `)
+      `
+      )
       .eq('patient_id', this.supabase._supabase.auth.user()?.id)
       .limit(1)
       .single()
@@ -38,7 +39,6 @@ export class RecordComponent implements OnInit {
           console.log(data.body);
           this.record = data.body;
         }
-      }
-      );
+      });
   }
 }

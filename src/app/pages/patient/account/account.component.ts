@@ -253,7 +253,7 @@ export class AccountComponent implements OnInit {
         // Create new user data on database
         var uuid = this.supabase._supabase.auth.user()?.id ?? 'err';
         var guardian_id: any = null;
-        if (this.guardianForm.value.guardian_id != "") {
+        if (this.guardianForm.value.guardian_id != '') {
           guardian_id = this.guardianForm.value.guardian_id;
         }
         var twentyYearsAgo = new Date();
@@ -279,7 +279,7 @@ export class AccountComponent implements OnInit {
   public AboveAge() {
     var timeDiff = Math.abs(
       new Date().getTime() -
-      new Date(this.personForm.value.date_of_birth).getTime()
+        new Date(this.personForm.value.date_of_birth).getTime()
     );
     var age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365);
     return 15 <= age;

@@ -100,10 +100,10 @@ export class AddAppointmentComponent {
   }
 
   checkPatientID() {
-    console.log("Check Patient ID");
+    console.log('Check Patient ID');
     if (this.editData != null) {
-      console.log("this.editData.patient_id;", this.editData.person.auth_id);
-      return this.patientid = this.editData.person.auth_id;
+      console.log('this.editData.patient_id;', this.editData.person.auth_id);
+      return (this.patientid = this.editData.person.auth_id);
     }
   }
 }
