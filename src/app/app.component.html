@@ -32,10 +32,15 @@
 
     <ng-container *ngIf="supabase._supabase.auth.user()">
       <!-- Show user icon -->
-      <button (click)="checkRole()" mat-fab [matMenuTriggerFor]="menu" style="
+      <button
+        (click)="checkRole()"
+        mat-fab
+        [matMenuTriggerFor]="menu"
+        style="
           background-size: cover;
           background-image: url('https://cdn.iconscout.com/icon/free/png-256/account-1439373-1214443.png');
-        "></button>
+        "
+      ></button>
 
       <!-- User menu  -->
       <mat-menu #menu="matMenu">
@@ -63,6 +68,10 @@
           <mat-icon>reviews</mat-icon>
           <span>My Reviews</span>
         </button>
+        <button mat-menu-item routerLink="/my/records">
+          <mat-icon>notes</mat-icon>
+          <span>My Records</span>
+        </button>
         <button mat-menu-item routerLink="/" (click)="supabase.signOut()">
           <mat-icon>logout</mat-icon>
           <span>Sign out</span>
@@ -81,7 +90,14 @@
   <!-- Placed under toolBarFirstRow -->
   <mat-sidenav-container fxFlexFill style="position: relative">
     <!-- Sidenav menu -->
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+    <mat-sidenav
+      color="primary"
+      #sidenav
+      fxLayout="column"
+      mode="over"
+      opened="false"
+      fxHide.gt-sm="true"
+    >
       <div fxLayout="column">
         <ng-container *ngTemplateOutlet="menu_template"></ng-container>
       </div>
