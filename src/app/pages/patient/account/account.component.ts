@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
@@ -23,7 +28,7 @@ export interface Appointment {
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-  haveGuardian = true;
+  haveGuardian = false;
   displayedColumns: string[] = [
     'appointment_id',
     'clinic_id',
@@ -47,13 +52,22 @@ export class AccountComponent implements OnInit {
     last_name: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     date_of_birth: new FormControl('', [Validators.required]),
-    phone_number: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    phone_number: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
     ssn: new FormControl('', [Validators.required, Validators.minLength(9)]),
     // Address
     address_city: new FormControl('', [Validators.required]),
-    address_postal_code: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    address_postal_code: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
     address_region: new FormControl('', [Validators.required]),
     address_street: new FormControl('', [Validators.required]),
+  });
+
+  guardianForm = new FormGroup({
     guardian_first_name: new FormControl(''),
     guardian_middle_name: new FormControl(''),
     guardian_last_name: new FormControl(''),
@@ -88,24 +102,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     // Fetch user data
     this.creds = this.supabase._supabase.auth.user();
-    /*// Print first name on value change
-    this.personForm.valueChanges.subscribe((value) => {
-      // Start a countdown to save changes in 1 seconds
-      this.snackBar.open('Saving changes...', '', { duration: 1000 });
-      clearTimeout(this.timeoutId);
-      this.timeoutId = setTimeout(() => this.saveChanges(), 1000);
-    });*/
 
-    // Check if user has previously entered data on database
-    var personData = this.supabase.getPersonData();
-    personData.then((data) => {
-      if (data.error == null) {
-        var personInfo = data.body;
-        console.log('personInfo', personInfo); // TODO: Remove me in production (contains sensitive data)
-        this.personForm.setValue(personInfo);
-      }
-      // If error, the user information has not been added to the database yet
-    });
     // Fetch user appointments
     let sb = this.supabase._supabase;
     sb.from('appointment')
@@ -120,36 +117,17 @@ export class AccountComponent implements OnInit {
     sb.from('person')
       .select('*')
       .eq('auth_id', sb.auth.user()?.id)
+      .limit(1)
+      .single()
       .then((data) => {
-        console.log("User Data", data.body?.at(0));
-        this.personForm.patchValue({
-          first_name: data.body?.at(0).first_name,
-          middle_name: data.body?.at(0).middle_name,
-          last_name: data.body?.at(0).last_name,
-          phone_number: data.body?.at(0).phone_number,
-          gender: data.body?.at(0).gender,
-          date_of_birth: data.body?.at(0).date_of_birth,
-          ssn: data.body?.at(0).ssn,
-          address_street: data.body?.at(0).address_street,
-          address_city: data.body?.at(0).address_city,
-          address_region: data.body?.at(0).address_region,
-          address_postal_code: data.body?.at(0).address_postal_code,
-        });
-        sb.from('person')
-          .select('*')
-          .eq('auth_id', data.body?.at(0).guardian_id)
-          .then((data2) => {
-            console.log("Guardian Data", data2.body?.at(0));
-            if (data2.body?.at(0) != null) {
-              this.haveGuardian = false;
-              this.personForm.patchValue({
-                guardian_first_name: data2.body?.at(0).first_name,
-                guardian_middle_name: data2.body?.at(0).middle_name,
-                guardian_last_name: data2.body?.at(0).last_name,
-                guardian_phone_number: data2.body?.at(0).phone_number,
-              });
-            }
-          });
+        if (data.error != null) {
+          this.snackBar.open('Hello new user!', 'Close');
+          return;
+        }
+
+        console.log('User Data', data.body);
+        this.personForm.setValue(data.body);
+        this.onDoBChange();
       });
   }
 
@@ -160,6 +138,65 @@ export class AccountComponent implements OnInit {
     } else {
       this.dataSource.data = data.body;
     }
+  }
+
+  onGuardianFormChange() {
+    this.personForm.patchValue({
+      guardian_id: null,
+    });
+
+    // Search patient that matches the guardian's first name middle name and last name
+    var sb = this.supabase._supabase;
+    var q = sb.from('person').select('*');
+    var atLeastOne = false;
+    if (this.guardianForm.value.guardian_first_name != '') {
+      atLeastOne = true;
+      q = q.eq('first_name', this.guardianForm.value.guardian_first_name);
+    }
+
+    if (this.guardianForm.value.guardian_middle_name != '') {
+      atLeastOne = true;
+      q = q.eq('middle_name', this.guardianForm.value.guardian_middle_name);
+    }
+    if (this.guardianForm.value.guardian_last_name != '') {
+      atLeastOne = true;
+      q = q.eq('last_name', this.guardianForm.value.guardian_last_name);
+    }
+    if (this.guardianForm.value.guardian_phone_number != '') {
+      atLeastOne = true;
+      q = q.eq('phone_number', this.guardianForm.value.guardian_phone_number);
+    }
+    if (!atLeastOne) {
+      this.snackBar.open(
+        'Please enter at least one search criteria for the guardian',
+        'Close'
+      );
+      return;
+    }
+
+    q.limit(1)
+      .single()
+      .then((data) => {
+        console.log('data', data);
+        // Check error
+        if (data.error) {
+          this.snackBar.open('Error: ' + data.error.details, 'Close');
+        } else {
+          var guardian_id = data.body?.auth_id;
+          // Check if id is not the same as the current user
+          if (guardian_id == sb.auth.user()?.id) {
+            this.snackBar.open(
+              'Error: You cannot be your own guardian',
+              'Close'
+            );
+            return;
+          }
+          console.log('guardian id', guardian_id);
+          this.personForm.patchValue({
+            guardian_id: guardian_id,
+          });
+        }
+      });
   }
 
   getCurrentDate() {
@@ -193,16 +230,17 @@ export class AccountComponent implements OnInit {
     personData.then((data) => {
       if (!data.error) {
         // Transform personForm to personData
-        var personData = this.personForm.value;
+        var personFormData = this.personForm.value;
         this.supabase._supabase
           .from('person')
-          .upsert(personData) // Check errors
+          .upsert(personFormData) // Check errors
           .then((d) => {
             if (d.error) {
               console.log(d);
-              this.snackBar.open('Error saving changes', '', {
-                duration: 3000,
-              });
+              this.snackBar.open(
+                'Error saving changes: ' + d.error.message,
+                'Close'
+              );
             } else {
               this.snackBar.open('Changes saved', '', {
                 duration: 1000,
@@ -233,15 +271,26 @@ export class AccountComponent implements OnInit {
   }
   public hasError = (controlName: string, errorName: string) => {
     return this.personForm.controls[controlName].hasError(errorName);
-  }
+  };
   public AboveAge() {
-
-    var timeDiff = Math.abs(Date.now() - this.personForm.get('date_of_birth')?.value)
-    var age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    var timeDiff = Math.abs(
+      new Date().getTime() -
+        new Date(this.personForm.value.date_of_birth).getTime()
+    );
+    var age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365);
     return 15 <= age;
   }
 
   getGuardian() {
-    return this.haveGuardian
+    return this.haveGuardian;
+  }
+
+  onDoBChange() {
+    console.log('DoB changed');
+    if (this.AboveAge()) {
+      this.haveGuardian = false;
+    } else {
+      this.haveGuardian = true;
+    }
   }
 }
