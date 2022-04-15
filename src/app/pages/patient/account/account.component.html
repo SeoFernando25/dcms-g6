@@ -73,9 +73,9 @@
                 <mat-form-field>
                     <mat-label>Gender</mat-label>
                     <mat-select formControlName="gender">
-                        <mat-option value="m">Male</mat-option>
-                        <mat-option value="f">Female</mat-option>
-                        <mat-option value="x">Other / Prefer not to disclose</mat-option>
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                        <mat-option value="other">Other / Prefer not to disclose</mat-option>
                     </mat-select>
                     <mat-error *ngIf="hasError('gender', 'required')">Gender is required</mat-error>
                 </mat-form-field>
