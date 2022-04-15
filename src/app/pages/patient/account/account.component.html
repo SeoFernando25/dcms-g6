@@ -140,26 +140,50 @@
                     <h2>Guardian Information</h2>
                 </label>
                 <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                    <mat-form-field>
-                        <mat-label>First name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Middle name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Last name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                    <mat-form-field class="guardian_first_name" appearance="fill">
+                        <mat-label for="guardian_first_name">First Name</mat-label>
+                        <textarea
+                          matInput
+                          placeholder="First Name"
+                          rows="1"
+                          formControlName="guardian_first_name"
+                           
+                        ></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="guardian_middle_name" appearance="fill">
+                        <mat-label for="guardian_middle_name">Middle Name</mat-label>
+                        <textarea
+                          matInput
+                          placeholder="Middle Name"
+                          rows="1"
+                          formControlName="guardian_middle_name"
+                           
+                        ></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="guardian_last_name" appearance="fill">
+                        <mat-label for="guardian_last_name">Last Name</mat-label>
+                        <textarea
+                          matInput
+                          placeholder="Last Name"
+                          rows="1"
+                          formControlName="guardian_last_name"
+                           
+                        ></textarea>
+                      </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div fxLayout="row" fxLayoutAlign=" start">
-                    <mat-form-field style="display: inline;">
-                        <mat-label>Phone Number</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                    <mat-form-field style="display: inline;"class="guardian_phone_number" appearance="fill">
+                        <mat-label for="guardian_phone_number">Phone Number</mat-label>
+                        <textarea
+                          matInput
+                          placeholder="Phone Number"
+                          rows="1"
+                          formControlName="guardian_phone_number"
+                           
+                        ></textarea>
+                      </mat-form-field>
                 </div>
             </div>
         </div>
