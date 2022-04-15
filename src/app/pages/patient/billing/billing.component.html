@@ -22,35 +22,45 @@
   </header>
 
   <!-- Material Card for each fee -->
-  <mat-card *ngFor="let fee of dataSource">
-    <mat-card-title>
-      {{ (fee?.name || "Unknown") + " Procedure" }}
-    </mat-card-title>
-    <mat-card-subtitle
-      >Total Cost {{ fee?.price * fee?.quantity | currency }}
-    </mat-card-subtitle>
-    <mat-card-content>
-      <strong>Procedure Code:</strong>
-      {{ fee?.procedure_type_id || "Unknown" }}
-      <br />
-      <strong>Procedure Details:</strong>
-      {{ fee?.description || "Unknown" }}
-      <br />
-      <strong>Tooth:</strong>
-      {{ fee?.tooth || "Unknown" }}
-      <br />
-      <strong>Comments:</strong>
-      {{ fee?.comments || "None" }}
-    </mat-card-content>
-  </mat-card>
+  <div *ngIf="!payingAnimation">
+    <mat-card *ngFor="let fee of dataSource" [class.faded]="fee?.paid">
+      <mat-card-title>
+        {{ (fee?.name || "Unknown") + " Procedure" }}
+      </mat-card-title>
+      <mat-card-subtitle
+        >Total Cost {{ fee?.price * fee?.quantity | currency }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <strong>Procedure Code:</strong>
+        {{ fee?.procedure_type_id || "Unknown" }}
+        <br />
+        <strong>Procedure Details:</strong>
+        {{ fee?.description || "Unknown" }}
+        <br />
+        <strong>Tooth:</strong>
+        {{ fee?.tooth || "Unknown" }}
+        <br />
+        <strong>Comments:</strong>
+        {{ fee?.comments || "None" }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Infinite loading -->
+<!-- If payingAnimation -->
+<div class="spinner-container" *ngIf="payingAnimation">
+  <mat-spinner></mat-spinner>
+  <mat-label>Payment in progress</mat-label>
 </div>
 
 <button
-  matBadge="1"
+  matBadge="{{ this.nOutstandingCharges }}"
   mat-fab
   color="primary"
   class="fab"
   (click)="openPayMenu()"
+  matTooltip="Pay outstanding charges"
 >
   <mat-icon>credit_card</mat-icon>
 </button>

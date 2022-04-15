@@ -3,3 +3,30 @@
     bottom: 1rem;
     right: 1rem;
 }
+
+.spinner-container {
+    // Spinner centered at the middle of the screen
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // Center text and spinner
+    text-align: center;
+    // Spinner center flex
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    mat-label {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}
+
+
+// Faded button
+.faded {
+    background-color: rgb(230, 230, 230);
+}
