@@ -22,6 +22,7 @@ export interface procedure {
   styleUrls: ['./search-appointment-detail.component.scss'],
 })
 export class SearchAppointmentDetailComponent implements OnInit {
+  isDenstist = false;
   displayedColumns: string[] = [
     'procedure_id',
     'procedure_type_id',
@@ -131,5 +132,27 @@ export class SearchAppointmentDetailComponent implements OnInit {
       }
     });
 
+  }
+
+  checkDentist() {
+    let sb = this.supabase._supabase;
+    return sb.from('employee')
+    .select('*')
+    .eq('employee_id', sb.auth.user()?.id)
+    .then((data) => {
+      if (data.error) {
+        console.log('Error: ', data.error);
+      } else {
+        if (data.body?.at(0).role_type == "Dentist") {
+          //console.log('Dentist Data:' , data);
+          this.isDenstist = true;
+        }
+      }
+    });
+  }
+
+  getDentist() {
+    this.checkDentist();
+    return this.isDenstist
   }
 }
