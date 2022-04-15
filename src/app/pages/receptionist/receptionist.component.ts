@@ -19,7 +19,7 @@ export class ReceptionistComponent implements OnInit {
   }
 
   editUser(){
-
+    this.router.navigate(['./search']);
   }
 
   createAppointment(){

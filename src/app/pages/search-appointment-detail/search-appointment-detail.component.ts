@@ -32,6 +32,10 @@ export class SearchAppointmentDetailComponent implements OnInit {
   dataSource = new MatTableDataSource<procedure>([]);
 
   AppointmentDetailForm = new FormGroup({
+    appointment_date: new FormControl(''),
+    start_time: new FormControl(''),
+    end_time: new FormControl(''),
+    appointment_status: new FormControl(''),
     patient_first_name: new FormControl(''),
     patient_middle_name: new FormControl(''),
     patient_last_name: new FormControl(''),
@@ -50,7 +54,16 @@ export class SearchAppointmentDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('EDIT DATA', this.editData.appointment_id);
+    console.log('EDIT DATA', this.editData);
+    var d = new Date(this.editData.appointment_date);
+    d.setMinutes(d.getMinutes() + d.getTimezoneOffset());
+    this.editData.appointment_date = d;
+    this.AppointmentDetailForm.patchValue({
+      appointment_date: this.editData.appointment_date,
+      start_time: this.editData.start_time,
+      end_time: this.editData.end_time,
+      appointment_status: this.editData.appointment_status,
+    });
     let sb = this.supabase._supabase;
     sb.from('person')
       .select('*')
@@ -94,7 +107,29 @@ export class SearchAppointmentDetailComponent implements OnInit {
     }
   }
 
-  closeDialog() {
-    this.dialog.closeAll();
+  updateAppointment() {
+    console.log('update Value', this.AppointmentDetailForm.value);
+    let sb = this.supabase._supabase;
+    sb.from('appointment')
+    .update({
+      appointment_date: this.AppointmentDetailForm.value.appointment_date,
+      start_time: this.AppointmentDetailForm.value.start_time,
+      end_time: this.AppointmentDetailForm.value.end_time,
+      appointment_status: this.AppointmentDetailForm.value.appointment_status,
+    }).eq('appointment_id', this.editData.appointment_id)
+    .then((data) => {
+      if (data.error) {
+        console.log('Error: ', data.error);
+        this._snackBar.open('Appointment Updated Error', 'Close', {
+          duration: 2000,
+        });
+      } else {
+        this._snackBar.open('Appointment Updated', 'Close', {
+          duration: 2000,
+        });
+        this.dialog.closeAll();
+      }
+    });
+
   }
 }

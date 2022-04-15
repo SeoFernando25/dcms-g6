@@ -2,8 +2,52 @@
 <hr />
 <!--Create a form Reivew-->
 <!--<form [formGroup]="UpdateReviewForm" (ngSubmit)="UpdateReview()">-->
-<form [formGroup]="AppointmentDetailForm" (ngSubmit)="closeDialog()">
+<form [formGroup]="AppointmentDetailForm" (ngSubmit)="updateAppointment()">
   <br />
+  <h3 style="font-size: large">Basic Info</h3>
+  <mat-form-field appearance="fill" style="width: 582px">
+    <mat-label for="appointment_date">Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="appointment_date" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class="splitscreen">
+    <div class="left" style="float: left; width: auto">
+      <mat-form-field>
+        <mat-label for="start_time">Start Time</mat-label>
+        <input
+          matInput
+          type="time"
+          placeholder="start_time"
+          formControlName="start_time"
+        />
+      </mat-form-field>
+    </div>
+    <div class="middle" style="float: left;">
+      <mat-form-field>
+        <mat-label for="end_time">End Time</mat-label>
+        <input
+          matInput
+          type="time"
+          placeholder="end_time"
+          formControlName="end_time"
+        />
+      </mat-form-field>
+    </div>
+    <div class="right" style="float: left;">
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="appointment_status">
+            <mat-option value="Pending">Pending</mat-option>
+            <mat-option value="Complete">Complete</mat-option>
+            <mat-option value="Cancel">Cancel</mat-option>
+            <mat-option value="No_Show">No Show</mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+  </div>
+  <br><br><br><br>
+  <div>
   <h3 style="font-size: large">Patient Info</h3>
   <div class="splitscreen">
     <div class="left" style="float: left; width: auto">
@@ -44,7 +88,7 @@
     </div>
   </div>
   <div>
-  <mat-form-field class="phone_number" appearance="fill" style="width: 620px">
+  <mat-form-field class="phone_number" appearance="fill" style="width: 603px">
     <mat-label for="patient_phone_number">Phone Number</mat-label>
     <textarea
       matInput
@@ -56,6 +100,7 @@
     ></textarea>
   </mat-form-field>
     </div>
+  </div>
   <h3 style="font-size: large">Dentist Info</h3>
   <div class="splitscreen">
     <div class="left" style="float: left; width: auto">
@@ -97,7 +142,7 @@
   </div>
   
   <div>
-  <mat-form-field class="phone_number" appearance="fill" style="width: 620px">
+  <mat-form-field class="phone_number" appearance="fill" style="width: 603px">
     <mat-label for="dentist_phone_number">Phone Number</mat-label>
     <textarea
       matInput
@@ -160,6 +205,12 @@
       aria-label="Select page of Procedure"
     >
     </mat-paginator>
+  </div>
+
+  <div class="Submit">
+    <button mat-raised-button color="warn" type="submit" style="size: small;">
+      Update Appointment
+    </button>
   </div>
   
 </form>
