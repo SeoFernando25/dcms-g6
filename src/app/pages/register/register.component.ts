@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
     ]),
   });
   personForm = new FormGroup({
-    auth_id: new FormControl(''),
     // Sort of unused for now
     guardian_id: new FormControl(''),
     // Person data
@@ -112,14 +111,10 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar,
     fb: FormBuilder
   ) {
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
-    });
   }
 
   ngOnInit(): void {
-    this.personForm.patchValue({ username: '', password: '' });
+   
   }
 
   createUser() {
@@ -145,8 +140,7 @@ export class RegisterComponent implements OnInit {
   saveChanges() {
     console.log('Saving changes...');
 
-    var personData = this.supabase.getPersonData();
-    personData.then((data) => {
+    console.log('Person form:' ,this.personForm);
       console.log('No data on database');
       // Create new user data on database
       var uuid = this.supabase._supabase.auth.user()?.id ?? 'err';
@@ -167,7 +161,6 @@ export class RegisterComponent implements OnInit {
             this.postRegister();
           }
         });
-    });
   }
 
   postRegister() {
