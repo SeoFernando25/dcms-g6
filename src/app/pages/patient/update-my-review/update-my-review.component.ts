@@ -14,7 +14,6 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 })
 export class UpdateMyReviewComponent implements OnInit {
   UpdateReviewForm = new FormGroup({
-    review_date: new FormControl(''),
     professionalism_score: new FormControl(''),
     cleanliness_score: new FormControl(''),
     communication_score: new FormControl(''),
@@ -27,7 +26,7 @@ export class UpdateMyReviewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     var d = new Date(this.editData.review_date);
@@ -43,7 +42,7 @@ export class UpdateMyReviewComponent implements OnInit {
     this.editData.value_score = this.editData.value_score.toString();
 
     this.UpdateReviewForm.patchValue({
-      review_date: this.editData.review_date,
+      review_date: new Date(),
       professionalism_score: this.editData.professionalism_score,
       cleanliness_score: this.editData.cleanliness_score,
       communication_score: this.editData.communication_score,

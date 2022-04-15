@@ -60,7 +60,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) {}
+  ) { }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'DISMISS', { duration: 5000 });
@@ -86,9 +86,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   //Validate Form
   validateForm() {
-    if (this.NewReviewForm.value.review_date == '') {
-      this.openSnackBar('Please enter a review date');
-    } else if (this.NewReviewForm.value.professionalism_score == '') {
+    if (this.NewReviewForm.value.professionalism_score == '') {
       this.openSnackBar('Please enter a professionalism score');
     } else if (this.NewReviewForm.value.cleanliness_score == '') {
       this.openSnackBar('Please enter a cleanliness score');
@@ -111,15 +109,13 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
     sb.from('review')
       .insert({
-        review_date: this.NewReviewForm.value.review_date,
+        review_date: new Date(),
         professionalism_score: this.NewReviewForm.value.professionalism_score,
         cleanliness_score: this.NewReviewForm.value.cleanliness_score,
         communication_score: this.NewReviewForm.value.communication_score,
         value_score: this.NewReviewForm.value.value_score,
         feedback: this.NewReviewForm.value.feedback,
         written_by: this.supabase._supabase.auth.user()?.id || 'error',
-        //review_id: this.dataSource.data.length + 1,
-        reviewed_task: 2,
       })
       .then((data) => {
         if (data.error) {

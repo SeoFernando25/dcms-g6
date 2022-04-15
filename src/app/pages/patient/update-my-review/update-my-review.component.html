@@ -3,13 +3,6 @@
 <!--Create a form Review-->
 <!--<form [formGroup]="UpdateReviewForm" (ngSubmit)="UpdateReview()">-->
 <form [formGroup]="UpdateReviewForm" (ngSubmit)="UpdateReview()">
-  <h3 style="font-size: large">Appointment Date</h3>
-  <mat-form-field appearance="fill">
-    <mat-label for="review_date">Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="review_date" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
   <div class="col">
     <div class="col1">
       <div>
