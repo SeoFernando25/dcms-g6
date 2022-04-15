@@ -24,9 +24,9 @@
     <ng-container matColumnDef="dentist_id">
       <th mat-header-cell *matHeaderCellDef>Dentist Name</th>
       <td mat-cell *matCellDef="let appointment">
-        {{ appointment.dentist_id?.employee_id?.first_name }}
-        {{ appointment.dentist_id?.employee_id?.middle_name }}
-        {{ appointment.dentist_id?.employee_id?.last_name }}
+        {{ appointment.dentist_id?.person?.first_name }}
+        {{ appointment.dentist_id?.person?.middle_name }}
+        {{ appointment.dentist_id?.person?.last_name }}
       </td>
     </ng-container>
 
