@@ -36,9 +36,6 @@
         <h2>Appointment ID: {{ appointment_data.appointment_id }}</h2>
         <h2>Appointment Date {{ appointment_data.appointment_date }}</h2>
         <h2>Appointment Status: {{ appointment_data.appointment_status }}</h2>
-        <h2>
-          Appointment Type: {{ appointment_data.appointment_type || "Generic" }}
-        </h2>
         <h2>Clinic ID: {{ appointment_data.clinic_id }}</h2>
         <h2>Dentist ID: {{ appointment_data.dentist_id }}</h2>
         <h2>End Time: {{ appointment_data.end_time }}</h2>
@@ -49,6 +46,16 @@
           Treatment ID:
           {{ appointment_data.treatment_id || "No treatment required" }}
         </h2>
+        <h2>Appointment Comments:</h2>
+        <!-- Text area -->
+        <mat-form-field fxFill>
+          <textarea
+            matInput
+            placeholder="Comments"
+            [(ngModel)]="appointment_data.appointment_type"
+            (ngModelChange)="onChangeComments()"
+          ></textarea>
+        </mat-form-field>
       </div>
     </mat-card-content>
   </mat-card>

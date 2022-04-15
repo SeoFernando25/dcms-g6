@@ -40,6 +40,38 @@ export class AppointmentComponent implements OnInit {
       });
   }
 
+  changeCommentTimeout: any = null;
+  onChangeComments() {
+    console.log(this.appointment_data.appointment_type);
+    // Cancel all other timeouts
+    clearTimeout(this.changeCommentTimeout);
+    // 2 seconds delay to allow the user to see the snackbar
+
+    this.changeCommentTimeout = setTimeout(() => {
+      this.supabase._supabase.from('appointment')
+        .update({
+          appointment_type: this.appointment_data.appointment_type
+        })
+        .match({ 'appointment_id': this.appointment_id })
+        .then((data) => {
+          if (data.error) {
+            console.log(data.error);
+            this.snackBar.open(
+              'Error updating your comment! Check the console logs or refresh the page',
+              '',
+              { duration: 500 }
+            );
+          } else {
+            this.snackBar.open(
+              'Appointment comments updated!',
+              '',
+              { duration: 500 }
+            );
+          }
+        });
+    }, 500);
+  }
+
   ngOnInit(): void {
     // Print the id of the appointment
     console.log(this.appointment_id);
@@ -68,4 +100,6 @@ export class AppointmentComponent implements OnInit {
       }
       );
   }
+
+
 }
