@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
@@ -8,26 +9,21 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 })
 export class BillingComponent implements OnInit {
   dataSource: any[] = [];
+  nOutstandingCharges = 0;
+  payingAnimation = false;
 
-  constructor(public supabase: SupabaseService) {}
+  constructor(public supabase: SupabaseService,
+    public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     let sb = this.supabase._supabase;
-    sb.from('fee_charge')
-      .select(
-        `
-        *,
-        appointment_procedure!fee_charge_procedure_id_fkey(
-          *,
-          procedure_type_id!appointment_procedure_procedure_type_id_fkey(*),
-          appointment_id!appointment_procedure_appointment_id_fkey(*)
-        )
-      `
-      )
-      // Filter to only show the fees for the current patient
+    sb.from('appointment_procedure_view')
+      .select(`
+        *
+      `)
       .eq(
-        'appointment_procedure.appointment_id.patient_id',
-        this.supabase._supabase.auth.user()?.id || 'err'
+        'patient_id',
+        sb.auth.user()?.id
       )
       .then((data) => {
         console.log(data);
@@ -36,7 +32,47 @@ export class BillingComponent implements OnInit {
         } else {
           console.log(data.body);
           this.dataSource = data.body;
+          // Calculate the total outstanding charges
+          this.nOutstandingCharges = 0
+          this.dataSource.forEach((row) => {
+            this.nOutstandingCharges += row.paid ? 0 : 1;
+          });
+          console.log('nOutstandingCharges: ', this.nOutstandingCharges);
         }
       });
+  }
+
+  openPayMenu() {
+    this.payingAnimation = true;
+    setTimeout(() => {
+      this.nOutstandingCharges = 0;
+      this.snackbar.open('Outstanding charges paid!', '', {
+        duration: 1000,
+        panelClass: ['green-snackbar'],
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      this.payingAnimation = false;
+    }, 2500);
+
+    // Set all unpaid charges to paid
+    this.dataSource.forEach((row) => {
+      this.supabase._supabase.from('appointment_procedure')
+        .update({
+          paid: true,
+        })
+        .eq('procedure_id', row.procedure_id)
+        .then((data) => {
+          console.log(data);
+          if (data.error) {
+            console.log('data.error: ', data.error);
+          } else {
+            console.log(data.body);
+          }
+        });
+      row.paid = true;
+    });
+
   }
 }
