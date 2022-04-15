@@ -7,7 +7,7 @@ import { RandomUUIDOptions } from 'crypto';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
 
-export interface Branch{
+export interface Branch {
   clinic_id: string;
   address_street: string;
 }
@@ -57,14 +57,14 @@ export class RegisterComponent implements OnInit {
     works_at: new FormControl('', [Validators.required]),
   });
   branches: Branch[] = [
-    {clinic_id: '5', address_street: 'King Edward Avenue'},
-    {clinic_id: '6', address_street: 'Rideau Street'},
-    {clinic_id: '7', address_street: 'Faraway Road'},
-    {clinic_id: '8', address_street: 'Circle Drive'},
-    {clinic_id: '9', address_street: 'The Cooler Rideau Street'},
-    {clinic_id: '10', address_street: 'Vroom Drive'},
-    {clinic_id: '11', address_street: 'Overmorrow Ave'},
-    {clinic_id: '12', address_street: 'Lastington Ave'},
+    { clinic_id: '5', address_street: 'King Edward Avenue' },
+    { clinic_id: '6', address_street: 'Rideau Street' },
+    { clinic_id: '7', address_street: 'Faraway Road' },
+    { clinic_id: '8', address_street: 'Circle Drive' },
+    { clinic_id: '9', address_street: 'The Cooler Rideau Street' },
+    { clinic_id: '10', address_street: 'Vroom Drive' },
+    { clinic_id: '11', address_street: 'Overmorrow Ave' },
+    { clinic_id: '12', address_street: 'Lastington Ave' },
   ];
 
   // Only allow days before today
@@ -139,9 +139,19 @@ export class RegisterComponent implements OnInit {
         .then((d) => {
           console.log('Adding person data');
           console.log(d);
+          if (d.error) {
+            console.log(d.error);
+            this.snackBar.open('Error saving changes', 'Dismiss');
+          } else {
+            this.postRegister();
+          }
         });
     });
 
+
+  }
+
+  postRegister() {
     var roletype = this.roleForm.get('role_type')?.value;
     if (roletype == "Patient") {
 
