@@ -1,1 +1,44 @@
-<p>records works!</p>
+<div fxFill fxLayout="column">
+  <header fxFlex="10" class="small-header">
+    <mat-toolbar
+      fxFill
+      class="small-headline"
+      color="primary"
+      fxLayoutAlign="begin center"
+    >
+      <h1>
+        My Records
+        <h2>Doctor notes and history</h2>
+      </h1>
+    </mat-toolbar>
+  </header>
+
+  <!-- Text chat with bottom text input -->
+  <div fxFlex="90" class="messages-container">
+    <mat-card
+      *ngFor="let message of messages"
+      class="message-card"
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="10px"
+    >
+      <mat-card-header>
+        <mat-card-title>
+          <h3>
+            {{ message.written_by?.employee_id?.first_name }}
+            {{ message.written_by?.employee_id?.last_name }}
+          </h3>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h4>{{ message.description }}</h4>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ message.text }}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <h4>{{ message.created_at }}</h4>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
