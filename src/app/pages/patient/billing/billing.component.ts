@@ -71,8 +71,8 @@ export class BillingComponent implements OnInit {
             console.log(data.body);
           }
         });
+      row.paid = true;
     });
-    this.dataSource = []
 
   }
 }
