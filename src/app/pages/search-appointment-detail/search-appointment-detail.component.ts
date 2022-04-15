@@ -100,9 +100,7 @@ export class SearchAppointmentDetailComponent implements OnInit {
         this.updateData(data);
       });
 
-
-      this.checkDentist();
-      
+    this.checkDentist();
   }
 
   updateData(data: PostgrestResponse<any>) {
@@ -160,6 +158,5 @@ export class SearchAppointmentDetailComponent implements OnInit {
 
   addProcedure(row: any) {
     this.dialog.open(ProcedureComponent, { data: row });
-
   }
 }

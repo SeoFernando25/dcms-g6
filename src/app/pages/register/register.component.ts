@@ -82,7 +82,6 @@ export class RegisterComponent implements OnInit {
     guardian_phone_number: new FormControl(''),
   });
 
-
   branches: Branch[] = [
     { clinic_id: '5', address_street: 'King Edward Avenue' },
     { clinic_id: '6', address_street: 'Rideau Street' },
@@ -156,7 +155,7 @@ export class RegisterComponent implements OnInit {
         .from('person')
         .insert({
           ...this.personForm.value,
-          auth_id: uuid
+          auth_id: uuid,
         }) // Check errors
         .then((d) => {
           console.log('Adding person data');

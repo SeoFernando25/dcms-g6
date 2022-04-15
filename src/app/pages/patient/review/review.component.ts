@@ -60,7 +60,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private supabase: SupabaseService
-  ) { }
+  ) {}
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'DISMISS', { duration: 5000 });

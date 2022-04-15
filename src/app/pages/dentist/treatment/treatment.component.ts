@@ -74,15 +74,14 @@ export class TreatmentComponent implements OnInit {
 
   updateFilter() {
     let sb = this.supabase._supabase;
-    
-      sb.from('appointment')
-        .select('*, branch("*")')
-        .lte('appointment_date', this.getCurrentDate())
-        .then((data) => {
-          //console.log("Data", data.body);
-          this.updateData(data);
-        });
-    
+
+    sb.from('appointment')
+      .select('*, branch("*")')
+      .lte('appointment_date', this.getCurrentDate())
+      .then((data) => {
+        //console.log("Data", data.body);
+        this.updateData(data);
+      });
   }
 
   updateData(data: PostgrestResponse<any>) {

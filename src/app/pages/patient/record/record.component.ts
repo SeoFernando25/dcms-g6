@@ -13,7 +13,7 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 export class RecordComponent implements OnInit {
   record: any = {};
 
-  constructor(private supabase: SupabaseService) { }
+  constructor(private supabase: SupabaseService) {}
 
   ngOnInit(): void {
     // If we wanted to get patient info

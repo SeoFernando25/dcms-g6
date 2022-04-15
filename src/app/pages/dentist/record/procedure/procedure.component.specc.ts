@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProcedureComponent } from './procedure.component';
 
-
 describe('ProcedureComponent', () => {
   let component: ProcedureComponent;
   let fixture: ComponentFixture<ProcedureComponent>;
