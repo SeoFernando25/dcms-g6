@@ -207,10 +207,27 @@
     </mat-paginator>
   </div>
 
-  <div class="Submit">
-    <button mat-raised-button color="warn" type="submit" style="size: small;">
-      Update Appointment
-    </button>
+  <div class="splitscreen">
+    <div class="left" style="float: left; width: auto">
+      <div class="Update">
+        <button mat-raised-button color="warn" type="submit" style="size: small;">
+          Update Appointment
+        </button>
+      </div>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px">
+      <div class="Add" *ngIf="getDentist()">
+        <button mat-raised-button color="primary" type="add" style="size: small;">
+          Add Procedure
+        </button>
+      </div>
+    </div>
+    <div class="right" style="float: left; width: auto; margin-left: 10px">
+
+    </div>
   </div>
+
+
+
   
 </form>
