@@ -7,6 +7,7 @@ import { Console } from 'console';
 
 import { PostgrestResponse } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { ProcedureComponent } from '../dentist/record/procedure/procedure.component';
 
 export interface procedure {
   procedure_type_id: number;
@@ -22,7 +23,7 @@ export interface procedure {
   styleUrls: ['./search-appointment-detail.component.scss'],
 })
 export class SearchAppointmentDetailComponent implements OnInit {
-  isDenstist = false;
+  isDentist = false;
   displayedColumns: string[] = [
     'procedure_id',
     'procedure_type_id',
@@ -97,6 +98,9 @@ export class SearchAppointmentDetailComponent implements OnInit {
         //console.log('Data', data.body);
         this.updateData(data);
       });
+
+      this.checkDentist();
+      
   }
 
   updateData(data: PostgrestResponse<any>) {
@@ -145,15 +149,16 @@ export class SearchAppointmentDetailComponent implements OnInit {
           console.log('Error: ', data.error);
         } else {
           if (data.body?.at(0).role_type == 'Dentist') {
-            //console.log('Dentist Data:' , data);
-            this.isDenstist = true;
+            console.log('Dentist Data:' , data);
+            this.isDentist = true;
           }
         }
       });
   }
 
-  getDentist() {
-    this.checkDentist();
-    return this.isDenstist;
+
+  addProcedure(row: any) {
+    //console.log(row);
+    this.dialog.open(ProcedureComponent, { data: row });
   }
 }

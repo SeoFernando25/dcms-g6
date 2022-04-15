@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Post-Appointment Information</h1>
+<hr />
+<form [formGroup]="procedureForm">
+  <h3 style="font-size: large">Patient Information</h3>
+  <div class="splitscreen" style="display: block;">
+    <div class="left" style="float: left; width: auto">
+      <mat-form-field class="first_name" appearance="fill">
+        <mat-label for="first_name">First Name</mat-label>
+        <select>
+            <option *ngFor="let type of "></option>
+        </select>
+      </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px">
+      <mat-form-field class="tooth" appearance="fill">
+        <mat-label for="tooth">Tooth/Teeth</mat-label>
+        <input
+          matInput
+          rows="1"
+          formControlName="tooth"
+          readonly
+        >
+      </mat-form-field>
+    </div>
+    <div class="right" style="float: left; width: auto; margin-left: 10px">
+      <mat-form-field class="quantity" appearance="fill">
+        <mat-label for="quantity"># of Teeth</mat-label>
+        <input
+          matInput
+          rows="1"
+          formControlName="quantity"
+          readonly
+        >
+      </mat-form-field>
+    </div>
+  </div>
+      <h3 style="font-size: large">Comments</h3>
+      <mat-form-field class="comments" appearance="fill" style="width: 620px">
+        <mat-label>Comments</mat-label>
+        <textarea
+          matInput
+          formControlName="comments"
+          cols="500"
+          rows="3"
+        ></textarea>
+      </mat-form-field>
+</form>
+<div class="Close">
+  <button mat-raised-button (click)="addProcedure()"color="warn" type="Close">Update Info</button>
+</div>
