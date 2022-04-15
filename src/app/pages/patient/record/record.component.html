@@ -18,11 +18,8 @@
     <p class="description-text">{{ this.record.description }}</p>
     <mat-card-subtitle>
       Last edited by:
-      {{ this.record.written_by?.employee_id?.first_name }}
-      {{ this.record.written_by?.employee_id?.last_name }}
+      {{ this.record.written_by?.person?.first_name }}
+      {{ this.record.written_by?.person?.last_name }}
     </mat-card-subtitle>
-    <mat-card-footer>
-      <h4>{{ this.record.created_at }}</h4>
-    </mat-card-footer>
   </div>
 </div>
