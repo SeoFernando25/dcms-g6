@@ -4,11 +4,8 @@
 <ng-template #menu_template let-value="text">
   <a mat-button routerLink="/our-services">Our Services</a>
   <a mat-button routerLink="/faq">FAQ</a>
-  <a mat-button routerLink="/search">Search</a>
-  <a mat-button routerLink="/search-appointment">Search Appointment</a>
   <a mat-button routerLink="/contact">Contact Us</a>
   <a mat-button routerLink="/testimonials">Testimonials</a>
-  <a mat-button routerLink="/receptionist">recep (temp)</a>
 </ng-template>
 
 <div class="main-div">
@@ -35,17 +32,21 @@
 
     <ng-container *ngIf="supabase._supabase.auth.user()">
       <!-- Show user icon -->
-      <button
-        mat-fab
-        [matMenuTriggerFor]="menu"
-        style="
+      <button (click)="checkRole()" mat-fab [matMenuTriggerFor]="menu" style="
           background-size: cover;
-          background-image: url('https://cdn.betterttv.net/emote/5ff827395ef7d10c7912c106/3x');
-        "
-      ></button>
+          background-image: url('https://cdn.iconscout.com/icon/free/png-256/account-1439373-1214443.png');
+        "></button>
 
       <!-- User menu  -->
       <mat-menu #menu="matMenu">
+        <button *ngIf="isReceptionist" mat-menu-item routerLink="/receptionist">
+          <mat-icon>folder_open</mat-icon>
+          <span>Receptionist Menu</span>
+        </button>
+        <button *ngIf="isDentist" mat-menu-item routerLink="/dentist">
+          <mat-icon> local_hospital</mat-icon>
+          <span>Dentist Menu</span>
+        </button>
         <button mat-menu-item routerLink="/my/billing">
           <mat-icon>account_balance</mat-icon>
           <span>Billing</span>
@@ -80,14 +81,7 @@
   <!-- Placed under toolBarFirstRow -->
   <mat-sidenav-container fxFlexFill style="position: relative">
     <!-- Sidenav menu -->
-    <mat-sidenav
-      color="primary"
-      #sidenav
-      fxLayout="column"
-      mode="over"
-      opened="false"
-      fxHide.gt-sm="true"
-    >
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
         <ng-container *ngTemplateOutlet="menu_template"></ng-container>
       </div>

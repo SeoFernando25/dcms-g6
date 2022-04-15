@@ -27,6 +27,8 @@ export class ReceptionistComponent implements OnInit {
   }
 
   editAppointment(){
+
+    this.router.navigate(['./search-appointment']);
     
   }
 
