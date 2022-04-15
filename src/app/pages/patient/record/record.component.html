@@ -1,0 +1,28 @@
+<div fxFill fxLayout="column">
+  <header fxFlex="10" class="small-header">
+    <mat-toolbar
+      fxFill
+      class="small-headline"
+      color="primary"
+      fxLayoutAlign="begin center"
+    >
+      <h1>
+        My Record
+        <h2>Doctor notes and history</h2>
+      </h1>
+    </mat-toolbar>
+  </header>
+
+  <!-- Text chat with bottom text input -->
+  <div class="content content-top" style="align-items: baseline">
+    <p class="description-text">{{ this.record.description }}</p>
+    <mat-card-subtitle>
+      Last edited by:
+      {{ this.record.written_by?.employee_id?.first_name }}
+      {{ this.record.written_by?.employee_id?.last_name }}
+    </mat-card-subtitle>
+    <mat-card-footer>
+      <h4>{{ this.record.created_at }}</h4>
+    </mat-card-footer>
+  </div>
+</div>

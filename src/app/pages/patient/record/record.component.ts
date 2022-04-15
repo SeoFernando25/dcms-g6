@@ -7,11 +7,11 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-records',
-  templateUrl: './records.component.html',
-  styleUrls: ['./records.component.scss']
+  templateUrl: './record.component.html',
+  styleUrls: ['./record.component.scss']
 })
-export class RecordsComponent implements OnInit {
-  messages: any[] = [];
+export class RecordComponent implements OnInit {
+  record: any = {};
 
   constructor(
     private supabase: SupabaseService
@@ -28,13 +28,15 @@ export class RecordsComponent implements OnInit {
         ))
       `)
       .eq('patient_id', this.supabase._supabase.auth.user()?.id)
+      .limit(1)
+      .single()
       .then((data) => {
         console.log(data);
         if (data.error) {
           console.log('data.error: ', data.error);
         } else {
           console.log(data.body);
-          this.messages = data.body;
+          this.record = data.body;
         }
       }
       );
