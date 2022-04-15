@@ -156,8 +156,7 @@ export class RegisterComponent implements OnInit {
         .from('person')
         .insert({
           ...this.personForm.value,
-          auth_id: uuid,
-          guardian_id: uuid,
+          auth_id: uuid
         }) // Check errors
         .then((d) => {
           console.log('Adding person data');
