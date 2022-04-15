@@ -6,6 +6,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { BillingComponent } from './billing/billing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RecordsComponent } from './records/records.component';
 import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'account', component: AccountComponent },
+      { path: 'records', component: RecordsComponent },
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'appointments/:id', component: AppointmentComponent },
       { path: 'dashboard', component: DashboardComponent },
@@ -27,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PatientRoutingModule {}
+export class PatientRoutingModule { }
