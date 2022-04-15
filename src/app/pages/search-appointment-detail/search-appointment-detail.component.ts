@@ -24,6 +24,7 @@ export interface procedure {
 })
 export class SearchAppointmentDetailComponent implements OnInit {
   isDentist = false;
+  isChecked = false;
   displayedColumns: string[] = [
     'procedure_id',
     'procedure_type_id',
@@ -99,6 +100,7 @@ export class SearchAppointmentDetailComponent implements OnInit {
         this.updateData(data);
       });
 
+
       this.checkDentist();
       
   }
@@ -149,7 +151,7 @@ export class SearchAppointmentDetailComponent implements OnInit {
           console.log('Error: ', data.error);
         } else {
           if (data.body?.at(0).role_type == 'Dentist') {
-            console.log('Dentist Data:' , data);
+            //console.log('Dentist Data:' , data);
             this.isDentist = true;
           }
         }
@@ -157,8 +159,9 @@ export class SearchAppointmentDetailComponent implements OnInit {
   }
 
 
-  addProcedure(row: any) {
+
+  addProcedure() {
     //console.log(row);
-    this.dialog.open(ProcedureComponent, { data: row });
+    this.dialog.open(ProcedureComponent, { data: this.editData });
   }
 }
