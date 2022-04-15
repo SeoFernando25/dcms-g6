@@ -3,19 +3,19 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { PostgrestResponse } from '@supabase/supabase-js';
 
 export interface Appointment {
-  id: number;
-  date: string;
-  location: string;
-  dentist: string;
+  clinic_id: number;
+  appointment_date: string;
+  appointment_status: string;
+  start_time: string;
+  end_time: string;
+  appointment_type: string;
+  room_assigned: string;
+  appointment_id: string;
 }
-
-const ELEMENT_DATA: Appointment[] = [
-  { id: 1, date: '2022-04-16', location: 'Ottawa', dentist: 'John Bob' },
-  { id: 2, date: '2022-04-17', location: 'Ottawa', dentist: 'John Bob' },
-  { id: 3, date: '2022-06-04', location: 'Toronto', dentist: 'Bob John' },
-];
 
 @Component({
   selector: 'app-account',
@@ -23,6 +23,18 @@ const ELEMENT_DATA: Appointment[] = [
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
+  haveGuardian = true;
+  displayedColumns: string[] = [
+    'appointment_id',
+    'clinic_id',
+    'appointment_date',
+    'appointment_status',
+    'start_time',
+    'end_time',
+    'appointment_type',
+    'room_assigned',
+  ];
+  dataSource = new MatTableDataSource<Appointment>([]);
   timeoutId: any;
   creds: User | null = null;
   personForm = new FormGroup({
@@ -42,6 +54,10 @@ export class AccountComponent implements OnInit {
     address_postal_code: new FormControl('', [Validators.required, Validators.minLength(6)]),
     address_region: new FormControl('', [Validators.required]),
     address_street: new FormControl('', [Validators.required]),
+    guardian_first_name: new FormControl(''),
+    guardian_middle_name: new FormControl(''),
+    guardian_last_name: new FormControl(''),
+    guardian_phone_number: new FormControl(''),
   });
 
   // Only allow days before today
@@ -57,8 +73,6 @@ export class AccountComponent implements OnInit {
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
-  displayedColumns: string[] = ['id', 'date', 'location', 'dentist'];
-  dataSource = ELEMENT_DATA;
 
   constructor(
     private supabase: SupabaseService,
@@ -87,13 +101,76 @@ export class AccountComponent implements OnInit {
     personData.then((data) => {
       if (data.error == null) {
         var personInfo = data.body;
-        console.log(personInfo); // TODO: Remove me in production (contains sensitive data)
+        console.log('personInfo', personInfo); // TODO: Remove me in production (contains sensitive data)
         this.personForm.setValue(personInfo);
       }
       // If error, the user information has not been added to the database yet
     });
+    // Fetch user appointments
+    let sb = this.supabase._supabase;
+    sb.from('appointment')
+      .select('*, branch("*")')
+      .gte('appointment_date', this.getCurrentDate())
+      .eq('patient_id', sb.auth.user()?.id)
+      .then((data) => {
+        //console.log("Greater Data", data);
+        this.updateData(data);
+      });
+
+    sb.from('person')
+      .select('*')
+      .eq('auth_id', sb.auth.user()?.id)
+      .then((data) => {
+        console.log("User Data", data.body?.at(0));
+        this.personForm.patchValue({
+          first_name: data.body?.at(0).first_name,
+          middle_name: data.body?.at(0).middle_name,
+          last_name: data.body?.at(0).last_name,
+          phone_number: data.body?.at(0).phone_number,
+          gender: data.body?.at(0).gender,
+          date_of_birth: data.body?.at(0).date_of_birth,
+          ssn: data.body?.at(0).ssn,
+          address_street: data.body?.at(0).address_street,
+          address_city: data.body?.at(0).address_city,
+          address_region: data.body?.at(0).address_region,
+          address_postal_code: data.body?.at(0).address_postal_code,
+        });
+        sb.from('person')
+          .select('*')
+          .eq('auth_id', data.body?.at(0).guardian_id)
+          .then((data2) => {
+            console.log("Guardian Data", data2.body?.at(0));
+            if (data2.body?.at(0) != null) {
+              this.haveGuardian = false;
+              this.personForm.patchValue({
+                guardian_first_name: data2.body?.at(0).first_name,
+                guardian_middle_name: data2.body?.at(0).middle_name,
+                guardian_last_name: data2.body?.at(0).last_name,
+                guardian_phone_number: data2.body?.at(0).phone_number,
+              });
+            }
+          });
+      });
   }
 
+  updateData(data: PostgrestResponse<any>) {
+    if (data.error) {
+      console.log('data.error: ', data.error);
+      this.snackBar.open('Error: ' + data.error.details, 'Close');
+    } else {
+      this.dataSource.data = data.body;
+    }
+  }
+
+  getCurrentDate() {
+    //Get current date in YYYY-MM-DD format
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return yyyy + '-' + mm + '-' + dd;
+  }
   cancelChanges() {
     var personData = this.supabase.getPersonData();
     personData.then((data) => {
@@ -162,5 +239,9 @@ export class AccountComponent implements OnInit {
     var timeDiff = Math.abs(Date.now() - this.personForm.get('date_of_birth')?.value)
     var age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     return 15 <= age;
+  }
+
+  getGuardian() {
+    return this.haveGuardian
   }
 }

@@ -2,7 +2,7 @@
 <hr />
 <!--Create a form Reivew-->
 <!--<form [formGroup]="UpdateReviewForm" (ngSubmit)="UpdateReview()">-->
-<form [formGroup]="peopleDetailForm" (ngSubmit)="closeDialog()">
+<form [formGroup]="peopleDetailForm" (ngSubmit)="updateInfo()">
   <br />
   <h3 style="font-size: large">Name</h3>
   <div class="splitscreen">
@@ -14,7 +14,7 @@
           placeholder="First Name"
           rows="1"
           formControlName="first_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -26,7 +26,7 @@
           placeholder="Middle Name"
           rows="1"
           formControlName="middle_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -38,7 +38,7 @@
           placeholder="Last Name"
           rows="1"
           formControlName="last_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -54,32 +54,27 @@
           placeholder="SSN"
           rows="1"
           formControlName="ssn"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
     <div class="middle" style="float: left; margin-left: 10px">
-      <mat-form-field class="gender" appearance="fill">
+      <mat-form-field class="gender" appearance="fill"> 
         <mat-label for="gender">Gender</mat-label>
-        <textarea
-          matInput
-          placeholder="Gender"
-          rows="1"
-          formControlName="gender"
-          readonly
-        ></textarea>
-      </mat-form-field>
+        <mat-select formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other / Prefer not to disclose</mat-option>
+        </mat-select>
+    </mat-form-field>
     </div>
     <div class="right" style="float: left; width: auto; margin-left: 10px">
-      <mat-form-field class="date_of_birth" appearance="fill">
+
+      <mat-form-field appearance="fill" style="width: 196px">
         <mat-label for="date_of_birth">Date of Birth</mat-label>
-        <textarea
-          matInput
-          placeholder="Date of Birth"
-          rows="1"
-          formControlName="date_of_birth"
-          readonly
-        ></textarea>
+        <input matInput [matDatepicker]="picker" formControlName="date_of_birth" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
   </div>
@@ -91,10 +86,10 @@
       rows="1"
       cols="500"
       formControlName="phone_number"
-      readonly
+       
     ></textarea>
   </mat-form-field>
-
+  <div *ngIf="checkGuardian()">
   <h3 style="font-size: large">Guardian Info</h3>
   <div class="splitscreen">
     <div class="left" style="float: left; width: auto">
@@ -105,7 +100,7 @@
           placeholder="First Name"
           rows="1"
           formControlName="guardian_first_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -117,7 +112,7 @@
           placeholder="Middle Name"
           rows="1"
           formControlName="guardian_middle_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -129,7 +124,7 @@
           placeholder="Last Name"
           rows="1"
           formControlName="guardian_last_name"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -142,10 +137,10 @@
       rows="1"
       cols="50"
       formControlName="guardian_ssn"
-      readonly
+       
     ></textarea>
   </mat-form-field>
-
+  </div>
   <h3 style="font-size: large">Address Info</h3>
   <mat-form-field class="address_street" appearance="fill" style="width: 620px">
     <mat-label for="address_street">Street Name</mat-label>
@@ -155,7 +150,7 @@
       rows="1"
       cols="500"
       formControlName="address_street"
-      readonly
+       
     ></textarea>
   </mat-form-field>
   <div class="splitscreen">
@@ -167,7 +162,7 @@
           placeholder="City"
           rows="1"
           formControlName="address_city"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -179,7 +174,7 @@
           placeholder="Region"
           rows="1"
           formControlName="address_region"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
@@ -191,13 +186,13 @@
           placeholder="Postal Code"
           rows="1"
           formControlName="address_postal_code"
-          readonly
+           
         ></textarea>
       </mat-form-field>
     </div>
   </div>
 
   <div class="Close">
-    <button mat-raised-button color="primary" type="Close">Close</button>
+    <button mat-raised-button color="warn" type="Close">Update Info</button>
   </div>
 </form>
