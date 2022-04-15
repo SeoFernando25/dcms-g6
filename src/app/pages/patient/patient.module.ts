@@ -41,4 +41,4 @@ import { RecordComponent } from './record/record.component';
   ],
   providers: [MatDatepickerModule],
 })
-export class PatientModule { }
+export class PatientModule {}

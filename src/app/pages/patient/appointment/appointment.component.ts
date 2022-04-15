@@ -48,11 +48,12 @@ export class AppointmentComponent implements OnInit {
     // 2 seconds delay to allow the user to see the snackbar
 
     this.changeCommentTimeout = setTimeout(() => {
-      this.supabase._supabase.from('appointment')
+      this.supabase._supabase
+        .from('appointment')
         .update({
-          appointment_type: this.appointment_data.appointment_type
+          appointment_type: this.appointment_data.appointment_type,
         })
-        .match({ 'appointment_id': this.appointment_id })
+        .match({ appointment_id: this.appointment_id })
         .then((data) => {
           if (data.error) {
             console.log(data.error);
@@ -62,11 +63,9 @@ export class AppointmentComponent implements OnInit {
               { duration: 500 }
             );
           } else {
-            this.snackBar.open(
-              'Appointment comments updated!',
-              '',
-              { duration: 500 }
-            );
+            this.snackBar.open('Appointment comments updated!', '', {
+              duration: 500,
+            });
           }
         });
     }, 500);
@@ -82,9 +81,9 @@ export class AppointmentComponent implements OnInit {
     let sb = this.supabase._supabase;
     sb.from('appointment')
       .update({
-        appointment_status: 'Cancelled'
+        appointment_status: 'Cancelled',
       })
-      .match({ 'appointment_id': this.appointment_id })
+      .match({ appointment_id: this.appointment_id })
       .then((data) => {
         if (data.error) {
           this.snackBar.open(
@@ -97,9 +96,6 @@ export class AppointmentComponent implements OnInit {
           this.snackBar.open('Appointment cancelled!', '', { duration: 2000 });
           this.router.navigate(['/my/appointments']);
         }
-      }
-      );
+      });
   }
-
-
 }

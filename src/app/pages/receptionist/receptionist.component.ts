@@ -7,31 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./receptionist.component.scss'],
 })
 export class ReceptionistComponent implements OnInit {
-  constructor(
-    public router: Router
-  ) {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {}
 
-
-  registerUser(){
+  registerUser() {
     this.router.navigate(['./register']);
   }
 
-  editUser(){
+  editUser() {
     this.router.navigate(['./search']);
   }
 
-  createAppointment(){
+  createAppointment() {
     this.router.navigate(['./search']);
   }
 
-  editAppointment(){
-
+  editAppointment() {
     this.router.navigate(['./search-appointment']);
-    
   }
-
 }
-
-

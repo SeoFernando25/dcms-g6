@@ -7,9 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./faq.component.scss'],
 })
 export class FAQComponent implements OnInit {
-  constructor(
-    public router: Router
-  ) { }
+  constructor(public router: Router) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

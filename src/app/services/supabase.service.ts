@@ -56,7 +56,7 @@ export class SupabaseService implements OnInit {
       .single();
   }
 
-  getPersonDataWithID(id:string){
+  getPersonDataWithID(id: string) {
     return this._supabase
       .from('person')
       .select('*')
@@ -65,46 +65,44 @@ export class SupabaseService implements OnInit {
       .single();
   }
 
-  getPatientData(){
+  getPatientData() {
     return this._supabase
-    .from('patient')
-    .select('*')
-    .eq('patient_id', this._supabase.auth.user()?.id)
-    .limit(1)
-    .single();
+      .from('patient')
+      .select('*')
+      .eq('patient_id', this._supabase.auth.user()?.id)
+      .limit(1)
+      .single();
   }
 
-  getPatientDataWithID(id:string){
+  getPatientDataWithID(id: string) {
     return this._supabase
-    .from('patient')
-    .select('*')
-    .eq('patient_id', id)
-    .limit(1)
-    .single();
+      .from('patient')
+      .select('*')
+      .eq('patient_id', id)
+      .limit(1)
+      .single();
   }
 
-  getEmployeeData(){
+  getEmployeeData() {
     return this._supabase
-    .from('employee')
-    .select('*')
-    .eq('employee_id', this._supabase.auth.user()?.id)
-    .limit(1)
-    .single();
+      .from('employee')
+      .select('*')
+      .eq('employee_id', this._supabase.auth.user()?.id)
+      .limit(1)
+      .single();
   }
 
-  getEmployeeDataWithID(id:string){
+  getEmployeeDataWithID(id: string) {
     return this._supabase
-    .from('employee')
-    .select('*')
-    .eq('employee_id', id)
-    .limit(1)
-    .single();
+      .from('employee')
+      .select('*')
+      .eq('employee_id', id)
+      .limit(1)
+      .single();
   }
 
-  getBranchData(){
-    return this._supabase
-    .from('branch')
-    .select('clinic_id,address_street')
+  getBranchData() {
+    return this._supabase.from('branch').select('clinic_id,address_street');
   }
 
   signOut() {

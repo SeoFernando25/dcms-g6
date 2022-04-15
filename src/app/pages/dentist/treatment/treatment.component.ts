@@ -7,12 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./treatment.component.scss'],
 })
 export class TreatmentComponent implements OnInit {
-  constructor(
-    public router: Router
-  ) {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {}
-
 }
-
-
