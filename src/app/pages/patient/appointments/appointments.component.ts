@@ -37,7 +37,7 @@ export class AppointmentsComponent implements OnInit {
       .from('appointment')
       .select(`*,
         dentist_id!appointment_dentist_id_fkey(
-        employee_id!employee_employee_id_fkey(*)
+        person!employee_employee_id_fkey(*)
       ))
       `)
       .eq('patient_id', userData)
