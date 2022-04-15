@@ -49,7 +49,9 @@ export class AppointmentComponent implements OnInit {
     // Remove the appointment from the database
     let sb = this.supabase._supabase;
     sb.from('appointment')
-      .delete()
+      .update({
+        appointment_status: 'Cancelled'
+      })
       .match({ 'appointment_id': this.appointment_id })
       .then((data) => {
         if (data.error) {
