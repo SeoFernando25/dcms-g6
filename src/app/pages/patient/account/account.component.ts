@@ -3,19 +3,19 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { PostgrestResponse } from '@supabase/supabase-js';
 
 export interface Appointment {
-  id: number;
-  date: string;
-  location: string;
-  dentist: string;
+  clinic_id: number;
+  appointment_date: string;
+  appointment_status: string;
+  start_time: string;
+  end_time: string;
+  appointment_type: string;
+  room_assigned: string;
+  appointment_id: string;
 }
-
-const ELEMENT_DATA: Appointment[] = [
-  { id: 1, date: '2022-04-16', location: 'Ottawa', dentist: 'John Bob' },
-  { id: 2, date: '2022-04-17', location: 'Ottawa', dentist: 'John Bob' },
-  { id: 3, date: '2022-06-04', location: 'Toronto', dentist: 'Bob John' },
-];
 
 @Component({
   selector: 'app-account',
@@ -23,6 +23,17 @@ const ELEMENT_DATA: Appointment[] = [
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
+  displayedColumns: string[] = [
+    'appointment_id',
+    'clinic_id',
+    'appointment_date',
+    'appointment_status',
+    'start_time',
+    'end_time',
+    'appointment_type',
+    'room_assigned',
+  ];
+  dataSource = new MatTableDataSource<Appointment>([]);
   timeoutId: any;
   creds: User | null = null;
   personForm = new FormGroup({
@@ -57,8 +68,6 @@ export class AccountComponent implements OnInit {
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
-  displayedColumns: string[] = ['id', 'date', 'location', 'dentist'];
-  dataSource = ELEMENT_DATA;
 
   constructor(
     private supabase: SupabaseService,
@@ -92,8 +101,37 @@ export class AccountComponent implements OnInit {
       }
       // If error, the user information has not been added to the database yet
     });
+
+    // Fetch user appointments
+    let sb = this.supabase._supabase;
+    sb.from('appointment')
+      .select('*, branch("*")')
+      .gte('appointment_date', this.getCurrentDate())
+      .eq('patient_id', sb.auth.user()?.id)
+      .then((data) => {
+        //console.log("Greater Data", data);
+        this.updateData(data);
+      });
   }
 
+  updateData(data: PostgrestResponse<any>) {
+    if (data.error) {
+      console.log('data.error: ', data.error);
+      this.snackBar.open('Error: ' + data.error.details, 'Close');
+    } else {
+      this.dataSource.data = data.body;
+    }
+  }
+
+  getCurrentDate() {
+    //Get current date in YYYY-MM-DD format
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return yyyy + '-' + mm + '-' + dd;
+  }
   cancelChanges() {
     var personData = this.supabase.getPersonData();
     personData.then((data) => {
