@@ -44,4 +44,26 @@ export class AppointmentComponent implements OnInit {
     // Print the id of the appointment
     console.log(this.appointment_id);
   }
+
+  cancelAppointment() {
+    // Remove the appointment from the database
+    let sb = this.supabase._supabase;
+    sb.from('appointment')
+      .delete()
+      .match({ 'appointment_id': this.appointment_id })
+      .then((data) => {
+        if (data.error) {
+          this.snackBar.open(
+            'An error has occurred! Check the console logs or refresh the page',
+            '',
+            { duration: 10000 }
+          );
+          console.log(data.error);
+        } else {
+          this.snackBar.open('Appointment cancelled!', '', { duration: 2000 });
+          this.router.navigate(['/my/appointments']);
+        }
+      }
+      );
+  }
 }
