@@ -8,26 +8,19 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 })
 export class BillingComponent implements OnInit {
   dataSource: any[] = [];
+  nOutstandingCharges = 0;
 
-  constructor(public supabase: SupabaseService) {}
+  constructor(public supabase: SupabaseService) { }
 
   ngOnInit(): void {
     let sb = this.supabase._supabase;
-    sb.from('fee_charge')
-      .select(
-        `
-        *,
-        appointment_procedure!fee_charge_procedure_id_fkey(
-          *,
-          procedure_type_id!appointment_procedure_procedure_type_id_fkey(*),
-          appointment_id!appointment_procedure_appointment_id_fkey(*)
-        )
-      `
-      )
-      // Filter to only show the fees for the current patient
+    sb.from('appointment_procedure_view')
+      .select(`
+        *
+      `)
       .eq(
-        'appointment_procedure.appointment_id.patient_id',
-        this.supabase._supabase.auth.user()?.id || 'err'
+        'patient_id',
+        sb.auth.user()?.id
       )
       .then((data) => {
         console.log(data);
@@ -38,5 +31,9 @@ export class BillingComponent implements OnInit {
           this.dataSource = data.body;
         }
       });
+  }
+
+  openPayMenu() {
+
   }
 }
