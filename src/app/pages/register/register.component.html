@@ -1,249 +1,384 @@
 <!--Set dentist1.jpg as header background image-->
-<header fxLayout="column" fxLayoutAlign="center center" class='big-header'
-    style="background-image: url('assets/img/dentist1.jpg');">
-    <mat-toolbar fxFill class='big-headline' angular-textcolor="White" fxLayout="column" fxLayoutAlign="center center"
-        style="background-color:transparent ;">
-        <h1 style="color:white">New User</h1>
-    </mat-toolbar>
+<header
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="big-header"
+  style="background-image: url('assets/img/dentist1.jpg')"
+>
+  <mat-toolbar
+    fxFill
+    class="big-headline"
+    angular-textcolor="White"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    style="background-color: transparent"
+  >
+    <h1 style="color: white">New User</h1>
+  </mat-toolbar>
 </header>
 
 <div class="General-box">
-    <div class="container-fluid padding">
-        <div class="row welcome text-center" style="margin-left: 250px; margin-right: 250px;">
-            <div class="col-12">
-                <br>
-                <h1 style="margin-top: 50px; font-size: 50px;">Required information</h1>
-                <h3 style="padding-left: 2px">To create an account, please fill out the following fields.</h3>
-            </div>
-            <hr>
-        </div>
+  <div class="container-fluid padding">
+    <div
+      class="row welcome text-center"
+      style="margin-left: 250px; margin-right: 250px"
+    >
+      <div class="col-12">
+        <br />
+        <h1 style="margin-top: 50px; font-size: 50px">Required information</h1>
+        <h3 style="padding-left: 2px">
+          To create an account, please fill out the following fields.
+        </h3>
+      </div>
+      <hr />
     </div>
+  </div>
 </div>
 
 <form class="form" [formGroup]="credentialForm">
-    <div class="container">
-        <div class="row">
-            <label>
-                <h2>Sign-in Credentials</h2>
-            </label>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                <mat-form-field>
-                    <mat-label>E-mail</mat-label>
-                    <input matInput formControlName="email">
-                    <mat-error *ngIf="credentialHasError('email', 'required')">Email is required</mat-error>
-                    <mat-error *ngIf="credentialHasError('email', 'email')">Not a valid Email</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error *ngIf="credentialHasError('password', 'required')">Password is required</mat-error>
-                    <mat-error *ngIf="credentialHasError('password', 'minlength')">Password has to be longer than 8
-                        characters</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Confirm password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" pattern="{{credentialForm.value.password}}"
-                        formControlName="confirm_password">
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error *ngIf="credentialHasError('confirm_password', 'required')">Password is required
-                    </mat-error>
-                    <mat-error *ngIf="credentialHasError('confirm_password', 'pattern')">Password are not matching
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <br />
-        </div>
+  <div class="container">
+    <div class="row">
+      <label>
+        <h2>Sign-in Credentials</h2>
+      </label>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="credentialHasError('email', 'required')"
+            >Email is required</mat-error
+          >
+          <mat-error *ngIf="credentialHasError('email', 'email')"
+            >Not a valid Email</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-error *ngIf="credentialHasError('password', 'required')"
+            >Password is required</mat-error
+          >
+          <mat-error *ngIf="credentialHasError('password', 'minlength')"
+            >Password has to be longer than 8 characters</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirm password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            pattern="{{ credentialForm.value.password }}"
+            formControlName="confirm_password"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-error *ngIf="credentialHasError('confirm_password', 'required')"
+            >Password is required
+          </mat-error>
+          <mat-error *ngIf="credentialHasError('confirm_password', 'pattern')"
+            >Password are not matching
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br />
     </div>
+  </div>
 </form>
 <form class="form" [formGroup]="personForm">
-    <div class="container">
-        <div class="row">
-            <label>
-                <h2>Name</h2>
-            </label>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                <mat-form-field>
-                    <mat-label>First name</mat-label>
-                    <input matInput formControlName="first_name">
-                    <mat-error *ngIf="personHasError('first_name', 'required')">First Name is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Middle name</mat-label>
-                    <input matInput formControlName="middle_name">
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Last name</mat-label>
-                    <input matInput formControlName="last_name">
-                    <mat-error *ngIf="personHasError('last_name', 'required')">Last Name is required</mat-error>
-                </mat-form-field>
-            </div>
-            <br />
-        </div>
-        <div class="row">
-            <label>
-                <h2>General Information</h2>
-            </label>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                <mat-form-field>
-                    <mat-label>Phone Number</mat-label>
-                    <input matInput mask="(000) 000-0000" formControlName="phone_number">
-                    <mat-error *ngIf="personHasError('phone_number', 'required')">Phone Number is required</mat-error>
-                    <mat-error *ngIf="personHasError('phone_number', 'minlength')">Phone number has to be 10 digits
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Gender</mat-label>
-                    <mat-select formControlName="gender">
-                        <mat-option value="m">Male</mat-option>
-                        <mat-option value="f">Female</mat-option>
-                        <mat-option value="x">Other / Prefer not to disclose</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="personHasError('gender', 'required')">Gender is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Date of Birth</mat-label>
-                    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="prevDayFilter"
-                        formControlName="date_of_birth" />
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="personHasError('date_of_birth', 'required')">Date of Birth is required</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <div fxLayout="row" fxLayoutAlign=" start">
-                <mat-form-field>
-                    <mat-label>Social Security Number</mat-label>
-                    <input matInput mask="000-000-000" formControlName="ssn">
-                    <mat-error *ngIf="personHasError('ssn', 'required')">SSN is required</mat-error>
-                    <mat-error *ngIf="personHasError('ssn', 'minlength')">SSN has to be 9 digits long</mat-error>
-                </mat-form-field>
-            </div>
-            <br />
-        </div>
-        <div class="row">
-            <label>
-                <h2>Address Information</h2>
-            </label>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                <mat-form-field style="display: inline;">
-                    <mat-label>Street Address</mat-label>
-                    <input matInput formControlName="address_street">
-                    <mat-error *ngIf="personHasError('address_street', 'required')">Address is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>City</mat-label>
-                    <input matInput formControlName="address_city">
-                    <mat-error *ngIf="personHasError('address_city', 'required')">City is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Region</mat-label>
-                    <input matInput formControlName="address_region">
-                    <mat-error *ngIf="personHasError('address_region', 'required')">Region is required</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <div fxLayout="row" fxLayoutAlign=" start">
-                <mat-form-field>
-                    <mat-label>Postal Code</mat-label>
-                    <input matInput mask="S9S-9S9" formControlName="address_postal_code">
-                    <mat-error *ngIf="personHasError('address_postal_code', 'required')">Postal Code is required
-                    </mat-error>
-                    <mat-error *ngIf="personHasError('address_postal_code', 'minlength')">Postal Code has to be 6
-                        characters</mat-error>
-                </mat-form-field>
-            </div>
-            <br />
-        </div>
-        <div *ngIf="!personHasError('date_of_birth', 'required') && !AboveAge()">
-            <div class="row">
-                <label>
-                    <h2>Guardian Information</h2>
-                </label>
-                <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                    <mat-form-field>
-                        <mat-label>First name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Middle name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Last name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div fxLayout="row" fxLayoutAlign=" start">
-                    <mat-form-field style="display: inline;">
-                        <mat-label>Phone Number</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <label>
+        <h2>Name</h2>
+      </label>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="first_name" />
+          <mat-error *ngIf="personHasError('first_name', 'required')"
+            >First Name is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Middle name</mat-label>
+          <input matInput formControlName="middle_name" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="last_name" />
+          <mat-error *ngIf="personHasError('last_name', 'required')"
+            >Last Name is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <br />
     </div>
+    <div class="row">
+      <label>
+        <h2>General Information</h2>
+      </label>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            mask="(000) 000-0000"
+            formControlName="phone_number"
+          />
+          <mat-error *ngIf="personHasError('phone_number', 'required')"
+            >Phone Number is required</mat-error
+          >
+          <mat-error *ngIf="personHasError('phone_number', 'minlength')"
+            >Phone number has to be 10 digits
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="m">Male</mat-option>
+            <mat-option value="f">Female</mat-option>
+            <mat-option value="x">Other / Prefer not to disclose</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personHasError('gender', 'required')"
+            >Gender is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Date of Birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [matDatepickerFilter]="prevDayFilter"
+            formControlName="date_of_birth"
+            (dateChange)="onDoBChange()"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="personHasError('date_of_birth', 'required')"
+            >Date of Birth is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div fxLayout="row" fxLayoutAlign=" start">
+        <mat-form-field>
+          <mat-label>Social Security Number</mat-label>
+          <input matInput mask="000-000-000" formControlName="ssn" />
+          <mat-error *ngIf="personHasError('ssn', 'required')"
+            >SSN is required</mat-error
+          >
+          <mat-error *ngIf="personHasError('ssn', 'minlength')"
+            >SSN has to be 9 digits long</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <br />
+    </div>
+    <div class="row">
+      <label>
+        <h2>Address Information</h2>
+      </label>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <mat-form-field style="display: inline">
+          <mat-label>Street Address</mat-label>
+          <input matInput formControlName="address_street" />
+          <mat-error *ngIf="personHasError('address_street', 'required')"
+            >Address is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput formControlName="address_city" />
+          <mat-error *ngIf="personHasError('address_city', 'required')"
+            >City is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Region</mat-label>
+          <input matInput formControlName="address_region" />
+          <mat-error *ngIf="personHasError('address_region', 'required')"
+            >Region is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div fxLayout="row" fxLayoutAlign=" start">
+        <mat-form-field>
+          <mat-label>Postal Code</mat-label>
+          <input
+            matInput
+            mask="S9S-9S9"
+            formControlName="address_postal_code"
+          />
+          <mat-error *ngIf="personHasError('address_postal_code', 'required')"
+            >Postal Code is required
+          </mat-error>
+          <mat-error *ngIf="personHasError('address_postal_code', 'minlength')"
+            >Postal Code has to be 6 characters</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <br />
+    </div>
+    <div *ngIf="haveGuardian">
+      <form
+        class="form"
+        [formGroup]="guardianForm"
+        (change)="onGuardianFormChange()"
+      >
+        <div class="row">
+          <label>
+            <h2>Guardian Information</h2>
+          </label>
+          <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <mat-form-field appearance="fill">
+              <mat-label for="guardian_first_name">First Name</mat-label>
+              <input
+                matInput
+                placeholder="First Name"
+                rows="1"
+                formControlName="guardian_first_name"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label for="guardian_middle_name">Middle Name</mat-label>
+              <input
+                matInput
+                placeholder="Middle Name"
+                rows="1"
+                formControlName="guardian_middle_name"
+              />
+            </mat-form-field>
+            <mat-form-field class="guardian_last_name" appearance="fill">
+              <mat-label for="guardian_last_name">Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Last Name"
+                rows="1"
+                formControlName="guardian_last_name"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign=" start">
+          <mat-form-field
+            style="display: inline"
+            class="guardian_phone_number"
+            appearance="fill"
+          >
+            <mat-label for="guardian_phone_number">Phone Number</mat-label>
+            <input
+              matInput
+              placeholder="Phone Number"
+              rows="1"
+              mask="(000) 000-0000"
+              formControlName="guardian_phone_number"
+            />
+          </mat-form-field>
+        </div>
+        <!-- Auth id readonly indicator button -->
+        <h2>Guardian: {{ this.personForm?.value.guardian_id || "Unknown" }}</h2>
+      </form>
+    </div>
+  </div>
 </form>
 <form class="form" [formGroup]="roleForm">
-    <div class="container">
-        <label>
-            <h2>Role Type</h2>
-        </label>
-        <mat-form-field>
-            <mat-label>Role</mat-label>
-            <mat-select formControlName="role_type">
-                <mat-option value="Patient">Patient</mat-option>
-                <mat-option value="Receptionist">Receptionist</mat-option>
-                <mat-option value="Dentist">Dentist</mat-option>
-            </mat-select>
-            <mat-error *ngIf="roleHasError('role_type', 'required')">Role type is required</mat-error>
-        </mat-form-field>
-    </div>
+  <div class="container">
+    <label>
+      <h2>Role Type</h2>
+    </label>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role_type">
+        <mat-option value="Patient">Patient</mat-option>
+        <mat-option value="Receptionist">Receptionist</mat-option>
+        <mat-option value="Dentist">Dentist</mat-option>
+      </mat-select>
+      <mat-error *ngIf="roleHasError('role_type', 'required')"
+        >Role type is required</mat-error
+      >
+    </mat-form-field>
+  </div>
 </form>
-<form class="form" [formGroup]="patientForm" *ngIf="isPatient() && !roleHasError('role_type', 'required')">
-    <div class="container">
-        <label>
-            <h2>Extra Information</h2>
-        </label>
-        <mat-form-field>
-            <mat-label>Insurance Name</mat-label>
-            <input matInput formControlName="insurance">
-            <mat-error *ngIf="patientHasError('insurance', 'required')">Insurance name is required</mat-error>
-        </mat-form-field>
-    </div>
+<form
+  class="form"
+  [formGroup]="patientForm"
+  *ngIf="isPatient() && !roleHasError('role_type', 'required')"
+>
+  <div class="container">
+    <label>
+      <h2>Extra Information</h2>
+    </label>
+    <mat-form-field>
+      <mat-label>Insurance Name</mat-label>
+      <input matInput formControlName="insurance" />
+      <mat-error *ngIf="patientHasError('insurance', 'required')"
+        >Insurance name is required</mat-error
+      >
+    </mat-form-field>
+  </div>
 </form>
-<form class="form" [formGroup]="employeeForm" *ngIf="!isPatient() && !roleHasError('role_type', 'required')">
-    <div class="container">
-        <label>
-            <h2>Extra Information</h2>
-        </label>
-        <mat-form-field>
-            <mat-label>Salary</mat-label>
-            <input matInput formControlName="salary">
-            <mat-error *ngIf="employeeHasError('salary', 'required')">Salary is required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Work Branch Location</mat-label>
-            <mat-select formControlName="works_at">
-                <mat-option *ngFor="let b of branches" [value]="b.clinic_id">{{b.address_street}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="employeeHasError('works_at', 'required')">Work location is required</mat-error>
-        </mat-form-field>
-    </div>
+<form
+  class="form"
+  [formGroup]="employeeForm"
+  *ngIf="!isPatient() && !roleHasError('role_type', 'required')"
+>
+  <div class="container">
+    <label>
+      <h2>Extra Information</h2>
+    </label>
+    <mat-form-field>
+      <mat-label>Salary</mat-label>
+      <input matInput formControlName="salary" />
+      <mat-error *ngIf="employeeHasError('salary', 'required')"
+        >Salary is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Work Branch Location</mat-label>
+      <mat-select formControlName="works_at">
+        <mat-option *ngFor="let b of branches" [value]="b.clinic_id">{{
+          b.address_street
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="employeeHasError('works_at', 'required')"
+        >Work location is required</mat-error
+      >
+    </mat-form-field>
+  </div>
 </form>
 <div class="container">
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <div><button class="Savebutton" mat-raised-button color="primary"
-                [disabled]="!credentialForm.valid || !personForm.valid || !roleForm.valid" (click)="createUser()">
-                Create User
-            </button></div>
-        <div><button class="Cancelbutton" mat-raised-button (click)="Reset()">
-                Reset
-            </button></div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div>
+      <button
+        class="Savebutton"
+        mat-raised-button
+        color="primary"
+        [disabled]="
+          !credentialForm.valid || !personForm.valid || !roleForm.valid
+        "
+        (click)="createUser()"
+      >
+        Create User
+      </button>
     </div>
-    <br />
+    <div>
+      <button class="Cancelbutton" mat-raised-button (click)="Reset()">
+        Reset
+      </button>
+    </div>
+  </div>
+  <br />
 </div>

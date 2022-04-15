@@ -27,6 +27,7 @@ export interface Branch {
 export class RegisterComponent implements OnInit {
   hide = true;
   timeoutId: any;
+  haveGuardian = false;
   creds: User | null = null;
   credentialForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -73,6 +74,15 @@ export class RegisterComponent implements OnInit {
     salary: new FormControl('', [Validators.required]),
     works_at: new FormControl('', [Validators.required]),
   });
+
+  guardianForm = new FormGroup({
+    guardian_first_name: new FormControl(''),
+    guardian_middle_name: new FormControl(''),
+    guardian_last_name: new FormControl(''),
+    guardian_phone_number: new FormControl(''),
+  });
+
+
   branches: Branch[] = [
     { clinic_id: '5', address_street: 'King Edward Avenue' },
     { clinic_id: '6', address_street: 'Rideau Street' },
@@ -239,4 +249,72 @@ export class RegisterComponent implements OnInit {
   public employeeHasError = (controlName: string, errorName: string) => {
     return this.employeeForm.controls[controlName].hasError(errorName);
   };
+
+  onDoBChange() {
+    console.log('DoB changed');
+    if (this.AboveAge()) {
+      this.haveGuardian = false;
+    } else {
+      this.haveGuardian = true;
+    }
+  }
+
+  onGuardianFormChange() {
+    this.personForm.patchValue({
+      guardian_id: null,
+    });
+
+    // Search patient that matches the guardian's first name middle name and last name
+    var sb = this.supabase._supabase;
+    var q = sb.from('person').select('*');
+    var atLeastOne = false;
+    if (this.guardianForm.value.guardian_first_name != '') {
+      atLeastOne = true;
+      q = q.eq('first_name', this.guardianForm.value.guardian_first_name);
+    }
+
+    if (this.guardianForm.value.guardian_middle_name != '') {
+      atLeastOne = true;
+      q = q.eq('middle_name', this.guardianForm.value.guardian_middle_name);
+    }
+    if (this.guardianForm.value.guardian_last_name != '') {
+      atLeastOne = true;
+      q = q.eq('last_name', this.guardianForm.value.guardian_last_name);
+    }
+    if (this.guardianForm.value.guardian_phone_number != '') {
+      atLeastOne = true;
+      q = q.eq('phone_number', this.guardianForm.value.guardian_phone_number);
+    }
+    if (!atLeastOne) {
+      this.snackBar.open(
+        'Please enter at least one search criteria for the guardian',
+        'Close'
+      );
+      return;
+    }
+
+    q.limit(1)
+      .single()
+      .then((data) => {
+        console.log('data', data);
+        // Check error
+        if (data.error) {
+          this.snackBar.open('Error: ' + data.error.details, 'Close');
+        } else {
+          var guardian_id = data.body?.auth_id;
+          // Check if id is not the same as the current user
+          if (guardian_id == sb.auth.user()?.id) {
+            this.snackBar.open(
+              'Error: You cannot be your own guardian',
+              'Close'
+            );
+            return;
+          }
+          console.log('guardian id', guardian_id);
+          this.personForm.patchValue({
+            guardian_id: guardian_id,
+          });
+        }
+      });
+  }
 }
