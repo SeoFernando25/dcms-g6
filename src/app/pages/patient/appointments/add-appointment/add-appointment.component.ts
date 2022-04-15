@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SupabaseService } from 'src/app/services/supabase.service';
 
 export class AppointmentData {}
@@ -12,6 +13,7 @@ export class AppointmentData {}
   styleUrls: ['./add-appointment.component.scss'],
 })
 export class AddAppointmentComponent {
+  patientid = this.supabase._supabase.auth.user()?.id || 'patient_id_err';
   addAppointmentForm = new FormGroup({
     appointment_date: new FormControl('app_date_err'),
     start_time: new FormControl('start_time_err'),
@@ -27,6 +29,7 @@ export class AddAppointmentComponent {
   constructor(
     public dialogRef: MatDialogRef<AddAppointmentComponent>,
     public supabase: SupabaseService,
+    @Inject(MAT_DIALOG_DATA) public editData: any,
     public snackBar: MatSnackBar
   ) {
     this.supabase._supabase
@@ -44,12 +47,15 @@ export class AddAppointmentComponent {
   }
 
   onSubmit() {
+    //console.log("Add Appointment Edit Data", this.editData);
+    this.checkPatientID();
     // Insert appointmentForm into database
     this.supabase._supabase
       .from('appointment')
       .insert({
         ...this.addAppointmentForm.value,
-        patient_id: this.supabase._supabase.auth.user()?.id || 'patient_id_err',
+        //patient_id: this.supabase._supabase.auth.user()?.id || 'patient_id_err',
+        patient_id: this.patientid,
         appointment_status: 'Pending',
       })
       .then((data) => {
@@ -91,5 +97,13 @@ export class AddAppointmentComponent {
           this.dentists = data.body;
         }
       });
+  }
+
+  checkPatientID() {
+    console.log("Check Patient ID");
+    if (this.editData != null) {
+      console.log("this.editData.patient_id;", this.editData.person.auth_id);
+      return this.patientid = this.editData.person.auth_id;
+    }
   }
 }

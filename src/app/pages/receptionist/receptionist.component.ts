@@ -23,7 +23,7 @@ export class ReceptionistComponent implements OnInit {
   }
 
   createAppointment(){
-    this.router.navigate(['/my/appointments']);
+    this.router.navigate(['/search']);
   }
 
   editAppointment(){
