@@ -37,6 +37,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { DentistComponent } from './pages/dentist/dentist.component';
 import { RecordComponent } from './pages/dentist/record/record.component';
 import { TreatmentComponent } from './pages/dentist/treatment/treatment.component';
+import { TreatmentDetailComponent } from './pages/dentist/treatment/treatment-detail/treatment-detail.component';
 import { RecordDetailComponent } from './pages/dentist/record/record-detail/record-detail.component';
 
 const modules = [
@@ -73,6 +74,7 @@ const modules = [
     DentistComponent,
     RecordComponent,
     RecordDetailComponent,
+    TreatmentDetailComponent,
     TreatmentComponent,
     SearchAppointmentComponent,
     SearchAppointmentDetailComponent,

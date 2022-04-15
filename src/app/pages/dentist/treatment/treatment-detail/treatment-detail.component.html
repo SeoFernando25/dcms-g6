@@ -1,0 +1,117 @@
+<h1 mat-dialog-title>Post-Appointment Information</h1>
+<hr />
+<form [formGroup]="AppointmentDetailForm">
+  <h3 style="font-size: large">Patient Information</h3>
+  <div class="splitscreen" style="display: block;">
+    <div class="left" style="float: left; width: auto">
+      <mat-form-field class="first_name" appearance="fill">
+        <mat-label for="first_name">First Name</mat-label>
+        <textarea
+          matInput
+          rows="1"
+          formControlName="first_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px">
+      <mat-form-field class="middle_name" appearance="fill">
+        <mat-label for="middle_name">Middle Name</mat-label>
+        <textarea
+          matInput
+          rows="1"
+          formControlName="middle_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="right" style="float: left; width: auto; margin-left: 10px">
+      <mat-form-field class="last_name" appearance="fill">
+        <mat-label for="last_name">Last Name</mat-label>
+        <textarea
+          matInput
+          rows="1"
+          formControlName="last_name"
+          readonly
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <h3 style="font-size: large">Appointment Information</h3>
+  <div class="splitscreen">
+    <div class="left" style="float: left; width: auto">
+        <mat-form-field appearance="fill">
+            <mat-label for="appointment_date">Choose a date</mat-label>
+            <input matInput readonly [matDatepicker]="picker" formControlName="appointment_date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <div class="middle" style="float: left; margin-left: 10px;">
+        <mat-form-field>
+            <mat-label for="start_time">Start Time</mat-label>
+            <input
+              matInput
+              type="time"
+              formControlName="start_time"
+            />
+          </mat-form-field>
+    </div>
+    <div class="right" style="float: left; margin-left: 10px">
+        <mat-form-field>
+            <mat-label for="end_time">End Time</mat-label>
+            <input
+              matInput
+              type="time"
+              placeholder="end_time"
+              formControlName="end_time"
+            />
+          </mat-form-field>
+    </div>
+  </div>
+</form>
+<form [formGroup]="treatmentForm">
+  <br><br><br><br>
+    <h3 style="font-size: large;">Treatment</h3>
+    <div style="float: left; width: 300px;">
+      <mat-form-field style="width: 300px" class="medication" appearance="fill">
+        <mat-label for="medication">Medication</mat-label>
+        <input
+          matInput
+          formControlName="medication"
+        >
+      </mat-form-field>
+    </div>
+    <div style="float: left;margin-left: 10px; width: 300px;">
+      <mat-form-field style="width: 300px" class="tooth" appearance="fill">
+        <mat-label for="tooth">Tooth/Teeth</mat-label>
+        <input
+          matInput
+          formControlName="tooth"
+        >
+      </mat-form-field>
+    </div>
+    <h3 style="font-size: large">Symptoms</h3>
+      <mat-form-field class="symptoms" appearance="fill" style="width: 620px">
+        <mat-label>Symptoms</mat-label>
+        <textarea
+          matInput
+          formControlName="symptoms"
+          cols="500"
+          rows="2"
+        ></textarea>
+      </mat-form-field>
+      <h3 style="font-size: large">Comments</h3>
+      <mat-form-field class="comments" appearance="fill" style="width: 620px">
+        <mat-label>Comments</mat-label>
+        <textarea
+          matInput
+          formControlName="comments"
+          cols="500"
+          rows="3"
+        ></textarea>
+      </mat-form-field>
+</form>
+<div class="Close">
+  <button mat-raised-button (click)="updateInfo()"color="warn" type="Close">Update Info</button>
+</div>
