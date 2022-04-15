@@ -28,14 +28,18 @@ export class AppointmentsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Load all user appointments from database
     let userData = this.supabase._supabase.auth.user()?.id || 'err';
     this.supabase._supabase
       .from('appointment')
-      .select('*')
+      .select(`*,
+        dentist_id!appointment_dentist_id_fkey(
+        employee_id!employee_employee_id_fkey(*)
+      ))
+      `)
       .eq('patient_id', userData)
       .then((data) => {
         console.log(data);
