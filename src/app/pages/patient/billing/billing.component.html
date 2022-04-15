@@ -28,7 +28,7 @@
         {{ (fee?.name || "Unknown") + " Procedure" }}
       </mat-card-title>
       <mat-card-subtitle
-        >Total Cost {{ fee?.price * fee?.quantity | currency }}
+        >Total Cost {{ fee?.price | currency }}
       </mat-card-subtitle>
       <mat-card-content>
         <strong>Procedure Code:</strong>
