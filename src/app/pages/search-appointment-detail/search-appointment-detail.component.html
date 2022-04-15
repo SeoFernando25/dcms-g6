@@ -217,7 +217,7 @@
     </div>
     <div class="middle" style="float: left; margin-left: 10px">
       <div class="Add">
-        <button mat-raised-button (click)="addProcedure(this.editData)"color="primary" type="button" style="size: small;">
+        <button mat-raised-button (click)="addProcedure(this.editData)"color="primary" type="button" style="size: small;" *ngIf="this.isDentist">
           Add Procedure
         </button>
       </div>
