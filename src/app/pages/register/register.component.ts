@@ -110,12 +110,9 @@ export class RegisterComponent implements OnInit {
     private supabase: SupabaseService,
     private snackBar: MatSnackBar,
     fb: FormBuilder
-  ) {
-  }
+  ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   createUser() {
     var email = this.credentialForm.get('email')?.value;
@@ -148,7 +145,7 @@ export class RegisterComponent implements OnInit {
     var payload = {
       auth_id: user_id,
       ...this.personForm.value,
-    }
+    };
     // If guardian_id is "", set it to null
     if (payload.guardian_id === '') {
       payload.guardian_id = null;
